@@ -36,3 +36,8 @@ Todo list of WTF Academy StarkNet during StarkNet Building Hacker House Tel Aviv
   
 ## How to contribute
 
+We will manage the project on Github (yes, this repo), so you can see all the tasks and contributors here.
+
+1. Read [Project Brief](https://onlydust.notion.site/WTF-Academy-StarkNet-cec45bfe02694dbc895eb42e8f3f1c31)
+2. Contact project lead 0xAA's Telegram (@not0xAA) or [Twitter](https://twitter.com/0xAA_Science), briefly introduct yourself and which part you want contribute.
+3. We will update your id on corresponding tasks.
