@@ -9,7 +9,7 @@ Todo list of WTF Academy StarkNet during StarkNet Building Hacker House Tel Aviv
   
 2. WTF Academy StarkNet is a platform to onboard developers to StarkNet, which includes tutorial, examples, and on-chain certificates.
 
-## Todo List
+## Todo and contributors
 
 1. Tutortials: minimal tutorials on StarkNet, assuming the learners have Ethereum develop experience.
 - Account Abstraction: introduciton of account abstraction and wallets in starknet.
