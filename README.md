@@ -49,3 +49,45 @@ We will manage the project on Github (yes, this repo), so you can see all the ta
 1. Read [Project Brief](https://onlydust.notion.site/WTF-Academy-StarkNet-cec45bfe02694dbc895eb42e8f3f1c31)
 2. Contact project lead 0xAA's Telegram (@not0xAA) or [Twitter](https://twitter.com/0xAA_Science), briefly introduct yourself and which part you want contribute.
 3. You can create a PR update your github ID after corresponding tasks, or I will do it for you.
+
+## Website
+
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+
+### Installation
+
+```
+$ yarn
+```
+
+### Local Development
+
+```
+$ yarn start
+```
+
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+### Build
+
+```
+$ yarn build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Deployment
+
+Using SSH:
+
+```
+$ USE_SSH=true yarn deploy
+```
+
+Not using SSH:
+
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
