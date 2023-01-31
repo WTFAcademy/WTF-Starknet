@@ -67,7 +67,7 @@ const config = {
         title: 'WTF Academy StarkNet',
         logo: {
           alt: 'WTF Academy StarkNet',
-          src: 'img/logo.svg',
+          src: 'img/logo_300x300.png',
         },
         items: [
           {
@@ -122,7 +122,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/WTFAcademy/WTF-Academy-StarkNet-Hackathon',
               },
             ],
           },
