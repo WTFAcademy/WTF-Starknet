@@ -4,6 +4,31 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+function defineSection(section, version = {}, options = {}) {
+  return [
+    '@docusaurus/plugin-content-docs',
+    /** @type {import('@docusaurus/plugin-content-docs').Options} */
+    ({
+      id: section,
+      path: `docs/${section}`,
+      routeBasePath: section,
+      include: ['**/*.md', '**/*.mdx'],
+      sidebarPath: require.resolve('./sidebars-default.js'),
+      breadcrumbs: false,
+      editUrl: 'https://github.com/WTFAcademy/frontend', // TODO: 需要更改
+      versions: version && {
+        current: {
+          label: version.label,
+        },
+      },
+      ...options,
+    }),
+  ];
+}
+
+const SECTIONS = [
+];
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'WTF Academy StarkNet',
@@ -52,7 +77,9 @@ const config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [
+            require.resolve('./src/css/custom.css')
+          ],
         },
       }),
     ],
@@ -76,7 +103,7 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
@@ -134,6 +161,9 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+  plugins: [
+    ...SECTIONS,
+  ],
 };
 
 module.exports = config;
