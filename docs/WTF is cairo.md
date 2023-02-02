@@ -1,9 +1,5 @@
-md title="docs/cairo_101.md"
----
-sidebar_position: 1
----
-
 # WTF is Cairo?
+
 Cairo is a programming language for writing provable programs, where one party can prove to another that a certain computation was executed correctly. Cairo and similar proof systems can be used to provide scalability to blockchains.
 
 StarkNet uses the Cairo programming language both for its infrastructure and for writing StarkNet contracts.
@@ -12,15 +8,7 @@ StarkNet uses the Cairo programming language both for its infrastructure and for
 
 If we compare the structure that we use in a solidity smart contract, usually they are organize as follows:
 
-SOLIDITY                    |  CAIRO
-pragma                      |  lang
-Libraries                   |  module imports
-struct                      |  structs
-Storage                     |  events
-events                      |  storage
-Constructor                 |  constructor
-Modifiers                   |  modifiers
-functions                   |  functions 
+![Structure of a smart contract using solidity and Cairo Starknet](./static/img/cairo_images/smart_contract_structure.png)
 
 The storage getters are necessary if you want to make them public. In solidity, the compiler creates getters for all state variables declared as public, in Cairo all @storage_var are private. Thus if we want to make them public we must make a getter function ourselves.
 
@@ -63,15 +51,14 @@ func this_is_an_event(event_param1 : felt, event_param2 : felt):
 end
 ```
 
-Since declaring everything wtih a func keyword can get confusing, Cairo provides decorators which are used on top of the function declarations to distinguish each. These all start with @:
+Since declaring everything wtih a func keyword can get confusing, Cairo provides decorators which are used on top of the function declarations to distinguish each. These all start with:
 
-@event - Represents an event
-@storage_var - Represents a contract state variable (ie mapping, address, etc.)
-@constructor - A constructor which runs once at deployment
-@view - Used to read from storage_vars
-@external - Used to write to storage_vars
-@l1_handler - Used to to process a message sent from an L1 contract 
-
+- @event - Represents an event
+- @storage_var - Represents a contract state variable (ie mapping, address, etc.)
+- @constructor - A constructor which runs once at deployment
+- @view - Used to read from storage_vars
+- @external - Used to write to storage_vars
+- @l1_handler - Used to to process a message sent from an L1 contract 
 
 # WTF with storage values?
 
@@ -104,6 +91,7 @@ func range(user: felt) -> (res: (felt, felt)) {
 
 An argument of a storage variable may also be a struct or a tuple, as long as they don’t contain pointers (such types, that don’t contain pointers, are called felts-only types). For example:
 
+```
 struct User {
     first_name: felt,
     last_name: felt,
@@ -113,6 +101,7 @@ struct User {
 @storage_var
 func user_voted(user: User) -> (res: felt) {
 }
+```
 
 # WTF with functions?
 
