@@ -1,0 +1,138 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+ p{
+  margin: 0;
+}
+
+.learningCenterContent{
+  position: relative;
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  margin-top: 106px;
+  margin-bottom: 170px;
+
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 600;
+}
+
+.learningCenterTitle{
+  font-size: 72px;
+  line-height: 72px;
+  text-align: center;
+  color: var(--custom-title-color);
+}
+
+.learningCenterListBox{
+  position: relative;
+  width: 100%;
+  margin-top: 28px;
+}
+
+.learningCenterListTitle{
+  font-size: 48px;
+  line-height: 64px;
+  text-align: left;
+  color: #282938;
+}
+
+.learningCenterDesc{
+  position: relative;
+  font-size: 28px;
+  line-height: 2;
+  color: #718096;
+  text-align: center;
+  display: block;
+  margin-top: 30px;
+}
+
+.learningCenterList {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  width: 100%;
+  margin-top: 56px;
+}
+
+.learningCenterItem{
+  list-style: none;
+  width: auto;
+  text-align: center;
+}
+
+.learningCenterItem a{
+  text-decoration: none;
+}
+
+.learningCenterListTitle{
+  font-size: 48px;
+  line-height: 64px;
+  text-align: left;
+  color: #282938;
+}
+
+.learningCenterListItemTitle{
+  font-size: 48px;
+  line-height: 64px;
+  text-align: center;
+  color: #282938;
+}
+
+.learningCenterListItemDesc{
+  margin-top: 40px;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 28px;
+  color: var(--custom-title2-color);
+}
+
+
+/* .learningCenterItem a:hover,
+.learningCenterItem a:hover{
+  color: var(--ifm-link-hover-color) !improtant;
+} */
+
+
+@media screen and (max-width: 996px) {
+  .learningCenterList{
+    flex-wrap: wrap;
+  }
+  .learningCenterItem{
+    width: 50%;
+  }
+  
+  .learningCenterContent{
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  .learningCenterTitle{
+    font-size: 36px;
+    line-height: 1.5;
+  }
+  .learningCenterListTitle{
+    font-size: 28px;
+    line-height: 1.5;
+    padding-left: 24px;
+  }
+  .learningCenterListItemTitle{
+    font-size: 36px;
+    line-height: 1.5;
+  }
+  .learningCenterListItemDesc{
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+  .learningCenterDesc{
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .learningCenterItem{
+    margin: 20px auto;
+  }
+}

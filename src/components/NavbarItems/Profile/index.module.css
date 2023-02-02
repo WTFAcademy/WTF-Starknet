@@ -1,0 +1,40 @@
+.box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.text {
+  color: #000000;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+}
+
+.text {
+  color: var(--ifm-text-color);
+}
+
+.text:hover {
+  color: var(--ifm-color-primary-light);
+}
+
+.customNavbarItem {
+  color: var(--ifm-navbar-link-color);
+  font-weight: var(--ifm-font-weight-semibold);
+  margin-right: 12px;
+}
+
+@media screen and (max-width: 996px) {
+  .text {
+    right: 20px;
+  }
+  
+  .avatar {
+    right: 80px;
+  }
+}
