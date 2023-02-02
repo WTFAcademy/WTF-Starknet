@@ -1,6 +1,6 @@
 md title="docs/ERC721.md"
 ---
-sidebar_position: 1
+: 1
 ---
 
 # WTF is ERC721?

@@ -10,7 +10,7 @@ If we compare the structure that we use in a solidity smart contract, usually th
 
 ![Structure of a smart contract using solidity and Cairo Starknet](./static/img/cairo_images/smart_contract_structure.png)
 
-The storage getters are necessary if you want to make them public. In solidity, the compiler creates getters for all state variables declared as public, in Cairo all @storage_var are private. Thus if we want to make them public we must make a getter function ourselves.
+The storage getters are necessary if you want to make them public. In solidity, the compiler creates getters for all state variables declared as public, in Cairo all `@storage_var` are private. Thus if we want to make them public we must make a getter function ourselves.
 
 When we create a solidity instance from a contract, inherits all the structs/errors/events/functions from the interface, and they commit to implement all the functions found on there. However, in Cairo, there are interfaces but there is no inheritance. This means that we can’t just rely on the interface itself to provide us with the basic structure of our contract. 
 
@@ -53,16 +53,16 @@ end
 
 Since declaring everything wtih a func keyword can get confusing, Cairo provides decorators which are used on top of the function declarations to distinguish each. These all start with:
 
-- @event - Represents an event
-- @storage_var - Represents a contract state variable (ie mapping, address, etc.)
-- @constructor - A constructor which runs once at deployment
-- @view - Used to read from storage_vars
-- @external - Used to write to storage_vars
-- @l1_handler - Used to to process a message sent from an L1 contract 
+- `@event` - Represents an event
+- `@storage_var` - Represents a contract state variable (ie mapping, address, etc.)
+- `@constructor` - A constructor which runs once at deployment
+- `@view` - Used to read from storage_vars
+- `@external` - Used to write to storage_vars
+- `@l1_handler` - Used to to process a message sent from an L1 contract 
 
 # WTF with storage values?
 
-The @storage_var decorator declares a variable which will be kept as part of this storage. In the following example, this variable consists of a single felt, called balance. 
+The `@storage_var` decorator declares a variable which will be kept as part of this storage. In the following example, this variable consists of a single felt, called balance. 
 
 ```
 @storage_var
@@ -81,7 +81,7 @@ func balance(user: felt) -> (res: felt) {
 }
 ```
 
-In fact, the @storage_var decorator allows you to add multiple arguments to create even more complicated maps. A storage variable does not have to be a single field element, it can also be a tuple of several field elements. For example, a mapping from user to a pair (min, max):
+In fact, the `@storage_var` decorator allows you to add multiple arguments to create even more complicated maps. A storage variable does not have to be a single field element, it can also be a tuple of several field elements. For example, a mapping from user to a pair (min, max):
 
 ```
 @storage_var
@@ -105,10 +105,10 @@ func user_voted(user: User) -> (res: felt) {
 
 # WTF with functions?
 
-StarkNet contracts have no main() function. Instead, each function may be annotated as an external using @xternal or internal function using @view.
+StarkNet contracts have no main() function. Instead, each function may be annotated as an external using `@xternal` or internal function using `@view`.
 
-- @external. This functions may be called by the users of StarkNet, and by other contracts. Allow to write the new value to a @storage_var.
-- @view. This functions only queries the state rather than modifying it. 
+- `@external`. This functions may be called by the users of StarkNet, and by other contracts. Allow to write the new value to a @storage_var.
+- `@view`. This functions only queries the state rather than modifying it. 
 
 For example: 
 
@@ -209,7 +209,7 @@ func sum_points_arr(a_len: felt, a: Point*) -> (res: Point) {
 
 # Constructors
 
-A contract may need to initialize its state before it is ready for public use. For example, one may want to designate a contract owner, that can do certain operations that other users can’t. Setting a storage variable to the owner can be done by the contract constructor. The contract constructor is defined using the @constructor decorator and its name must be constructor. The constructor semantics are similar to that of any other external function, except that the constructor is guaranteed to run during the contract deployment and it cannot be invoked again after the contract is deployed.
+A contract may need to initialize its state before it is ready for public use. For example, one may want to designate a contract owner, that can do certain operations that other users can’t. Setting a storage variable to the owner can be done by the contract constructor. The contract constructor is defined using the `@constructor` decorator and its name must be constructor. The constructor semantics are similar to that of any other external function, except that the constructor is guaranteed to run during the contract deployment and it cannot be invoked again after the contract is deployed.
 
 For example, we can define an ownable contract as follows:
 
