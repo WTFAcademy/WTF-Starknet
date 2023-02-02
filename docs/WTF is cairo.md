@@ -70,7 +70,7 @@ func balance() -> (res: felt) {
 }
 ```
 
-To use this variable, we will use the balance.read() and balance.write() functions which are automatically created by the @storage_var decorator. When a contract is deployed, all its storage cells are initialized to zero. In particular, all storage variables are initially zero.
+To use this variable, we will use the balance.read() and balance.write() functions which are automatically created by the `@storage_var` decorator. When a contract is deployed, all its storage cells are initialized to zero. In particular, all storage variables are initially zero.
 
 
 Let's suppose that instead of maintaining one global variable balance, we would like to have a balance for each user (users will be identified by their STARK public keys). We need to change the balance storage variable to a map from public key (user) to balance (instead of a single value). This can be done by simply adding an argument:
@@ -105,7 +105,7 @@ func user_voted(user: User) -> (res: felt) {
 
 # WTF with functions?
 
-StarkNet contracts have no main() function. Instead, each function may be annotated as an external using `@xternal` or internal function using `@view`.
+StarkNet contracts have no main() function. Instead, each function may be annotated as an external using `@external` or internal function using `@view`.
 
 - `@external`. This functions may be called by the users of StarkNet, and by other contracts. Allow to write the new value to a @storage_var.
 - `@view`. This functions only queries the state rather than modifying it. 

@@ -1,7 +1,3 @@
-md title="docs/ERC721.md"
----
-: 1
----
 
 # WTF is ERC721?
 
@@ -70,8 +66,10 @@ starknet declare --contract contracts/artifacts/ERC721.json --account=[ARGENT_WA
 
 We obtain the contract class hash, that is use it to deploy the contract.
 
+```
 Declare transaction was sent. 
 Contract class hash: 0x4769fe9a34a934c169acbc3cb4d7e0a14c66545ca2eed0df9ab658c1015e596 <-- use this value to deploy the contract Transaction hash: 0x2f5d5541776af32faf248458dd728e4c43e92d1b36ecfcd1acb733432782d96
+```
 
 To deploy
 
