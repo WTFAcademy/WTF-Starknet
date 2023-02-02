@@ -154,6 +154,8 @@ Consider the three implicit arguments: syscall_ptr, pedersen_ptr and range_check
 
 But it seems that the contract doesn’t use any hash function or integer comparison, so why are they needed? The reason is that storage variables require these implicit arguments in order to compute the actual memory address of this variable. This may not be needed in simple variables such as balance, but with maps computing the Pedersen hash is part of what read() and write() do. In this example, we are accesing to storage using system calls, so that why it is required the implicit argument syscall_ptr.
 
+## Function Arguments
+
 Let's continue talking about functions. If we want to create an external function that may get an array of field elements as an argument, we need to define two consecutive argument: a_length of type felt and a of type felt*. This arguments are the length of the array and the pointer to the first element of the array. For example:
 
 ```
@@ -241,6 +243,22 @@ func get_owner{
 }() -> (address: felt) {
     let (address) = owner.read();
     return (address=address);
+}
+```
+
+## WTF is Cairo's Uint256?
+
+Everything in Cairo is represented by felt. felt stands for Field Element, the only data type in Cairo. it is 251 bits unsigned integer.
+
+Because a uint256 number has 256 bits in size, it can not be represented by a 251-bit felt. Therefore, it is necessary to split the uint256 number into two components: low and high. The low component represents the low 128 bits of the uint256 number, and the high component is the high 128 bits of the uint256 number. The binary value of low and high are padded with leading 0s up to the maximum resolution and put together side by side to form the uint256 number.
+
+Uint256 is defined as a struct:
+
+```
+struct Uint256 {
+    low: felt,
+
+    high: felt,
 }
 ```
 
