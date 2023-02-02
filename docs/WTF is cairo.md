@@ -8,7 +8,7 @@ StarkNet uses the Cairo programming language both for its infrastructure and for
 
 If we compare the structure that we use in a solidity smart contract, usually they are organize as follows:
 
-![Structure of a smart contract using solidity and Cairo Starknet](./static/img/cairo_images/smart_contract_structure.png)
+![Structure of a smart contract using solidity and Cairo Starknet](./cairo_images/smart_contract_structure.png)
 
 The storage getters are necessary if you want to make them public. In solidity, the compiler creates getters for all state variables declared as public, in Cairo all `@storage_var` are private. Thus if we want to make them public we must make a getter function ourselves.
 
