@@ -14,7 +14,7 @@ Todo list of WTF Academy StarkNet during StarkNet Building Hacker House Tel Aviv
 ### 1. Tutortials
 Minimal tutorials on StarkNet, assuming the learners have Ethereum develop experience.
 - Account Abstraction: @ocandocrypto
-- Cairo: @hasselalcala [Draft]
+- Cairo: @hasselalcala [Draft] [Quiz]
 - Tooling: @hasselalcala [Draft]
 - StarkNet.js @AmazingAng [Draft]
 - Build a minimal Dapp
@@ -36,12 +36,11 @@ Build a SBT contract for certificates on starknet.
   - certificate contract
 
 ### 5. Design
-  - web design
+  - web design @Tank [Draft]
   - logo design
   
 ### 6. Project Management
-  - github todo list
-  - notion page
+  - github todo list [x]
   
 ## How to contribute
 

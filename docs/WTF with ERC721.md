@@ -168,7 +168,7 @@ Now, to build our ERC721 contract, create a new contract and copy the contract t
 starknet-compile contracts/ERC721_exercise01.cairo --output contracts/artifacts/ERC721.json
 ```
 
-If everything is ok, now we are going to check our constructor. This constructor expects 3 arguments name, symbol and owner, this arguments are declared as felt type but we are going to define name and symbol arguments as a string, to transform string or hex to a felt Starkware provides a "utils.py" file to do it and then use the correct values to send it to the constructor. The file is (here)[https://github.com/hasselalcala/workshop_ERC721_Starknet/blob/main/utils.py]
+If everything is ok, now we are going to check our constructor. This constructor expects 3 arguments name, symbol and owner, this arguments are declared as felt type but we are going to define name and symbol arguments as a string, to transform string or hex to a felt Starkware provides a "utils.py" file to do it and then use the correct values to send it to the constructor. The file is [here](https://github.com/hasselalcala/workshop_ERC721_Starknet/blob/main/utils.py)
 
 Run the following:
 
