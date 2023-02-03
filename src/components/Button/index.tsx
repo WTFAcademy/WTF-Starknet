@@ -4,7 +4,9 @@ import styles from './index.module.css';
 import LoadingSvg from "@site/src/icons/LoadingSvg";
 
 interface Props extends React.PropsWithChildren<any> {
-
+    loading?: boolean;
+    type?: 'normal' | 'primary';
+    className?: string;
 }
 
 const Button: React.FC<Props> = (props) => {
