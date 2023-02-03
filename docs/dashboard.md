@@ -1,5 +1,7 @@
 ---
-sidebar_position: 1
+title: Dashboard
+sidebar_position: 0
+slug: /
 ---
 
 # Dashboard
