@@ -1,0 +1,59 @@
+.connectors_group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+
+    width: 360px;
+    height: 156px;
+}
+
+.corner {
+    background-image: url("data:image/svg+xml;base64,ICAgPHN2ZwogICAgICB3aWR0aD0iNDMiCiAgICAgIGhlaWdodD0iNDkiCiAgICAgIHZpZXdCb3g9IjAgMCA0MyA0OSIKICAgICAgZmlsbD0ibm9uZSIKICAgICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICAgPgogICAgICA8cGF0aAogICAgICAgIGZpbGwtcnVsZT0iZXZlbm9kZCIKICAgICAgICBjbGlwLXJ1bGU9ImV2ZW5vZGQiCiAgICAgICAgZD0iTTI3LjUzNjcgMjguMDc2OUwyNS4xODU3IDIwLjgzOThDMjQuNzA3NSAxOS4zNzA3IDIzLjU0MjYgMTguMjI2MiAyMi4wNTk1IDE3Ljc3MzdMMTQuNzYxOCAxNS41Mzc5QzEzLjc1MzIgMTUuMjI5MiAxMy43NDM1IDEzLjgxMDUgMTQuNzQ4MyAxMy40ODg1TDIyLjAwOTQgMTEuMTQ2MkMyMy40ODQ3IDEwLjY2OTggMjQuNjM2MSA5LjUwNjcxIDI1LjA4OTMgOC4wMzIxNUwyNy4zMzIyIDAuNzYwNTk1QzI3LjY0MDggLTAuMjQ1NDk3IDI5LjA2NiAtMC4yNTYxNjUgMjkuMzkyIDAuNzQ0NjU3TDMxLjc0MjkgNy45ODE1NEMzMi4yMjEyIDkuNDUwNzggMzMuMzg2IDEwLjU5NTMgMzQuODY5MSAxMS4wNTA0TDQyLjE2NjggMTMuMjgzNUM0My4xNzU0IDEzLjU5MjMgNDMuMTg1MSAxNS4wMTA5IDQyLjE4MDMgMTUuMzM1NkwzNC45MTkyIDE3LjY3NzlDMzMuNDQzOSAxOC4xNTE2IDMyLjI5MjUgMTkuMzE0OCAzMS44MzkzIDIwLjc5MkwyOS41OTY0IDI4LjA2MDlDMjkuMjg3OCAyOS4wNjcgMjcuODYyNiAyOS4wNzc2IDI3LjUzNjcgMjguMDc2OVoiCiAgICAgICAgZmlsbD0iI0U5RTlFOSIKICAgICAgLz4KICAgICAgPHBhdGgKICAgICAgICBmaWxsLXJ1bGU9ImV2ZW5vZGQiCiAgICAgICAgY2xpcC1ydWxlPSJldmVub2RkIgogICAgICAgIGQ9Ik02Ljc2ODMzIDQ4LjAzODRMNS41OTI4NyA0NC40MTk5QzUuMzUzNzMgNDMuNjg1MyA0Ljc3MTMgNDMuMTEzMSA0LjAyOTc2IDQyLjg4NjhMMC4zODA5MDcgNDEuNzY5Qy0wLjEyMzQxNCA0MS42MTQ2IC0wLjEyODIzOSA0MC45MDUzIDAuMzc0MTU0IDQwLjc0NDJMNC4wMDQ2OSAzOS41NzMxQzQuNzQyMzcgMzkuMzM0OSA1LjMxODA1IDM4Ljc1MzQgNS41NDQ2NSAzOC4wMTYxTDYuNjY2MTEgMzQuMzgwM0M2LjgyMDQgMzMuODc3MyA3LjUzMzAxIDMzLjg3MTkgNy42OTU5OCAzNC4zNzIzTDguODcxNDQgMzcuOTkwOEM5LjExMDU4IDM4LjcyNTQgOS42OTMwMSAzOS4yOTc2IDEwLjQzNDUgMzkuNTI1MkwxNC4wODM0IDQwLjY0MThDMTQuNTg3NyA0MC43OTYyIDE0LjU5MjUgNDEuNTA1NSAxNC4wOTAyIDQxLjY2NzhMMTAuNDU5NiA0Mi44Mzg5QzkuNzIxOTQgNDMuMDc1OCA5LjE0NjI2IDQzLjY1NzQgOC45MTk2NSA0NC4zOTZMNy43OTgyIDQ4LjAzMDVDNy42NDM5MSA0OC41MzM1IDYuOTMxMjkgNDguNTM4OCA2Ljc2ODMzIDQ4LjAzODRaIgogICAgICAgIGZpbGw9IiNFOUU5RTkiCiAgICAgIC8+CiAgICA8L3N2Zz4=");
+    position: absolute;
+    width: 42.93px;
+    height: 48.41px;
+    left: 23px;
+    top: 20px;
+}
+
+.connectors_group>button {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 360px;
+    height: 70px;
+
+    background-color: #FFFFFF;
+    border: 0.5px solid #B1B1B1;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.argent_button {
+    background-image: url('/static/img/argent.png');
+}
+
+.braavos_button {
+    background-image: url('/static/img/braavos.png');
+}
+
+.title {
+    width: 242px;
+    height: 39px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    color: #0F1110;
+}
