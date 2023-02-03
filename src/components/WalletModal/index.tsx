@@ -13,7 +13,7 @@ export function WalletModal(props) {
       props?.onClose();
     }
   }, [status]);
-  const connectorStyle = [styles.argent_button, styles.braavos_button];
+  const connectorStyle = [styles.braavos_button, styles.argent_button];
   return (
     <Modal {...props}>
       <div className={styles.corner}></div>
