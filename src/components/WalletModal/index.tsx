@@ -8,11 +8,11 @@ import { useAccount, useConnectors } from "@starknet-react/core";
 export function WalletModal(props) {
   const { connectors } = useConnectors();
   const { status } = useAccount();
-  useEffect(() => {
-    if (status === "connected") {
-      props?.onClose();
-    }
-  }, [status]);
+  // useEffect(() => {
+  //   if (status === "connected") {
+  //     props?.onClose();
+  //   }
+  // }, [status]);
   const connectorStyle = [styles.braavos_button, styles.argent_button];
   return (
     <Modal {...props}>
