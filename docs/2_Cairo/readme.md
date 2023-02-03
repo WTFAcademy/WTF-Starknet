@@ -29,7 +29,7 @@ The storage getters are necessary if you want to make them public. In solidity, 
 
 When we create a solidity instance from a contract, inherits all the structs/errors/events/functions from the interface, and they commit to implement all the functions found on there. However, in Cairo, there are interfaces but there is no inheritance. This means that we can’t just rely on the interface itself to provide us with the basic structure of our contract. 
 
-## 2.3 Only one constructor per compiled contract
+## 2.3 Constructor
 
 Also, a difference is that Cairo only supports one constructor per compiled contract (i.e. if a contract has multiple child contracts then there must only be one constructor defined across all).
 
