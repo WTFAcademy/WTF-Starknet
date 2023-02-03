@@ -27,6 +27,16 @@
     border-color: var(--custom-btn-bg-primary);
 }
 
+.primary.disabled, .normal.disabled {
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.primary.disabled:hover {
+    background: var(--custom-btn-bg-primary);
+    border-color: var(--custom-btn-bg-primary);
+}
+
 .buttonLoading {
     margin-right: 4px;
 }
