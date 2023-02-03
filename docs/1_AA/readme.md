@@ -18,7 +18,7 @@ Nothing good, right?
 
 Because your private key is your account, losing your key means losing your account, your money, your data. Everything.
 
-With AA if a user lose everything with a small mistake we can help them to recover their information, because every account is a smart contract that can contain logic and implement flow.
+With AA (Account Abstraction) if a user lose everything with a small mistake we can help them to recover their information, because every account is a smart contract that can contain logic and implement flow.
 
 So allows us to use smart contract logic to specify not just the effects of the transaction, but also the fee payment and validation logic. This allows many important security benefits, such as multisig and smart recovery wallets, being able to change keys without changing wallets, and quantum-safety.
 

@@ -19,13 +19,23 @@ If we compare the structure that we use in a solidity smart contract, usually th
 
 ![Structure of a smart contract using solidity and Cairo Starknet](./img/1.png)
 
+## 2. Difference between Solidity and Cairo
+
+## 2.1 Getter function
+
 The storage getters are necessary if you want to make them public. In solidity, the compiler creates getters for all state variables declared as public, in Cairo all `@storage_var` are private. Thus if we want to make them public we must make a getter function ourselves.
+
+## 2.2 Interface
 
 When we create a solidity instance from a contract, inherits all the structs/errors/events/functions from the interface, and they commit to implement all the functions found on there. However, in Cairo, there are interfaces but there is no inheritance. This means that we can’t just rely on the interface itself to provide us with the basic structure of our contract. 
 
+## 2.3 Constructor
+
 Also, a difference is that Cairo only supports one constructor per compiled contract (i.e. if a contract has multiple child contracts then there must only be one constructor defined across all).
 
-The most important difference is data types and execution types. There is only one data type: `felt`. 
+## 2.4 Felt
+
+The most important difference is primitive data types. There is only one data type: `felt`. 
 
 A `felt` (field element) is the primitive data type in cairo, it stands for an unsigned integer with up to 76 decimals. It is used to store addresses, strings, integers, etc. We declare it with:
 
@@ -69,7 +79,7 @@ Since declaring everything wtih a func keyword can get confusing, Cairo provides
 - `@external` - Used to write to storage_vars
 - `@l1_handler` - Used to to process a message sent from an L1 contract 
 
-## 2. Storage Variables
+## 3. Storage Variables
 
 The `@storage_var` decorator declares a variable which will be kept as part of this storage. In the following example, this variable consists of a single `felt`, called balance. 
 
@@ -112,7 +122,7 @@ func user_voted(user: User) -> (res: felt) {
 }
 ```
 
-## 3. Function
+## 4. Function
 
 StarkNet contracts have no main() function. Instead, each function may be annotated as an external using `@external` or internal function using `@view`.
 
@@ -151,7 +161,7 @@ This contract has one external function as: increase_balance reads the current v
 
 Something that is present in our contract and we haven't talk yet is about implicit arguments. 
 
-### 3.1 Implicit arguments
+### 4.1 Implicit arguments
 
 Basically they are internal book keeping for the compiler / Cairo VM. They're used to track the internal memory pointers across function calls. Without them, the compiler wouldn't know how/where to continue executing code after a function returns.
 
@@ -163,7 +173,7 @@ Consider the three implicit arguments: syscall_ptr, pedersen_ptr and range_check
 
 But it seems that the contract doesn’t use any hash function or integer comparison, so why are they needed? The reason is that storage variables require these implicit arguments in order to compute the actual memory address of this variable. This may not be needed in simple variables such as balance, but with maps computing the Pedersen hash is part of what read() and write() do. In this example, we are accesing to storage using system calls, so that why it is required the implicit argument syscall_ptr.
 
-## 3.2 Function Arguments
+## 4.2 Function Arguments
 
 Let's continue talking about functions. If we want to create an external function that may get an array of field elements as an argument, we need to define two consecutive argument: a_length of type `felt` and a of type `felt*`. This arguments are the length of the array and the pointer to the first element of the array. For example:
 
@@ -218,7 +228,7 @@ func sum_points_arr(a_len: felt, a: Point*) -> (res: Point) {
 }
 ```
 
-## Constructor
+## 5. Constructor
 
 A contract may need to initialize its state before it is ready for public use. For example, one may want to designate a contract owner, that can do certain operations that other users can’t. Setting a storage variable to the owner can be done by the contract constructor. The contract constructor is defined using the `@constructor` decorator and its name must be constructor. The constructor semantics are similar to that of any other external function, except that the constructor is guaranteed to run during the contract deployment and it cannot be invoked again after the contract is deployed.
 
@@ -255,7 +265,7 @@ func get_owner{
 }
 ```
 
-## Uint256
+## 6. Uint256
 
 Everything in Cairo is represented by `felt`. `felt` stands for Field Element, the only data type in Cairo. it is 251 bits unsigned integer.
 
