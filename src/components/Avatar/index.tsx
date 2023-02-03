@@ -10,7 +10,6 @@ interface AvatarProps extends React.PropsWithChildren<any> {
 const Avatar = (props: AvatarProps) => {
     const { address, diameter = 30, ...other } = props;
     const { address: accountAddress } = useAccount();
-    console.log(address);
     const newAddress = address || accountAddress || '';
     const seed = parseInt(newAddress.slice(2, 10), 16);
 

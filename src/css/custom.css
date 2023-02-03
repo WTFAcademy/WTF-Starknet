@@ -3,6 +3,7 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 /* You can override the default Infima variables here. */
 :root {
@@ -35,6 +36,10 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+html,body {
+  font-family: 'Inter';
+}
+
 @keyframes ring {
   0% {
     transform: rotate(0deg);
@@ -46,4 +51,8 @@
 
 .loading {
   animation: ring 1.2s linear infinite;
+}
+
+.menu__list > .menu__list-item--hide {
+  display: none;
 }
