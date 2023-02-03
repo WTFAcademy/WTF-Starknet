@@ -8,14 +8,13 @@ tags:
   - contract
   - wtfacademy
 ---
-
-## Introduction to StarkNet.js
+# WTF StarkNet 4: StarkNet.js
 
 [StarkNet.js](https://www.starknetjs.com/) is a JavaScript library to interact with [StarkNet](https://starknet.io/), typically in script or a decentralized applicatoin. StarkNet.js is inspired by [Ethers.js](https://github.com/ethers-io/ethers.js), so it is easy if you have experience on it. 
 
 > If you are not familiar with Ethers.js, check [WTF Ethers Tutorial](https://github.com/WTFAcademy/WTF-Ethers).
 
-## Install with `npm`
+## 1. Install with `npm`
 
 First, get your [VSCode](https://code.visualstudio.com/download) and [Node.js](https://nodejs.org/en/download/) ready. Then open your terminal to install starknet.js with npm.
 
@@ -24,7 +23,7 @@ First, get your [VSCode](https://code.visualstudio.com/download) and [Node.js](h
 npm install starknet
 ```
 
-## Provider
+## 2. Provider
 
 `Provider` allows you to interact with the StarkNet network, without signing transactions or messages.
 
@@ -34,7 +33,7 @@ const provider = new Provider({ sequencer: { network: 'goerli-alpha' } }) // for
 console.log("Chain ID: ", await provider.getChainId());
 ```
 
-## Account
+## 3. Account
 
 `Account` extends `Provider` and allows you to create and verify signatures. 
 It is similar to `Wallet` in ethers.js, but different since all accounts are abstract on StarkNet. You need a `KeyPair` to create an account instance.
@@ -47,7 +46,7 @@ const starkKeyPair = ec.getKeyPair(privateKey);
 const account = new Account(provider, accountAddr, starkKeyPair);
 ```
 
-## Get Account Nonce
+## 4. Get Account Nonce
 
 Gets the nonce of the account with respect to a specific block.
 
@@ -57,7 +56,7 @@ const nonce = await provider.getNonceForAddress(addr)
 console.log(Number(nonce));
 ```
 
-## A Simple Contract
+## 5. A Simple Contract
 
 We deployed a simple contract to interact with. It has a storage variable `balance`, an event `log_data`, and 2 functions: `read_balance()` and `set_balance()` to read and set the `balance`. You can find the contract on starkscan [here](https://testnet.starkscan.co/contract/0x05844982dc2e548395fb4fc6e4abd16f893ff1b5baaea80bd8de522f784473ef#overview).
 
@@ -102,7 +101,7 @@ func read_balance{
 }
 ```
 
-## Read Contract
+## 6. Read Contract
 
 You can create a contract instance with `Contract` method, and pass ABI, contract address, and provider to it. Then you can interact with the contract on StarkNet.
 
@@ -120,7 +119,7 @@ const bal1 = await myTestContract.read_balance();
 console.log("Current Balance =", bal1.toString());
 ```
 
-## Write Contract
+## 7. Write Contract
 
 To write on the blockchain, you need to connect the contract instance with account.
 
@@ -135,7 +134,7 @@ const bal2 = await myTestContract.read_balance();
 console.log("New Balance =", bal2.toString());
 ```
 
-## Write Contract with Verification
+## 8. Write Contract with Verification
 
 If you interact with a function that need the proof that you have the private key of the account, you have to invoke this function with `account.execute`, and pass following variables:
 
@@ -159,7 +158,7 @@ const executeHash = await account.execute(
 await provider.waitForTransaction(executeHash.transaction_hash);
 ```
 
-## Read Events
+## 9. Read Events
 
 It is easy to read event from transaction receipt. But a transaction can contain multiple events, so you need to filter out the one you care.
 
@@ -174,6 +173,8 @@ const event = events.find(
 console.log("event: ", event);
 ```
 
-## Summary
+## 10. Summary
 
 In this tutorial, we introduced how to use StarkNet.js, including provider, account, read/write contract, and read events.
+
+[Quiz 4](https://docs.google.com/forms/d/e/1FAIpQLScenTbrGFFFcsYwmPpDJkiRaD21hVbI6D2k1TLi6Vsyi3HsWg/viewform?usp=sf_link)

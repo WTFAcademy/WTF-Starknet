@@ -9,6 +9,6 @@ tags:
   - wtfacademy
 ---
 
-# Build a Simple Dapp on StarkNet
+# WTF StarkNet 5: StarkNet Dapp
 
-Unfinished
+Unfinished. This tutorial will cover get-starknet and starknet-react. The goal is to build a simple NFT minting page on StarkNet.

@@ -7,7 +7,7 @@ tags:
   - wtfacademy
 ---
 
-# WTF is Cairo?
+# WTF StarkNet 2. Cairo
 
 **Cairo** is a programming language for writing provable programs, where one party can prove to another that a certain computation was executed correctly. Cairo and similar proof systems can be used to provide scalability to blockchains.
 
@@ -21,19 +21,19 @@ If we compare the structure that we use in a solidity smart contract, usually th
 
 ## 2. Difference between Solidity and Cairo
 
-## 2.1 Getter function
+### 2.1 Getter function
 
 The storage getters are necessary if you want to make them public. In solidity, the compiler creates getters for all state variables declared as public, in Cairo all `@storage_var` are private. Thus if we want to make them public we must make a getter function ourselves.
 
-## 2.2 Interface
+### 2.2 Interface
 
 When we create a solidity instance from a contract, inherits all the structs/errors/events/functions from the interface, and they commit to implement all the functions found on there. However, in Cairo, there are interfaces but there is no inheritance. This means that we can’t just rely on the interface itself to provide us with the basic structure of our contract. 
 
-## 2.3 Constructor
+### 2.3 Constructor
 
 Also, a difference is that Cairo only supports one constructor per compiled contract (i.e. if a contract has multiple child contracts then there must only be one constructor defined across all).
 
-## 2.4 Felt
+### 2.4 Felt
 
 The most important difference is primitive data types. There is only one data type: `felt`. 
 
@@ -280,6 +280,8 @@ struct Uint256 {
 }
 ```
 
+## 7. Summary
+
 ![Summary](./img/summary_1.png)
 
-[Quiz 1](https://docs.google.com/forms/d/1PORDqZIHq1HMZPcBYPBjO7t0fDqNiyWKF8h0zGxo3Zw/prefill)
+[Quiz 2](https://docs.google.com/forms/d/e/1FAIpQLSclhNbKlEGWM0HrAdlrU-GX6oQ0hi_A36oTJwUlobmVOsURKg/viewform?usp=sf_link)
