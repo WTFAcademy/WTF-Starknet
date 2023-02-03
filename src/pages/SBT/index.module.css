@@ -2,38 +2,33 @@
   border: 0.5px solid #c0c0c0;
   border-radius: 6px;
   width: 700px;
-  height: 518px;
   margin: 60px auto 120px;
+  text-align: center;
 }
 
 .claimButton {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  gap: 10px;
-  background: #308f0f;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
   margin: 36px auto 0;
-  color: #ffffff;
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  text-align: center;
-  width: 40%;
+  background: #308f0f;
+    border-color: #308f0f;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 10px;
 }
 
 .SBTLogo {
   position: relative;
   width: 600px;
   height: 360px;
-  margin: 40px auto 0;
-  background-image: url('../../../static/img/SBT.svg');
-  background-size: cover;
+  margin: 40px auto;
+  }
+  
+  .SBTLogoImage {
+    width: 600px;
+    height: 360px;
 }
 
 .shadow {
@@ -61,5 +56,50 @@
   }
   .claimButton {
     width: 50%;
+  }
+}
+
+.fullscreenLoading {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 60px auto 280px auto;
+}
+
+.fullscreenLoading div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #308F0F;
+  animation: fullscreenLoading 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.fullscreenLoading div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.fullscreenLoading div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.fullscreenLoading div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes fullscreenLoading {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
   }
 }
