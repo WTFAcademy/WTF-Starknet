@@ -9,11 +9,11 @@ tags:
 
 # WTF is Cairo?
 
-Cairo is a programming language for writing provable programs, where one party can prove to another that a certain computation was executed correctly. Cairo and similar proof systems can be used to provide scalability to blockchains.
+**Cairo** is a programming language for writing provable programs, where one party can prove to another that a certain computation was executed correctly. Cairo and similar proof systems can be used to provide scalability to blockchains.
 
 StarkNet uses the Cairo programming language both for its infrastructure and for writing StarkNet contracts.
 
-## Structure of a cairo program
+## 1. Structure of a cairo contract
 
 If we compare the structure that we use in a solidity smart contract, usually they are organize as follows:
 
@@ -25,16 +25,16 @@ When we create a solidity instance from a contract, inherits all the structs/err
 
 Also, a difference is that Cairo only supports one constructor per compiled contract (i.e. if a contract has multiple child contracts then there must only be one constructor defined across all).
 
-The most important difference is data types and execution types. There is only one data type: felt. 
+The most important difference is data types and execution types. There is only one data type: `felt`. 
 
-A felt stands for an unsigned integer with up to 76 decimals. It is used to store addresses, strings, integers, etc. We declare it with:
+A `felt` (field element) is the primitive data type in cairo, it stands for an unsigned integer with up to 76 decimals. It is used to store addresses, strings, integers, etc. We declare it with:
 
 ```
-magic_number : felt
-my_address : felt
+let magic_number = 666;
+let my_address = "WTF Academy";
 ```
 
-Cairo supports short strings of up to 31 characters but they're actually stored in felt. For example:
+Cairo supports short strings of up to 31 characters but they're actually stored in `felt`. For example:
 
 ```
 let hello_string = 'Hello world!'
@@ -69,9 +69,9 @@ Since declaring everything wtih a func keyword can get confusing, Cairo provides
 - `@external` - Used to write to storage_vars
 - `@l1_handler` - Used to to process a message sent from an L1 contract 
 
-# WTF with storage values?
+## 2. Storage Variables
 
-The `@storage_var` decorator declares a variable which will be kept as part of this storage. In the following example, this variable consists of a single felt, called balance. 
+The `@storage_var` decorator declares a variable which will be kept as part of this storage. In the following example, this variable consists of a single `felt`, called balance. 
 
 ```
 @storage_var
@@ -112,7 +112,7 @@ func user_voted(user: User) -> (res: felt) {
 }
 ```
 
-# WTF with functions?
+## 3. Function
 
 StarkNet contracts have no main() function. Instead, each function may be annotated as an external using `@external` or internal function using `@view`.
 
@@ -151,7 +151,7 @@ This contract has one external function as: increase_balance reads the current v
 
 Something that is present in our contract and we haven't talk yet is about implicit arguments. 
 
-## WTF with implicit arguments?
+### 3.1 Implicit arguments
 
 Basically they are internal book keeping for the compiler / Cairo VM. They're used to track the internal memory pointers across function calls. Without them, the compiler wouldn't know how/where to continue executing code after a function returns.
 
@@ -163,9 +163,9 @@ Consider the three implicit arguments: syscall_ptr, pedersen_ptr and range_check
 
 But it seems that the contract doesn’t use any hash function or integer comparison, so why are they needed? The reason is that storage variables require these implicit arguments in order to compute the actual memory address of this variable. This may not be needed in simple variables such as balance, but with maps computing the Pedersen hash is part of what read() and write() do. In this example, we are accesing to storage using system calls, so that why it is required the implicit argument syscall_ptr.
 
-## Function Arguments
+## 3.2 Function Arguments
 
-Let's continue talking about functions. If we want to create an external function that may get an array of field elements as an argument, we need to define two consecutive argument: a_length of type felt and a of type felt*. This arguments are the length of the array and the pointer to the first element of the array. For example:
+Let's continue talking about functions. If we want to create an external function that may get an array of field elements as an argument, we need to define two consecutive argument: a_length of type `felt` and a of type `felt*`. This arguments are the length of the array and the pointer to the first element of the array. For example:
 
 ```
 @external
@@ -218,7 +218,7 @@ func sum_points_arr(a_len: felt, a: Point*) -> (res: Point) {
 }
 ```
 
-# Constructors
+## Constructor
 
 A contract may need to initialize its state before it is ready for public use. For example, one may want to designate a contract owner, that can do certain operations that other users can’t. Setting a storage variable to the owner can be done by the contract constructor. The contract constructor is defined using the `@constructor` decorator and its name must be constructor. The constructor semantics are similar to that of any other external function, except that the constructor is guaranteed to run during the contract deployment and it cannot be invoked again after the contract is deployed.
 
@@ -255,20 +255,18 @@ func get_owner{
 }
 ```
 
-## WTF is Cairo's Uint256?
+## Uint256
 
-Everything in Cairo is represented by felt. felt stands for Field Element, the only data type in Cairo. it is 251 bits unsigned integer.
+Everything in Cairo is represented by `felt`. `felt` stands for Field Element, the only data type in Cairo. it is 251 bits unsigned integer.
 
-Because a uint256 number has 256 bits in size, it can not be represented by a 251-bit felt. Therefore, it is necessary to split the uint256 number into two components: low and high. The low component represents the low 128 bits of the uint256 number, and the high component is the high 128 bits of the uint256 number. The binary value of low and high are padded with leading 0s up to the maximum resolution and put together side by side to form the uint256 number.
+Because a `uint256` number has 256 bits in size, it can not be represented by a 251-bit `felt`. Therefore, it is necessary to split the `uint256` number into two components: low and high. The low component represents the low 128 bits of the `uint256` number, and the high component is the high 128 bits of the `uint256` number. The binary value of low and high are padded with leading 0s up to the maximum resolution and put together side by side to form the `uint256` number.
 
-Uint256 is defined as a struct:
+`Uint256` is defined as a struct:
 
 ```
 struct Uint256 {
     low: felt,
-
     high: felt,
 }
 ```
-
 
