@@ -1,11 +1,12 @@
 import React from 'react';
-import {GlobalContext} from "@site/src/contexts/GlobalContext";
+import { StarknetConfig, InjectedConnector } from "@starknet-react/core";
 
 // Default implementation, that you can customize
 export default function Root({children}) {
-  return (
-      <GlobalContext.Provider value={{test: 1}}>
-        {children}
-      </GlobalContext.Provider>
-  );
+  const connectors = [
+    new InjectedConnector({ options: { id: "braavos" } }),
+    new InjectedConnector({ options: { id: "argentX" } }),
+  ];
+
+  return <StarknetConfig connectors={connectors}>{children}</StarknetConfig>;
 }
