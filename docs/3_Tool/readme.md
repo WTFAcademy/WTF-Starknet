@@ -15,7 +15,7 @@ tags:
 
 Protostar is a toolchain for developing and testing starknet contracts, is we compare with solidity, is like a foundry, but this allow us to create tests using cairo language. 
 
-In this tutorial <--angela working, we show how to create your Argent Wallet account. So, today we are going to learn how to configurate to use this wallet with protostar. If you have question, you can consult the official documentation [here](https://docs.swmansion.com/protostar/docs/tutorials/introduction)
+In Account Abstraction section we show how to create your Argent Wallet account. So, today we are going to learn how to configurate to use this wallet with protostar. If you have question, you can consult the official documentation [here](https://docs.swmansion.com/protostar/docs/tutorials/introduction)
 
 To Install protostar, first we need to obtain brew, python3.9 and Cairo-lang environment in our computer. Open terminal and use the following command:
 
@@ -105,13 +105,15 @@ If is the first time you use protostar, is necessary to deploy the account using
 protostar calculate-account-address --account-class-hash [ACCOUNT_CLASS_HASH] --account-address-salt 1 
 ```
 
-The value of `[ACCOUNT_CLASS_HASH]` is calculate when we create our account using ArgentX [check ANGELA'S TUTORIAL] and can be view on Starkscan or Voyager using our account address. After `protostar calculate-account-address` command, we obtain:
+The value of `[ACCOUNT_CLASS_HASH]` is calculate when we create our account using ArgentX (check Account Abstraction section)and can be view on Starkscan or Voyager using our account address. After `protostar calculate-account-address` command, we obtain:
+
 ```
 Address: 0x00b89a4302ea68352488fe1bcc9b0e01cd71dc4d630e5e69194c9e60084996fe                                                                                 
 17:55:47 [INFO] Execution time: 2.57 s
 ```
 
 Also, we need to export the private key of the account. We check for `PROTOSTAR_ACCOUNT_PRIVATE_KEY` environment variable, and use it if it's available.
+
 ```
 export PROTOSTAR_ACCOUNT_PRIVATE_KEY=[PRIVATE_KEY_FROM_ARGENTX_WALLET] 
 ```
