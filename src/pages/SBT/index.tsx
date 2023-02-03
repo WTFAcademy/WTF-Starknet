@@ -48,4 +48,12 @@ const SBTClaim: React.FC<any> = () => {
   );
 };
 
+const FullscreenLoading = () => (
+  <div className={styles.fullscreenLoading}>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+);
+
 export default SBTClaim;
