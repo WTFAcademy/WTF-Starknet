@@ -16,9 +16,10 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --custom-btn-bg-primary: #EF740E;
+  --custom-btn-bg-primary-hover: #fc9738;
   --custom-btn-color-primary: white;
   --custom-btn-bg-normal: white;
-  --custom-btn-border-normal: #fff5e6;
+  --custom-btn-border-normal: #ffdfb3;
   --custom-btn-color-normal: black;
 }
 
