@@ -210,11 +210,11 @@ Once the contract is deploy we going to the contract using voyager and mint a ne
 
 Now that we are familiar with writing and compiling Cairo contracts, we can also use the argent wallet to declare and deploy a contract. First, we need to open our Argent X, and click on the settings icon at the top-right, select "Developer settings" and "Smart contract development"  
 
-![Argent Wallet Settings](./cairo_images/argent_wallet_01.png)
+![Argent Wallet Settings](./img/argent_wallet_01.png)
 
-!["Developer Settings"](./cairo_images/argent_wallet_02.png)
+!["Developer Settings"](./img/argent_wallet_02.png)
 
-!["Smart contract development"](./cairo_images/argent_wallet_03.png)
+!["Smart contract development"](./img/argent_wallet_03.png)
 
 To deploy a contract, we need to get the classhash by declaring the contract. To declare the contract, select “Declare smart contract”, but first we need to compile our contract to obtain the `.json`files. To compile our `ERC721.cairo`, run:
 
@@ -224,13 +224,13 @@ starknet-compile contracts/ERC721_exercise01.cairo --output contracts/artifacts/
 
 Then return to Argent Wallet, "Declare smart contract" -> "click to upload contract json" and pick your `ERC721_abi.json`, choose a network and your account.
 
-!["Declare smart contract"](./cairo_images/argent_wallet_04.png)
+!["Declare smart contract"](./img/argent_wallet_04.png)
 
-!["Upload contract json"](./cairo_images/argent_wallet_05.png)
+!["Upload contract json"](./img/argent_wallet_05.png)
 
 Once we declare the contract, we can deploy it. Again, you need to select the network the contract will be deployed on and the account used for deployment. Once you’ve done that the constructor input fields will pop up automatically. Fill in the constructor parameters and choose a random salt (5 in our case). 
 
-!["Upload contract json"](./cairo_images/argent_wallet_06.png)
+!["Upload contract json"](./img/argent_wallet_06.png)
 
 You can also use a unique address and finally press “Deploy” button to deploy the contract. Sign the transaction, and you’ll be redirected to a page with your deployed contract address. 
 
