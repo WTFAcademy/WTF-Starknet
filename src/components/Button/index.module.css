@@ -1,0 +1,26 @@
+
+.button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.normal {
+    background: var(--custom-btn-bg-normal);
+    color: var(--custom-btn-color-normal);
+    border: 2px solid var(--custom-btn-border-normal);
+}
+
+.primary {
+    background: var(--custom-btn-bg-primary);
+    color: var(--custom-btn-color-primary);
+    border: 2px solid var(--custom-btn-bg-primary);
+}
+
+.buttonLoading {
+    margin-right: 4px;
+}
