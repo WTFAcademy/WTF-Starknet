@@ -1,3 +1,15 @@
+---
+title: 1. Account Abstraction
+tags:
+  - account
+  - argent
+  - braavos
+  - wallet
+  - starknet
+  - contract
+  - wtfacademy
+---
+
 # WTF is Account Abstraction
 
 What would happen if you lose your access to the private keys of your wallet?

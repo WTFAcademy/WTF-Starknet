@@ -1,4 +1,14 @@
-## Introduction to StarkNet.js
+---
+title: 4. StarkNet.js
+tags:
+  - cairo
+  - starknet
+  - starknetjs
+  - wallet
+  - contract
+  - wtfacademy
+---
+# Introduction to StarkNet.js
 
 ## Install with `npm`
 

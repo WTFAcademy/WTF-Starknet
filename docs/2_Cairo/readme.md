@@ -1,3 +1,12 @@
+---
+title: 2. Cairo
+tags:
+  - cairo
+  - starknet
+  - contract
+  - wtfacademy
+---
+
 # WTF is Cairo?
 
 Cairo is a programming language for writing provable programs, where one party can prove to another that a certain computation was executed correctly. Cairo and similar proof systems can be used to provide scalability to blockchains.
