@@ -1,0 +1,102 @@
+.card {
+  border: 0.5px solid #c0c0c0;
+  border-radius: 6px;
+  width: 700px;
+  margin: 60px auto 120px;
+  text-align: center;
+}
+
+.claimButton {
+  margin: 36px auto 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  background: #308f0f;
+    border-color: #308f0f;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+}
+
+.SBTLogo {
+  position: relative;
+  width: 600px;
+  height: 360px;
+  margin: 40px auto;
+  }
+  
+  .SBTLogoImage {
+    max-width: 600px;
+    max-height: 360px;
+    width: 100%;
+}
+
+.shadow {
+  width: 600px;
+  height: 360px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: -1;
+  background: #ededed;
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 80vw;
+  }
+  .SBTLogo {
+    width: 70vw;
+    height: 42vw;
+  }
+  .shadow {
+    width: 70vw;
+    height: 42vw;
+  }
+}
+
+.fullscreenLoading {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 60px auto 280px auto;
+}
+
+.fullscreenLoading div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #308F0F;
+  animation: fullscreenLoading 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.fullscreenLoading div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.fullscreenLoading div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.fullscreenLoading div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes fullscreenLoading {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
