@@ -169,9 +169,4 @@ Your mobile is always with you, allowing you to access crypto whenever and where
 
 
 
-
-
-
-
-
-
+[Quiz](https://docs.google.com/forms/d/e/1FAIpQLScrzgrJ9sPCuGm4HYRCyLqnur9xp2B9rqGGzBp4suGUVZyOww/viewform?usp=sf_link)
