@@ -1,11 +1,11 @@
 import LoadingSvg from "@site/src/icons/LoadingSvg";
 import clsx from "clsx";
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
 const LazyloadImage = (props) => {
   const { src, className } = props;
-  const [done, setDone] = useState(false);
+  const [done, setDone] = useState(true);
 
   useEffect(() => {
     if (src) {
