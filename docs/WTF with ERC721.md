@@ -148,7 +148,7 @@ The ERC721 standard is used to represent non-fungible tokens. The most popular u
 
 # How to deploy an ERC721
 
-To deploy an ERC721, let's use the following (OpenZeppelin contract)[https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.5.0/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo] to work and deploy in the testnet.
+To deploy an ERC721, let's use the following [OpenZeppelin contract](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.5.0/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo) to work and deploy in the testnet.
 
 First, we need to create and starknet account and the public key, run the following command:
 
@@ -162,13 +162,13 @@ Go to the goerli faucet and obtain some funds, this are necessary to deploy the 
 deploy_account 
 ```
 
-Now, to build our ERC721 contract, create a new contract and copy the contract that provide in the (OpenZeppelin contract)[https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.5.0/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo], save it and compile it: 
+Now, to build our ERC721 contract, create a new contract and copy the contract that provide in the [OpenZeppelin contract](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.5.0/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo), save it and compile it: 
 
 ```
 starknet-compile contracts/ERC721_exercise01.cairo --output contracts/artifacts/ERC721.json
 ```
 
-If everything is ok, now we are going to check our constructor. This constructor expects 3 arguments name, symbol and owner, this arguments are declared as felt type but we are going to define name and symbol arguments as a string, to transform string or hex to a felt Starkware provides a "utils.py" file to do it and then use the correct values to send it to the constructor. The file is (here)[https://github.com/hasselalcala/workshop_ERC721_Starknet/blob/main/utils.py]
+If everything is ok, now we are going to check our constructor. This constructor expects 3 arguments name, symbol and owner, this arguments are declared as felt type but we are going to define name and symbol arguments as a string, to transform string or hex to a felt Starkware provides a "utils.py" file to do it and then use the correct values to send it to the constructor. The file is [here](https://github.com/hasselalcala/workshop_ERC721_Starknet/blob/main/utils.py)
 
 Run the following:
 

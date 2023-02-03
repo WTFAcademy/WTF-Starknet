@@ -1,0 +1,65 @@
+.card {
+  border: 0.5px solid #c0c0c0;
+  border-radius: 6px;
+  width: 700px;
+  height: 518px;
+  margin: 60px auto 120px;
+}
+
+.claimButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  background: #308f0f;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin: 36px auto 0;
+  color: #ffffff;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  width: 40%;
+}
+
+.SBTLogo {
+  position: relative;
+  width: 600px;
+  height: 360px;
+  margin: 40px auto 0;
+  background-image: url('../../../static/img/SBT.svg');
+  background-size: cover;
+}
+
+.shadow {
+  width: 600px;
+  height: 360px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: -1;
+  background: #ededed;
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 80vw;
+    height: 90vw;
+  }
+  .SBTLogo {
+    width: 70vw;
+    height: 42vw;
+  }
+  .shadow {
+    width: 70vw;
+    height: 42vw;
+  }
+  .claimButton {
+    width: 50%;
+  }
+}
