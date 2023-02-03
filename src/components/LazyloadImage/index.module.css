@@ -1,0 +1,11 @@
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDEDED;
+}
+
+.loadingIcon {
+    font-size: 24px;
+
+}
