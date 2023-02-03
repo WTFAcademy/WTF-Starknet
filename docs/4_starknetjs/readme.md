@@ -8,8 +8,7 @@ tags:
   - contract
   - wtfacademy
 ---
-
-# Introduction to StarkNet.js
+# WTF StarkNet 4: StarkNet.js
 
 [StarkNet.js](https://www.starknetjs.com/) is a JavaScript library to interact with [StarkNet](https://starknet.io/), typically in script or a decentralized applicatoin. StarkNet.js is inspired by [Ethers.js](https://github.com/ethers-io/ethers.js), so it is easy if you have experience on it. 
 

@@ -10,7 +10,7 @@ tags:
   - wtfacademy
 ---
 
-# WTF is Account Abstraction
+# WTF StarkNet 1. Account Abstraction
 
 What would happen if you lose your access to the private keys of your wallet?
 
