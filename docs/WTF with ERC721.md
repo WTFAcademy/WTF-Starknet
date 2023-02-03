@@ -234,5 +234,7 @@ Once we declare the contract, we can deploy it. Again, you need to select the ne
 
 You can also use a unique address and finally press “Deploy” button to deploy the contract. Sign the transaction, and you’ll be redirected to a page with your deployed contract address. 
 
-Now with you contract deployed in Starknet, with the Class hash, you cna use voyager to work with the contract.
+Now with you contract deployed in Starknet, with the Class hash, you can use voyager to work with the contract.
 
+![Summary](./cairo_images/summary_2.png)
+[Quiz 2](https://docs.google.com/forms/d/1jzXhtK_4UQRaagU7oGF0LN8NNChY2lONGOc6IOyrRDI/prefill)
