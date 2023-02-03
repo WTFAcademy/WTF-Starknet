@@ -74,7 +74,7 @@ export default function HomepageFeatures(): JSX.Element {
       </div>
       <Link
         className={styles.tutorialsLink}
-        to="/docs/intro"
+        to="/docs/dashboard"
       >
         Go to tutorial →
       </Link>

@@ -20,7 +20,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className={styles.tutorialsLink}
-            to="/docs/intro"
+            to="/docs/dashboard"
           >
             StarkNet Tutorials
           </Link>
