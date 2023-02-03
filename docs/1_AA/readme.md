@@ -10,6 +10,11 @@ tags:
   - wtfacademy
 ---
 
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
+
 # WTF is Account Abstraction
 
 What would happen if you lose your access to the private keys of your wallet?
@@ -79,3 +84,5 @@ If we talk about wallets and tools that can help us to use this model, we have t
 ## Argent
 
 ## Braavos
+
+<QuizForm courseId={1} lessonId={1}></QuizForm>

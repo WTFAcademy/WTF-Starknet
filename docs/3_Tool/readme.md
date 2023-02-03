@@ -9,6 +9,11 @@ tags:
   - wtfacademy
 ---
 
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
+
 # Toolings
 
 ## Protostar
@@ -249,3 +254,4 @@ You can also use a unique address and finally press “Deploy” button to deplo
 
 Now with you contract deployed in Starknet, with the Class hash, you cna use voyager to work with the contract.
 
+<QuizForm courseId={1} lessonId={1}></QuizForm>

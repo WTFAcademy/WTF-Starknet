@@ -8,6 +8,12 @@ tags:
   - contract
   - wtfacademy
 ---
+
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
+
 # Introduction to StarkNet.js
 
 ## Install with `npm`
@@ -133,3 +139,5 @@ const result2 = await myTestContract.set_balance(222);
 const txReceiptDeployTest = await provider.waitForTransaction(result2.transaction_hash);
 console.log("events =",txReceiptDeployTest.events);
 ```
+
+<QuizForm courseId={1} lessonId={1}></QuizForm>

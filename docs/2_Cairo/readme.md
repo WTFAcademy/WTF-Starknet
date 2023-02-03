@@ -7,6 +7,11 @@ tags:
   - wtfacademy
 ---
 
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
+
 # WTF is Cairo?
 
 Cairo is a programming language for writing provable programs, where one party can prove to another that a certain computation was executed correctly. Cairo and similar proof systems can be used to provide scalability to blockchains.
@@ -271,4 +276,4 @@ struct Uint256 {
 }
 ```
 
-
+<QuizForm courseId={1} lessonId={1}></QuizForm>
