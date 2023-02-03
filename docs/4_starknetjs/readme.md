@@ -11,7 +11,7 @@ tags:
 
 ## Introduction to StarkNet.js
 
-[StarkNet.js](https://www.starknetjs.com/) is a JavaScript library to interact with [StarkNet](https://starknet.io/), a ZK-rollup layer2 for Ethereum. StarkNet.js is inspired by [Ethers.js](https://github.com/ethers-io/ethers.js), so it is easy if you have experience on it. 
+[StarkNet.js](https://www.starknetjs.com/) is a JavaScript library to interact with [StarkNet](https://starknet.io/), typically in script or a decentralized applicatoin. StarkNet.js is inspired by [Ethers.js](https://github.com/ethers-io/ethers.js), so it is easy if you have experience on it. 
 
 > If you are not familiar with Ethers.js, check [WTF Ethers Tutorial](https://github.com/WTFAcademy/WTF-Ethers).
 
@@ -31,7 +31,7 @@ npm install starknet
 ```js
 const provider = new Provider({ sequencer: { network: 'goerli-alpha' } }) // for testnet 1
 // output chainId
-console.log(await provider.getChainId());
+console.log("Chain ID: ", await provider.getChainId());
 ```
 
 ## Account
