@@ -54,7 +54,7 @@ export const Profile = (props) => {
             }
 
             login(address).then((res: any) => {
-                localStorage.setItem('login-'+address, JSON.stringify({expiredTime: +new Date() + 1000 * 60 * 60 * 24, data: res}));
+                localStorage.setItem('login-'+address, JSON.stringify({expiredTime: +new Date() + 1000 * 60 * 60 * 24, data: res.data}));
                 setUid(res.uid);
             })
         }
