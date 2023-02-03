@@ -9,9 +9,9 @@ tags:
   - wtfacademy
 ---
 
-# Toolings
+# WTF StarkNet 3: Toolings
 
-## Protostar
+## 1. Protostar
 
 Protostar is a toolchain for developing and testing starknet contracts, is we compare with solidity, is like a foundry, but this allow us to create tests using cairo language. 
 
@@ -57,7 +57,7 @@ Restart terminal and verify that installation is complete, run:
 protostar -v
 ```
 
-### Setting up a new project using protostar. 
+### 1.1 Setting up a new project using protostar. 
 
 To initialize the new project, run the following command:
 ```
@@ -78,7 +78,7 @@ cairo-path = ["./lib/cairo_contracts/src"]
 
 We put our source code in src directory and we can create tests.
 
-### Test in protostar
+### 1.2 Test in protostar
 
 Protostar provides a flexible testing environment for Cairo smart contracts. When we want to test a function, we create in the tests directory a new file called `test_[FUNCTION_NAME].cairo`, which contains a single test case. 
 
@@ -155,11 +155,11 @@ Voyager   https://goerli.voyager.online/tx/0x025d7dee76458b782d106006f6d0bf8337b
 
 Now we can use protostar to work in our projects. Let's continue learning Cairo/Starknet and talk about ERC721.
 
-## ERC721 on StarkNet
+## 2. ERC721 on StarkNet
 
 The ERC721 standard is used to represent non-fungible tokens. The most popular use case has been PFP (Profile Picture) NFTs, commonly used to create digital online identities. Other use cases include tokenization of digital assets, memorabilia for experiences, and digital art. Thanks to OpenZeppelin, they developed an ERC721 Cairo implementation that supports any use case that can be done with the Solidity implementation.
 
-### How to deploy an ERC721
+### 2.1 How to deploy an ERC721
 
 To deploy an ERC721, let's use the following [OpenZeppelin contract](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.5.0/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo) to work and deploy in the testnet.
 
@@ -219,7 +219,7 @@ starknet deploy --inputs 71804493054284 4279881 57099606469049523511833947985462
 
 Once the contract is deploy we going to the contract using voyager and mint a new token using the address to define the owner of the toekn and a token_id.
 
-## Deploying a contract using Argent Wallet
+## 3. Deploying a contract using Argent Wallet
 
 Now that we are familiar with writing and compiling Cairo contracts, we can also use the argent wallet to declare and deploy a contract. First, we need to open our Argent X, and click on the settings icon at the top-right, select "Developer settings" and "Smart contract development"  
 
@@ -249,5 +249,8 @@ You can also use a unique address and finally press “Deploy” button to deplo
 
 Now with you contract deployed in Starknet, with the Class hash, you can use voyager to work with the contract.
 
+## 4. Summary
+
 ![Summary](./img/summary_2.png)
-[Quiz 2](https://docs.google.com/forms/d/1jzXhtK_4UQRaagU7oGF0LN8NNChY2lONGOc6IOyrRDI/prefill)
+
+[Quiz 3](https://docs.google.com/forms/d/e/1FAIpQLSdGCStMqRq1rvDv_fRF7poL8MvZvMT_YddCQE0mchKk4HnKcw/viewform?usp=sf_link)
