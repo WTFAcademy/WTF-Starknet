@@ -6,7 +6,7 @@ import truncation from "@site/src/utils/truncation";
 import { WalletModal } from "../../WalletModal";
 
 export const Profile = () => {
-  const [showWalletModal, setShowWalletModal] = useState<boolean>(true);
+  const [showWalletModal, setShowWalletModal] = useState<boolean>(false);
   const { account, status } = useAccount();
 
   return (
