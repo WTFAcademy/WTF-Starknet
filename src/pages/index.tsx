@@ -11,13 +11,15 @@ import {useHistory} from "@docusaurus/router";
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+    <header className={styles.heroBanner}>
+      <div>
+        <div className={styles.heroBannerLeftStar}></div>
+        <div className={styles.heroBannerRightStar}></div>
+        <h1 className={styles.heroBannerTitle}>{siteConfig.title}</h1>
+        <p className={styles.heroBannerSubTitle}>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
+            className={styles.tutorialsLink}
             to="/docs/intro"
           >
             StarkNet Tutorials
