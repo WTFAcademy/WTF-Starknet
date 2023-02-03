@@ -106,10 +106,6 @@ const config = {
             type: "custom-profile",
             position: "right",
           },
-          {
-            type: 'localeDropdown',
-            position: 'left',
-          },  
         ],
       },
       footer: {
