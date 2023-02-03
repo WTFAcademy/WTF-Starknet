@@ -4,7 +4,7 @@ const provider = new Provider({ sequencer: { network: 'goerli-alpha' } }) // for
 
 const main = async () => {
     // 输出chainId
-    console.log(await provider.getChainId());
+    console.log("Chain ID: ", await provider.getChainId());
 
     // 获取账号nonce
     const addr = "0x06b59aEC7b1cC7248E206abfabe62062ba1aD75783E7A2Dc19E7F3f351Ac3309"
@@ -52,11 +52,14 @@ const main = async () => {
     //   );
     // await provider.waitForTransaction(executeHash.transaction_hash);
     
-    // 读取事件
-    const result2 = await myTestContract.set_balance(222);
-    const txReceiptDeployTest = await provider.waitForTransaction(result2.transaction_hash);
-    console.log("events =",txReceiptDeployTest.events);
-
+    // Events
+    // there are multiple events in the tx, because ERC20 and argent tx also emit events.
+    // we need to filter out the event that we care    
+    const events = txReceiptDeployTest.events;
+    const event = events.find(
+        (it) => number.cleanHex(it.from_address) === number.cleanHex(testAddress)
+      ) || {data: []};
+    console.log("event: ", event);
 
 
 
