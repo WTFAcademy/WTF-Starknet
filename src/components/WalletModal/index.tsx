@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Modal from "../Modal";
 import clsx from "clsx";
@@ -8,6 +8,11 @@ import { useAccount, useConnectors } from "@starknet-react/core";
 export function WalletModal(props) {
   const { connectors } = useConnectors();
   const { status } = useAccount();
+  useEffect(() => {
+    if (status === "connected") {
+      props?.onClose();
+    }
+  }, [status]);
   const connectorStyle = [styles.argent_button, styles.braavos_button];
   return (
     <Modal {...props}>
