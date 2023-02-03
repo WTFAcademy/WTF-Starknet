@@ -20,10 +20,12 @@
     "@mdx-js/react": "^1.6.22",
     "@starknet-react/core": "^0.14.8",
     "@web3auth/sign-in-with-starkware": "^1.0.0",
+    "axios": "^1.3.1",
     "clsx": "^1.2.1",
     "prism-react-renderer": "^1.3.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-jazzicon": "^1.0.4",
     "starknet": "^4.17.1"
   },
   "devDependencies": {
