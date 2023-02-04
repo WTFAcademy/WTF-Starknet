@@ -179,11 +179,8 @@ const event = events.find(
 console.log("event: ", event);
 ```
 
-<QuizForm courseId={1} lessonId={1}></QuizForm>
-
-
 ## 10. Summary
 
 In this tutorial, we introduced how to use StarkNet.js, including provider, account, read/write contract, and read events.
 
-[Quiz 4](https://docs.google.com/forms/d/e/1FAIpQLScenTbrGFFFcsYwmPpDJkiRaD21hVbI6D2k1TLi6Vsyi3HsWg/viewform?usp=sf_link)
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLScenTbrGFFFcsYwmPpDJkiRaD21hVbI6D2k1TLi6Vsyi3HsWg/viewform?usp=sf_link"}></QuizForm>

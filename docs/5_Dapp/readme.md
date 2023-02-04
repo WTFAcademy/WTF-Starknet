@@ -34,5 +34,3 @@ import QuizForm from '@site/src/components/QuizForm';
 ### install
 
 `npm add @starknet-react/core`
-
-<QuizForm courseId={1} lessonId={1}></QuizForm>

@@ -7,14 +7,11 @@ import {getLesson} from "../../api/course";
 
 export default function QuizForm(props) {
     const [formUrl, setFormUrl] = useState('#');
-    const {courseId, lessonId, uid} = props;
-    const {data} = useRequest(() => getLesson(courseId, lessonId, uid), {
-        cacheKey: 'lesson-share-' + lessonId,
-    });
+    const {link} = props;
 
     return (
         <div className={styles.quizFormBox}>
-            <Link className={styles.quizFormBtn} to={get(data, 'data.lesson.viewform_url', '')}>
+            <Link className={styles.quizFormBtn} to={link}>
                 <p>Test</p>
             </Link>
         </div>

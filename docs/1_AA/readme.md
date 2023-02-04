@@ -176,6 +176,4 @@ Your mobile is always with you, allowing you to access crypto whenever and where
 
 In this tutorial, we introduced Account Abstraction on StarkNet, and how to set up a Argent/Braavos account.
 
-[Quiz](https://docs.google.com/forms/d/e/1FAIpQLScrzgrJ9sPCuGm4HYRCyLqnur9xp2B9rqGGzBp4suGUVZyOww/viewform?usp=sf_link)
-
-<QuizForm courseId={1} lessonId={1}></QuizForm>
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLScrzgrJ9sPCuGm4HYRCyLqnur9xp2B9rqGGzBp4suGUVZyOww/viewform?usp=sf_link"}></QuizForm>

@@ -289,6 +289,4 @@ struct Uint256 {
 
 ![Summary](./img/summary_1.png)
 
-<QuizForm courseId={1} lessonId={1}></QuizForm>
-
-[Quiz 2](https://docs.google.com/forms/d/e/1FAIpQLSclhNbKlEGWM0HrAdlrU-GX6oQ0hi_A36oTJwUlobmVOsURKg/viewform?usp=sf_link)
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLSclhNbKlEGWM0HrAdlrU-GX6oQ0hi_A36oTJwUlobmVOsURKg/viewform?usp=sf_link"}></QuizForm>

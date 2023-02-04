@@ -258,7 +258,6 @@ Now with you contract deployed in Starknet, with the Class hash, you can use voy
 
 ## 4. Summary
 
-<QuizForm courseId={1} lessonId={1}></QuizForm>
 ![Summary](./img/summary_2.png)
 
-[Quiz 3](https://docs.google.com/forms/d/e/1FAIpQLSdGCStMqRq1rvDv_fRF7poL8MvZvMT_YddCQE0mchKk4HnKcw/viewform?usp=sf_link)
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLSdGCStMqRq1rvDv_fRF7poL8MvZvMT_YddCQE0mchKk4HnKcw/viewform?usp=sf_link"}></QuizForm>
