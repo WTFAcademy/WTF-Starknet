@@ -17,6 +17,15 @@ import QuizForm from '@site/src/components/QuizForm';
 
 # WTF Starknet 5: Starknet Dapp
 
+Work in Progress... 
+
+You will learn how to use `get-starknet` and `starknet-react` to build a simple dapp for minting NFTs on Starknet. 
+
+A [demo](https://starknetfinal.kongtaoxing.repl.co/)
+
+![](./img/5-1.png)
+
+
 ## get-starknet
 
 [Get-starknet](https://github.com/starknet-io/get-starknet) provides a series of hooks that makes it easy to connect wallet to your DAPPs.
