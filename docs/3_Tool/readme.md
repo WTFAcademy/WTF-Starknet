@@ -9,6 +9,11 @@ tags:
   - wtfacademy
 ---
 
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
+
 # WTF Starknet 3: Toolings
 
 ## 1. Protostar
@@ -256,4 +261,4 @@ Having deployed your contract to Starknet, you can use Voyager/Starkscan to inte
 
 ![Summary](./img/summary_2.png)
 
-[Quiz 3](https://docs.google.com/forms/d/e/1FAIpQLSdGCStMqRq1rvDv_fRF7poL8MvZvMT_YddCQE0mchKk4HnKcw/viewform?usp=sf_link)
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLSdGCStMqRq1rvDv_fRF7poL8MvZvMT_YddCQE0mchKk4HnKcw/viewform?usp=sf_link"}></QuizForm>

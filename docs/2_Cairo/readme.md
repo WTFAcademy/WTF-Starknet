@@ -7,6 +7,11 @@ tags:
   - wtfacademy
 ---
 
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
+
 # WTF Starknet 2. Cairo
 
 **Cairo** is a programming language for writing provable programs, where one party can prove to another that a certain computation was executed correctly. Cairo and similar proof systems can be used to provide scalability to blockchains.
@@ -284,4 +289,4 @@ struct Uint256 {
 
 ![Summary](./img/summary_1.png)
 
-[Quiz 2](https://docs.google.com/forms/d/e/1FAIpQLSclhNbKlEGWM0HrAdlrU-GX6oQ0hi_A36oTJwUlobmVOsURKg/viewform?usp=sf_link)
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLSclhNbKlEGWM0HrAdlrU-GX6oQ0hi_A36oTJwUlobmVOsURKg/viewform?usp=sf_link"}></QuizForm>

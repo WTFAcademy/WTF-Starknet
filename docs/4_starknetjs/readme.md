@@ -8,6 +8,12 @@ tags:
   - contract
   - wtfacademy
 ---
+
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
+
 # WTF StarkNet 4: Starknet.js
 
 [Starknet.js](https://www.starknetjs.com/) is a JavaScript library to interact with [Starknet](https://starknet.io/), typically in script or a decentralized applications. StarkNet.js is inspired by [Ethers.js](https://github.com/ethers-io/ethers.js), so it's easier if you have experience with it. 
@@ -177,4 +183,4 @@ console.log("event: ", event);
 
 In this tutorial, we introduced how to use StarkNet.js, including provider, account, read/write contract, and read events.
 
-[Quiz 4](https://docs.google.com/forms/d/e/1FAIpQLScenTbrGFFFcsYwmPpDJkiRaD21hVbI6D2k1TLi6Vsyi3HsWg/viewform?usp=sf_link)
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLScenTbrGFFFcsYwmPpDJkiRaD21hVbI6D2k1TLi6Vsyi3HsWg/viewform?usp=sf_link"}></QuizForm>
