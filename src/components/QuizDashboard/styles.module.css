@@ -227,6 +227,14 @@ p{
   color: #EF740E;
 }
 
+.span50px {
+  width: 50px;
+}
+
+.span100px {
+  width: 100px;
+}
+
 
 @media screen and (max-width: 996px) {
 
