@@ -27,6 +27,17 @@
     border-color: var(--custom-btn-bg-primary);
 }
 
+.primary.disabled, .normal.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.primary.disabled:hover {
+    background: var(--custom-btn-bg-primary);
+    border-color: var(--custom-btn-bg-primary);
+}
+
 .buttonLoading {
-    margin-right: 4px;
+    font-size: 20px;
+    margin-right: 2px;
 }
