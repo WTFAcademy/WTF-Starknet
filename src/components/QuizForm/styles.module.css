@@ -8,23 +8,11 @@ p{
 
 .quizFormBox{
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .quizFormBtn{
-  position: relative;
-  width: auto;
-  min-width: 180px;
-  height: 50px;
-  background: #31B46D;
-  border-radius: 10px;
-  overflow: hidden;
-  display: inline-flex;
+  min-width: 140px;
   justify-content: center;
-  align-items: center;
-  margin: 20px auto;
 }
 
 .quizFormBtn p{
