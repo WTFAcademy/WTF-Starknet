@@ -59,13 +59,25 @@
   font-size: 16px;
   line-height: 1;
   box-sizing: border-box;
+  font-weight: 500;
+  color: #072318;
   background: #F6FFF3;
   border: 1px solid #37A411;
   border-radius: 4px;
 }
 
+.overviewLink:hover{
+  transition: all .3s ease;
+  font-weight: 700;
+  color: #072318;
+  background: #E3F9DC;
+}
+
 .overviewLinkText{
   margin-right: 16px;
+  font-family: 'Inter';
+  font-size: 14px;
+  line-height: 1.2;
 }
 
 .featureTitle{
@@ -73,11 +85,9 @@
   width: 100%;
   font-family: 'Inter';
   font-size: 32px;
-  font-weight: 500;
   line-height: 1.2;
   text-align: left;
   letter-spacing: 0.01em;
-  color: #0F1110;
   max-width: 1000px;
 }
 
