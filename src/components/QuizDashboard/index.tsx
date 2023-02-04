@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from '@docusaurus/Link';
 import {useHistory} from "@docusaurus/router";
 import {useRequest} from "ahooks";
@@ -7,13 +7,12 @@ import styles from './styles.module.css';
 import {getLessons} from "../../api/course";
 import clsx from "clsx";
 import Button from "@site/src/components/Button";
-
-const quizCertificationImg = require('@site/static/img/docusaurus.png').default;
+import GlobalContext from "@site/src/contexts/GlobalContext";
 
 export default function QuizDashboard(props) {
     const {courseId} = props;
-    // TODO get uid
-    const {data} = useRequest(() => getLessons(courseId, 'db85c168-64b0-4932-bdfe-867e27c7ef16'));
+    const {uid} = useContext(GlobalContext);
+    const {data} = useRequest(() => getLessons(courseId, uid));
     const history = useHistory();
 
     function StatusSpan({children, score_percent}) {
