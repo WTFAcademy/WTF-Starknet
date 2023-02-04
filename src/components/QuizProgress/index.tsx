@@ -28,13 +28,21 @@ export default function QuizProgress(props) {
             <div className={styles.quizProgressTime}>
                 Estimated Time:
                 <span style={{marginLeft: 4}}>
-                    {loading ? <LoadingSvg className="loading" style={{marginLeft: 4, fontSize: 16}} /> : get(data, 'data.lesson.estimated_time') + '%'}
+                    {
+                        loading ?
+                        <LoadingSvg className="loading" style={{ verticalAlign: 'middle', marginTop: -2}} /> :
+                        get(data, 'data.lesson.estimated_time') + '%'
+                    }
                 </span>
             </div>
             <div className={styles.quizProgressScore}>
                 Score:
                 <span style={{marginLeft: 4}}>
-                    {loading ? <LoadingSvg className="loading" /> : get(data, 'data.lesson.score_percent') + '%'}
+                    {
+                        loading ?
+                            <LoadingSvg className="loading" style={{ verticalAlign: 'middle', marginTop: -2}} /> :
+                            get(data, 'data.lesson.score_percent') + '%'
+                    }
                 </span>
             </div>
         </div>
