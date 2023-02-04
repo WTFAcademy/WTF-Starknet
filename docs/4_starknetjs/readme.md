@@ -129,7 +129,7 @@ myTestContract.connect(account);
 // or you can use invoke
 // const result = await myTestContract.invoke("set_balance", [888]);
 const result = await myTestContract.set_balance(999);
-await provider.waitForTransaction(result.transaction_hash);
+const txReceiptDeployTest = await provider.waitForTransaction(result.transaction_hash);
 const bal2 = await myTestContract.read_balance();
 console.log("New Balance =", bal2.toString());
 ```

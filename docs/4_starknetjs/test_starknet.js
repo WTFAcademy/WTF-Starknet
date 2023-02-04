@@ -1,4 +1,4 @@
-import {Provider, Contract, Account, ec} from 'starknet';
+import {Provider, Contract, Account, ec, number} from 'starknet';
 import 'dotenv/config';
 const provider = new Provider({ sequencer: { network: 'goerli-alpha' } }) // for testnet 1
 
@@ -35,7 +35,7 @@ const main = async () => {
     // or you can use invoke
     // const result = await myTestContract.invoke("set_balance", [888]);
     const result = await myTestContract.set_balance(999);
-    await provider.waitForTransaction(result.transaction_hash);
+    const txReceiptDeployTest = await provider.waitForTransaction(result.transaction_hash);
     const bal2 = await myTestContract.read_balance();
     console.log("New Balance =", bal2.toString());
 
@@ -60,16 +60,6 @@ const main = async () => {
         (it) => number.cleanHex(it.from_address) === number.cleanHex(testAddress)
       ) || {data: []};
     console.log("event: ", event);
-
-
-
-
-      
-
-
-
-
-
 
 }
 main()
