@@ -15,25 +15,23 @@ p{
   position: relative;
   width: auto;
   min-width: 108px;
-  border-radius: 10px;
+  border-radius: 4px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  color: #FFFFFF;
-  padding: 8px 16px;
+  font-size: 14px;
+  color: var(--ifm-breadcrumb-color-active);
+  padding: 6px 14px;
 }
 
 .quizProgressTime {
-  background: #5594CD;
+  background: #eef2f7;
   margin-right: 16px;
 }
 
 .quizProgressScore{
-  background: #FF8181;
+  background: #c8f8d5;
 }
 
 @media screen and (max-width: 996px) {
