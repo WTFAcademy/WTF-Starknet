@@ -7,11 +7,11 @@ tags:
   - wtfacademy
 ---
 
-# WTF StarkNet 2. Cairo
+# WTF Starknet 2. Cairo
 
 **Cairo** is a programming language for writing provable programs, where one party can prove to another that a certain computation was executed correctly. Cairo and similar proof systems can be used to provide scalability to blockchains.
 
-StarkNet uses the Cairo programming language both for its infrastructure and for writing StarkNet contracts.
+Starknet uses the Cairo programming language both for its infrastructure and for writing Starknet contracts.
 
 ## 1. Structure of a cairo contract
 
@@ -23,11 +23,11 @@ If we compare the structure that we use in a solidity smart contract, usually th
 
 ### 2.1 Getter function
 
-The storage getters are necessary if you want to make them public. In solidity, the compiler creates getters for all state variables declared as public, in Cairo all `@storage_var` are private. Thus if we want to make them public we must make a getter function ourselves.
+The storage getters are necessary if you want to make them public. In Solidity, the compiler creates getters for all state variables declared as public, in Cairo all `@storage_var` are private. Thus if we want to make them public we must make a getter function ourselves.
 
 ### 2.2 Interface
 
-When we create a solidity instance from a contract, inherits all the structs/errors/events/functions from the interface, and they commit to implement all the functions found on there. However, in Cairo, there are interfaces but there is no inheritance. This means that we can’t just rely on the interface itself to provide us with the basic structure of our contract. 
+When we create a Solidity instance from a contract, it inherits all the structs/errors/events/functions from the interface, and they commit to implement all the functions found on there. However, in Cairo, there are interfaces but there is no inheritance. This means that we can’t just rely on the interface itself to provide us with the basic structure of our contract. 
 
 ### 2.3 Constructor
 
@@ -267,7 +267,7 @@ func get_owner{
 
 ## 6. Uint256
 
-Everything in Cairo is represented by `felt`. `felt` stands for Field Element, the only data type in Cairo. it is 251 bits unsigned integer.
+Everything in Cairo is represented by `felt`. `felt` stands for Field Element, the only data type in Cairo. it is a 251 bits unsigned integer.
 
 Because a `uint256` number has 256 bits in size, it can not be represented by a 251-bit `felt`. Therefore, it is necessary to split the `uint256` number into two components: low and high. The low component represents the low 128 bits of the `uint256` number, and the high component is the high 128 bits of the `uint256` number. The binary value of low and high are padded with leading 0s up to the maximum resolution and put together side by side to form the `uint256` number.
 

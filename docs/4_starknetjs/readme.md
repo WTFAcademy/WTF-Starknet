@@ -1,5 +1,5 @@
 ---
-title: 4. StarkNet.js
+title: 4. Starknet.js
 tags:
   - cairo
   - starknet
@@ -8,9 +8,9 @@ tags:
   - contract
   - wtfacademy
 ---
-# WTF StarkNet 4: StarkNet.js
+# WTF StarkNet 4: Starknet.js
 
-[StarkNet.js](https://www.starknetjs.com/) is a JavaScript library to interact with [StarkNet](https://starknet.io/), typically in script or a decentralized applicatoin. StarkNet.js is inspired by [Ethers.js](https://github.com/ethers-io/ethers.js), so it is easy if you have experience on it. 
+[Starknet.js](https://www.starknetjs.com/) is a JavaScript library to interact with [Starknet](https://starknet.io/), typically in script or a decentralized applications. StarkNet.js is inspired by [Ethers.js](https://github.com/ethers-io/ethers.js), so it's easier if you have experience with it. 
 
 > If you are not familiar with Ethers.js, check [WTF Ethers Tutorial](https://github.com/WTFAcademy/WTF-Ethers).
 
@@ -160,7 +160,7 @@ await provider.waitForTransaction(executeHash.transaction_hash);
 
 ## 9. Read Events
 
-It is easy to read event from transaction receipt. But a transaction can contain multiple events, so you need to filter out the one you care.
+It is easy to read event from transaction receipt. But a transaction can contain multiple events, so you need to filter out the one you need.
 
 ```js
 // Events

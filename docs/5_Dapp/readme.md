@@ -1,5 +1,5 @@
 ---
-title: 5. Dapp on StarkNet
+title: 5. Dapp on Starknet
 tags:
   - cairo
   - starknet
@@ -10,7 +10,7 @@ tags:
 
 ---
 
-# WTF StarkNet 5: StarkNet Dapp
+# WTF Starknet 5: Starknet Dapp
 
 ## get-starknet
 
