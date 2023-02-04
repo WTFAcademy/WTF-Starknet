@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Layout from "@theme/Layout";
 import Button from "@site/src/components/Button";
 import SBTMessage from "@site/src/components/SBTMessage";
@@ -7,40 +7,45 @@ import styles from "./index.module.css";
 import clsx from "clsx";
 import LazyloadImage from "@site/src/components/LazyloadImage";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import {useRequest} from "ahooks";
+import {useDebounceEffect, useRequest} from "ahooks";
 import {getUserCourseInfo, getNftSign} from "@site/src/api/course";
 import {useHistory} from "@docusaurus/router";
 import {toast} from "react-hot-toast";
 import {useAccount} from "@starknet-react/core";
 import contractAbi from "@site/src/contracts/mint.json";
 import {Contract, uint256} from "starknet";
+import {CourseId} from "@site/src/constants/course";
+import GlobalContext from "@site/src/contexts/GlobalContext";
 
-// const res = await request.get(`/user_course/${courseId}`).then(res => res.data);
 const contractAddress =
     "0x064bfed736951e98e16fedfd4605960879251f59f2f14427a2ae88a48f379801";
 const checkMintedStatus = async (provider) => {
     const contract = new Contract(contractAbi, contractAddress, provider);
-    // const tokenId = uint256.bnToUint256("1");
-
     const res = await contract.balanceOf(provider.address);
     const balance = uint256.uint256ToBN(res[0]).toNumber();
 
     return balance > 0;
 };
 
-const mint = async () => {
+const mint = async (provider) => {
+    const contract = new Contract(contractAbi, contractAddress, provider);
+    const tokenId = uint256.bnToUint256("1");
+
+    return await contract.mint(provider.address, tokenId);
 };
 
 const SBTClaim: React.FC<any> = () => {
     const history = useHistory();
     const {status, account} = useAccount();
+    const {uid} = useContext(GlobalContext);
+    const [mintLoading, setMintLoading] = useState(false);
     const sbtUrl = useBaseUrl("/img/SBT.svg");
 
     const isConnected = status === "connected";
 
     const {loading, data} = useRequest(
         async () => {
-            const info = await getUserCourseInfo("1", "2");
+            const info = await getUserCourseInfo(CourseId, uid);
             const mintedStatus = await checkMintedStatus(account);
             return {
                 ...(info as any),
@@ -64,20 +69,30 @@ const SBTClaim: React.FC<any> = () => {
             return;
         }
 
-        const {
-            data: {sign},
-        }: any = await getNftSign("1", "2");
-        const signature = sign.split(",");
-        await mint();
+        setMintLoading(true);
+        try {
+            const nftSignRes: any = await getNftSign(CourseId, uid);
+            console.log(nftSignRes);
+            const signature = nftSignRes.data.sign.split(",");
+            const mintResult = await mint(account);
+            console.log(mintResult);
+            toast.success('Mint succeeded!');
+        } catch (e) {
+            console.error(e.message);
+            if (e.message.includes('User abort')) { /*ignore*/ }
+            // ...
+        }
+
+        setMintLoading(false);
     };
 
-    useEffect(() => {
+    useDebounceEffect(() => {
         if (!isConnected) {
             setTimeout(() => {
                 toast.error("You need to connect wallet first!");
             }, 0);
         }
-    }, [status]);
+    }, [status])
 
     const isMinted = data?.mintedStatus;
 
@@ -93,12 +108,13 @@ const SBTClaim: React.FC<any> = () => {
                     <SBTMessage claimed={isMinted}/>
                     <div className={styles.card}>
                         <Button
+                            loading={mintLoading}
                             onClick={handleClaim}
                             className={styles.claimButton}
                             type="primary"
                             disabled={isMinted}
                         >
-                            <ButtonIconSvg/>
+                            {!mintLoading && <ButtonIconSvg/>}
                             {isMinted ? "Claimed" : "Claim Your SBT"}
                         </Button>
                         <div className={clsx(styles.SBTLogo)}>
