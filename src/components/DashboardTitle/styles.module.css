@@ -1,0 +1,11 @@
+.title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 130%;
+}
+
+.orangeTitle {
+    color: #EF740E;
+}

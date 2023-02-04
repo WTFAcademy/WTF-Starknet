@@ -7,7 +7,7 @@ p{
 }
 
 .quizDashboard{
-  
+
 }
 
 .quizBox,.quizCertificationContent{
@@ -89,6 +89,142 @@ p{
   position: relative;
   border-left: 1px solid rgba(100, 100, 100, 0.5);
   padding: 12px 24px;
+}
+
+.progressBox {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 50px;
+  /*gap: 99px;*/
+
+  height: 166px;
+
+  border: 1px dashed #B1B1B1;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.progressPoint {
+  height: 102px;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.circlePoint {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 42px;
+
+  width: 60px;
+  height: 60px;
+
+  background: #FFF6EF;
+  border: 1px solid rgba(251, 163, 90, 0.5);
+  border-radius: 999999px;
+  margin: auto;
+  color: #EF740E;
+}
+
+.progressMsg {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 140%;
+
+  text-align: center;
+
+  color: #0C1713;
+
+}
+
+.lessonCard {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+
+  height: 57px;
+
+  background: #FFFFFF;
+  border: 0.5px solid #CECECE;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 140%;
+
+
+  color: #0C1713;
+}
+
+.lessonCardRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.spanMsg {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  /* identical to box height, or 20px */
+
+
+  color: #626770;
+}
+
+.statusSpan {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 140%;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.pendingSpan {
+  color: #0C1713;
+}
+
+.completeSpan {
+  color: #308F0F;
+}
+
+.learningSpan {
+  color: #EF740E;
 }
 
 
