@@ -1,7 +1,7 @@
 ---
 title: Dashboard
 sidebar_position: 0
-slug: /
+slug: /dashboard
 hide_title: true
 ---
 
