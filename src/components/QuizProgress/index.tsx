@@ -31,7 +31,7 @@ export default function QuizProgress(props) {
                     {
                         loading ?
                         <LoadingSvg className="loading" style={{ verticalAlign: 'middle', marginTop: -2}} /> :
-                        get(data, 'data.lesson.estimated_time') + '%'
+                        get(data, 'data.lesson.estimated_time')
                     }
                 </span>
             </div>
