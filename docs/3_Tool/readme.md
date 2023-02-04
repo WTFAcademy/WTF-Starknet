@@ -12,7 +12,7 @@ tags:
 import QuizProgress from '@site/src/components/QuizProgress';
 import QuizForm from '@site/src/components/QuizForm';
 
-<QuizProgress courseId={1} lessonId={1}></QuizProgress>
+<QuizProgress courseId={"783590a2-a3e1-11ed-bd3b-fe813f55b524"} lessonId={"372e5b64-a3e3-11ed-ab57-fe813f55b524"}></QuizProgress>
 
 # WTF Starknet 3: Toolings
 

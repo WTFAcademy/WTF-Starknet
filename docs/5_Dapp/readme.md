@@ -13,8 +13,6 @@ tags:
 import QuizProgress from '@site/src/components/QuizProgress';
 import QuizForm from '@site/src/components/QuizForm';
 
-<QuizProgress courseId={1} lessonId={1}></QuizProgress>
-
 # WTF Starknet 5: Starknet Dapp
 
 ## get-starknet
