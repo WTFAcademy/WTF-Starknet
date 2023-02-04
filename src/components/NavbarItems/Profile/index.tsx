@@ -44,18 +44,19 @@ export const Profile = (props) => {
 
     useEffect(() => {
         if (address && address !== '') {
+            const LOCAL_FLAG = 'login-test-' + address
             // 特殊处理，原因在于每次切换页面都会触发该组件的重新渲染
-            if (localStorage.getItem('login-' + address)) {
-                const data = JSON.parse(localStorage.getItem('login-' + address));
-                if (data && data.expiredTime > +new Date()) {
+            if (localStorage.getItem(LOCAL_FLAG)) {
+                const data = JSON.parse(localStorage.getItem(LOCAL_FLAG));
+                if (data && data.expiredTime > Date.now()) {
                     setUid(data.data.uid);
                     return;
                 }
             }
 
             login(address).then((res: any) => {
-                localStorage.setItem('login-'+address, JSON.stringify({expiredTime: +new Date() + 1000 * 60 * 60 * 24, data: res.data}));
-                setUid(res.uid);
+                localStorage.setItem(LOCAL_FLAG, JSON.stringify({expiredTime: Date.now() + 1000 * 60 * 60 * 24, data: res.data}));
+                setUid(res.data.uid);
             })
         }
     }, [address]);
