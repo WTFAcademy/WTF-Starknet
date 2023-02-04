@@ -30,8 +30,9 @@ const checkMintedStatus = async (provider) => {
 const mint = async (provider) => {
     const contract = new Contract(contractAbi, contractAddress, provider);
     const tokenId = uint256.bnToUint256("1");
-
-    return await contract.mint(provider.address, tokenId);
+    const mintNFT = await contract.mint(provider.address, tokenId);
+    await provider.waitForTransaction(mintNFT.transaction_hash);
+    return await provider.getTransactionReceipt(mintNFT.transaction_hash);
 };
 
 const SBTClaim: React.FC<any> = () => {
@@ -76,7 +77,12 @@ const SBTClaim: React.FC<any> = () => {
             const signature = nftSignRes.data.sign.split(",");
             const mintResult = await mint(account);
             console.log(mintResult);
-            toast.success('Mint succeeded!');
+            if(mintResult.status === "ACCEPTED_ON_L2" || mintResult.status === "PENDING") {
+                toast.success('Mint succeeded!');
+            }
+            else {
+                toast.error('Mint failed, Please try again!');
+            }
         } catch (e) {
             console.error(e.message);
             if (e.message.includes('User abort')) { /*ignore*/ }

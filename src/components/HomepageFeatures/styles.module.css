@@ -39,14 +39,14 @@
   font-family: 'Inter';
   font-size: 32px;
   line-height: 1.2;
-  color: #0F1110;
+  color: var(--ifm-font-color-base);
 }
 
 .overviewTextDes{
   font-family: 'Inter';
   font-size: 16px;
   line-height: 1.5;
-  color: #0C1713;
+  color: var(--ifm-font-color-base);
 }
 
 .overviewLink{

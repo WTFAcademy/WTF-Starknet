@@ -9,11 +9,16 @@ tags:
   - wtfacademy
 ---
 
-# WTF StarkNet 3: Toolings
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
+
+# WTF Starknet 3: Toolings
 
 ## 1. Protostar
 
-Protostar is a toolchain for developing and testing starknet contracts, is we compare with solidity, is like a foundry, but this allow us to create tests using cairo language. 
+Protostar is a toolchain for developing and testing starknet contracts, comparable to Foundry in Solidity, allowing us to create tests using cairo language. 
 
 In Account Abstraction section we show how to create your Argent Wallet account. So, today we are going to learn how to configurate to use this wallet with protostar. If you have question, you can consult the official documentation [here](https://docs.swmansion.com/protostar/docs/tutorials/introduction)
 
@@ -99,13 +104,13 @@ Class hash for contract "main": 0x63c8113870a0028905684995a4b64460287a0e4c816e93
 17:52:32 [INFO] Execution time: 6.07 s
 ```
 
-If is the first time you use protostar, is necessary to deploy the account using `protostar calculate-account-address` command
+If it's the first time you are using protostar, is necessary to deploy the account using `protostar calculate-account-address` command
 
 ```
 protostar calculate-account-address --account-class-hash [ACCOUNT_CLASS_HASH] --account-address-salt 1 
 ```
 
-The value of `[ACCOUNT_CLASS_HASH]` is calculate when we create our account using ArgentX (check Account Abstraction section)and can be view on Starkscan or Voyager using our account address. After `protostar calculate-account-address` command, we obtain:
+The value of `[ACCOUNT_CLASS_HASH]` is calculated when we create our account using ArgentX (check Account Abstraction section)and can be viewed on Starkscan or Voyager using our account address. After `protostar calculate-account-address` command, we obtain:
 
 ```
 Address: 0x00b89a4302ea68352488fe1bcc9b0e01cd71dc4d630e5e69194c9e60084996fe                                                                                 
@@ -157,7 +162,7 @@ Voyager   https://goerli.voyager.online/tx/0x025d7dee76458b782d106006f6d0bf8337b
 
 Now we can use protostar to work in our projects. Let's continue learning Cairo/Starknet and talk about ERC721.
 
-## 2. ERC721 on StarkNet
+## 2. ERC721 on Starknet
 
 The ERC721 standard is used to represent non-fungible tokens. The most popular use case has been PFP (Profile Picture) NFTs, commonly used to create digital online identities. Other use cases include tokenization of digital assets, memorabilia for experiences, and digital art. Thanks to OpenZeppelin, they developed an ERC721 Cairo implementation that supports any use case that can be done with the Solidity implementation.
 
@@ -165,13 +170,14 @@ The ERC721 standard is used to represent non-fungible tokens. The most popular u
 
 To deploy an ERC721, let's use the following [OpenZeppelin contract](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.5.0/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo) to work and deploy in the testnet.
 
-First, we need to create and starknet account and the public key, run the following command:
+NB: We'll be using the official Starknet CLI
+First, we need to create and fund a Starknet account. To do that, run the following command:
 
 ``` 
 starknet new_account
 ```
 
-Go to the goerli faucet and obtain some funds, this are necessary to deploy the account. Once, you have funds, let's deploy the account: 
+Go to the goerli faucet and obtain some funds, this is necessary to deploy the account. Once, you have funds, let's deploy the account: 
 
 ```
 deploy_account 
@@ -223,7 +229,7 @@ Once the contract is deploy we going to the contract using voyager and mint a ne
 
 ## 3. Deploying a contract using Argent Wallet
 
-Now that we are familiar with writing and compiling Cairo contracts, we can also use the argent wallet to declare and deploy a contract. First, we need to open our Argent X, and click on the settings icon at the top-right, select "Developer settings" and "Smart contract development"  
+Now that we are familiar with writing and compiling Cairo contracts, We can also use the argent wallet to declare and deploy a contract. First, we need to open our Argent X, and click on the settings icon at the top-right, select "Developer settings" and "Smart contract development"  
 
 ![Argent Wallet Settings](./img/argent_wallet_01.png)
 
@@ -249,10 +255,10 @@ Once we declare the contract, we can deploy it. Again, you need to select the ne
 
 You can also use a unique address and finally press “Deploy” button to deploy the contract. Sign the transaction, and you’ll be redirected to a page with your deployed contract address. 
 
-Now with you contract deployed in Starknet, with the Class hash, you can use voyager to work with the contract.
+Having deployed your contract to Starknet, you can use Voyager/Starkscan to interact with it.
 
 ## 4. Summary
 
 ![Summary](./img/summary_2.png)
 
-[Quiz 3](https://docs.google.com/forms/d/e/1FAIpQLSdGCStMqRq1rvDv_fRF7poL8MvZvMT_YddCQE0mchKk4HnKcw/viewform?usp=sf_link)
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLSdGCStMqRq1rvDv_fRF7poL8MvZvMT_YddCQE0mchKk4HnKcw/viewform?usp=sf_link"}></QuizForm>

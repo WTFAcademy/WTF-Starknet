@@ -1,5 +1,5 @@
 ---
-title: 4. StarkNet.js
+title: 4. Starknet.js
 tags:
   - cairo
   - starknet
@@ -8,9 +8,15 @@ tags:
   - contract
   - wtfacademy
 ---
-# WTF StarkNet 4: StarkNet.js
 
-[StarkNet.js](https://www.starknetjs.com/) is a JavaScript library to interact with [StarkNet](https://starknet.io/), typically in script or a decentralized applicatoin. StarkNet.js is inspired by [Ethers.js](https://github.com/ethers-io/ethers.js), so it is easy if you have experience on it. 
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
+
+# WTF StarkNet 4: Starknet.js
+
+[Starknet.js](https://www.starknetjs.com/) is a JavaScript library to interact with [Starknet](https://starknet.io/), typically in script or a decentralized applications. StarkNet.js is inspired by [Ethers.js](https://github.com/ethers-io/ethers.js), so it's easier if you have experience with it. 
 
 > If you are not familiar with Ethers.js, check [WTF Ethers Tutorial](https://github.com/WTFAcademy/WTF-Ethers).
 
@@ -129,7 +135,7 @@ myTestContract.connect(account);
 // or you can use invoke
 // const result = await myTestContract.invoke("set_balance", [888]);
 const result = await myTestContract.set_balance(999);
-await provider.waitForTransaction(result.transaction_hash);
+const txReceiptDeployTest = await provider.waitForTransaction(result.transaction_hash);
 const bal2 = await myTestContract.read_balance();
 console.log("New Balance =", bal2.toString());
 ```
@@ -160,7 +166,7 @@ await provider.waitForTransaction(executeHash.transaction_hash);
 
 ## 9. Read Events
 
-It is easy to read event from transaction receipt. But a transaction can contain multiple events, so you need to filter out the one you care.
+It is easy to read event from transaction receipt. But a transaction can contain multiple events, so you need to filter out the one you need.
 
 ```js
 // Events
@@ -177,4 +183,4 @@ console.log("event: ", event);
 
 In this tutorial, we introduced how to use StarkNet.js, including provider, account, read/write contract, and read events.
 
-[Quiz 4](https://docs.google.com/forms/d/e/1FAIpQLScenTbrGFFFcsYwmPpDJkiRaD21hVbI6D2k1TLi6Vsyi3HsWg/viewform?usp=sf_link)
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLScenTbrGFFFcsYwmPpDJkiRaD21hVbI6D2k1TLi6Vsyi3HsWg/viewform?usp=sf_link"}></QuizForm>
