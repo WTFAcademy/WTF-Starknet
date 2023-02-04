@@ -20,17 +20,14 @@ export const getUserCourseInfo = (courseId: string, uid: string) => {
         msg: "ok",
         data: {
           can_graduate: true,
-          user_wallet: {
-            id: "bffd19b1-51ae-4b33-ba88-189c08228640",
-            wallet: "0xEC3119B50313d85c7b4d2Bd95223CD98E8AA93bC",
-          },
+          user_wallet: null
         },
       });
     }, 100);
   });
-  // return request
-  //   .get(`/user_course/${courseId}?network=stark_net&login_uid=${uid}`)
-  //   .then((res) => res.data);
+  return request
+    .get(`/user_course/${courseId}?network=stark_net&login_uid=${uid}`)
+    .then((res) => res.data);
 };
 
 export const getNftSign = (courseId: string, uid: string) => {

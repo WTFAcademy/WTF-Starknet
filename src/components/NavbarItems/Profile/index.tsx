@@ -13,12 +13,17 @@ import clsx from "clsx";
 import {login} from "@site/src/api/auth";
 import GlobalContext from "@site/src/contexts/GlobalContext";
 
+const LOCAL_FLAG = (address) => 'login-test-' + address;
+
 const UserInfo = () => {
-    const {account} = useAccount();
+    const {account, address} = useAccount();
     const {disconnect} = useConnectors();
 
     return (
-        <div className={styles.userInfo} onClick={disconnect}>
+        <div className={styles.userInfo} onClick={() => {
+            disconnect();
+            localStorage.removeItem(LOCAL_FLAG(address));
+        }}>
             <Avatar diameter={28} address={account?.address || ''}/>
             <span className={styles.userInfoAddress}>{truncation(account?.address)}</span>
             <OfflineSvg className={styles.userInfoDropIcon}/>
@@ -45,17 +50,18 @@ export const Profile = (props) => {
     useEffect(() => {
         if (address && address !== '') {
             // 特殊处理，原因在于每次切换页面都会触发该组件的重新渲染
-            if (localStorage.getItem('login-' + address)) {
-                const data = JSON.parse(localStorage.getItem('login-' + address));
-                if (data && data.expiredTime > +new Date()) {
+            const Flag = LOCAL_FLAG(address);
+            if (localStorage.getItem(Flag)) {
+                const data = JSON.parse(localStorage.getItem(Flag));
+                if (data && data.expiredTime > Date.now()) {
                     setUid(data.data.uid);
                     return;
                 }
             }
 
             login(address).then((res: any) => {
-                localStorage.setItem('login-'+address, JSON.stringify({expiredTime: +new Date() + 1000 * 60 * 60 * 24, data: res.data}));
-                setUid(res.uid);
+                localStorage.setItem(Flag, JSON.stringify({expiredTime: Date.now() + 1000 * 60 * 60 * 24, data: res.data}));
+                setUid(res.data.uid);
             })
         }
     }, [address]);
