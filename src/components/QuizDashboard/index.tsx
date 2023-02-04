@@ -23,17 +23,17 @@ export default function QuizDashboard(props) {
         }
     }, [status]);
 
-    function StatusSpan({children, score_percent}) {
+    function StatusSpan({children, score_percent, className}) {
         if (score_percent == 0) {
-            return (<span className={clsx(styles.pendingSpan, styles.statusSpan)}>
+            return (<span className={clsx(styles.pendingSpan, styles.statusSpan, className)}>
           {children}
         </span>)
         } else if (score_percent == 100) {
-            return (<span className={clsx(styles.completeSpan, styles.statusSpan)}>
+            return (<span className={clsx(styles.completeSpan, styles.statusSpan, className)}>
           {children}
         </span>)
         } else {
-            return (<span className={clsx(styles.learningSpan, styles.statusSpan)}>
+            return (<span className={clsx(styles.learningSpan, styles.statusSpan, className)}>
           {children}
         </span>)
         }
@@ -50,7 +50,7 @@ export default function QuizDashboard(props) {
                 <span className={styles.spanMsg}>
                   Progress
                 </span>
-                                <StatusSpan score_percent={score_percent}>
+                                <StatusSpan score_percent={score_percent} className={styles.span50px}>
                                     {score_percent}%
                                 </StatusSpan>
                             </div>
@@ -58,7 +58,7 @@ export default function QuizDashboard(props) {
                 <span className={styles.spanMsg}>
                   Status
                 </span>
-                                <StatusSpan score_percent={score_percent}>
+                                <StatusSpan score_percent={score_percent} className={styles.span100px}>
                                     {score_percent == 0 ? 'Pending' : (score_percent == 100 ? 'Complete' : 'Learning')}
                                 </StatusSpan>
                             </div>
