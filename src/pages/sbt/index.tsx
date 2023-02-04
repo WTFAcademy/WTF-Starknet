@@ -31,8 +31,7 @@ const mint = async (provider) => {
     const contract = new Contract(contractAbi, contractAddress, provider);
     const tokenId = uint256.bnToUint256("1");
     const mintNFT = await contract.mint(provider.address, tokenId);
-    await provider.waitForTransaction(mintNFT.transaction_hash);
-    return await provider.getTransactionReceipt(mintNFT.transaction_hash);
+    return await provider.waitForTransaction(mintNFT.transaction_hash);
 };
 
 const SBTClaim: React.FC<any> = () => {
