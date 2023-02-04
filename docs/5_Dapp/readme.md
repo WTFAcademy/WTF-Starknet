@@ -7,8 +7,25 @@ tags:
   - wallet
   - contract
   - wtfacademy
+
 ---
 
 # WTF StarkNet 5: StarkNet Dapp
 
-Unfinished. This tutorial will cover get-starknet and starknet-react. The goal is to build a simple NFT minting page on StarkNet.
+## get-starknet
+
+[Get-starknet](https://github.com/starknet-io/get-starknet) provides a series of hooks that makes it easy to connect wallet to your DAPPs.
+
+### install
+
+`npm install starknet`
+
+
+
+## starknet-react
+
+[Starknet-react](https://github.com/apibara/starknet-react)  provides a collection of React hooks for StarkNet.
+
+### install
+
+`npm add @starknet-react/core`
