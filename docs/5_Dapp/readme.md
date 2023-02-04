@@ -1,5 +1,5 @@
 ---
-title: 5. Dapp on Starknet
+title: 5. Dapp on StarkNet
 tags:
   - cairo
   - starknet
@@ -10,12 +10,7 @@ tags:
 
 ---
 
-import QuizProgress from '@site/src/components/QuizProgress';
-import QuizForm from '@site/src/components/QuizForm';
-
-<QuizProgress courseId={1} lessonId={1}></QuizProgress>
-
-# WTF Starknet 5: Starknet Dapp
+# WTF StarkNet 5: StarkNet Dapp
 
 Work in Progress... 
 
@@ -25,14 +20,53 @@ A [demo](https://starknetfinal.kongtaoxing.repl.co/)
 
 ![](./img/5-1.png)
 
-
 ## get-starknet
 
 [Get-starknet](https://github.com/starknet-io/get-starknet) provides a series of hooks that makes it easy to connect wallet to your DAPPs.
 
-### install
+### 1. install
 
-`npm install starknet`
+First, you need to get [VSCode](https://code.visualstudio.com/download) and [Node.js](https://nodejs.org/en/download/), then install `get-starknet` using following command:
+
+`npm install get-starknet`
+
+### 2. Basic Usage
+
+Connect you DAPP with wallet using following command:
+
+```javascript
+import { connect, disconnect } from "get-starknet"
+
+return <button onClick={() => connect()}>Connect wallet</button>
+```
+
+### 3. Advanced Usage
+
+```javascript
+import {
+  type ConnectOptions,
+  type DisconnectOptions,
+  connect,
+  disconnect,
+} from "get-starknet";
+return <button onClick = {() => connect({ modalMode: "alwaysAsk" })} Always ask </button>
+
+return <button onClick = {() => connect({ 
+    modalMode: "alwaysAsk",
+	modalTheme: "dark",
+})} Always ask with dark theme</button>
+
+return <button onClick = {() => connect({ 
+    modalMode: "alwaysAsk",
+	modalTheme: "light",
+})} Always ask with light theme</button>
+
+return  <button onClick={handleConnect({ modalMode: "neverAsk" })}> Never ask </button>
+ 
+return <button onClick={handleDisconnect()}>Disconnect</button>
+
+return <button onClick={handleDisconnect({ clearLastWallet: true })}> Disconnect and reset </button>
+```
 
 
 
