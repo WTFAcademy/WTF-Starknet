@@ -1,5 +1,5 @@
 ---
-title: 5. Dapp on StarkNet
+title: 5. Dapp on Starknet
 tags:
   - cairo
   - starknet
@@ -15,7 +15,7 @@ import QuizForm from '@site/src/components/QuizForm';
 
 <QuizProgress courseId={1} lessonId={1}></QuizProgress>
 
-# WTF StarkNet 5: StarkNet Dapp
+# WTF Starknet 5: Starknet Dapp
 
 ## get-starknet
 
