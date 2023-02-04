@@ -26,10 +26,6 @@
   height: 92px;
 }
 
-.overviewLogo svg{
-  width: 100%;
-  height: 100%;
-}
 
 .overviewText{
   padding-left: 40px;
@@ -193,6 +189,11 @@
     height: 120px;
     margin: 0 auto;
     margin-bottom: 30px;
+  }
+  
+  .overviewLogo svg{
+    width: 100%;
+    height: 100%;
   }
 
   .overviewText{
