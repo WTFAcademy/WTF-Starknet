@@ -54,10 +54,10 @@ const SBTClaim: React.FC<any> = () => {
         },
         {
             onSuccess({data}) {
-                if (!data.can_graduate) {
-                    history.replace("/docs/dashboard");
-                    toast.error("You need to complete courses first!");
-                }
+                // if (!data.can_graduate) {
+                //     history.replace("/docs/dashboard");
+                //     toast.error("You need to complete courses first!");
+                // }
             },
             ready: isConnected,
         }
