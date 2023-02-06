@@ -21,7 +21,7 @@ Starknet uses the Cairo programming language both for its infrastructure and for
 
 ## 1. Structure of a cairo contract
 
-If we compare the structure that we use in a solidity smart contract, usually they are organize as follows:
+If we compare the structure that we use in a solidity smart contract, usually they are organized as follows:
 
 ![Structure of a smart contract using solidity and Cairo Starknet](./img/1.png)
 
@@ -33,7 +33,7 @@ The storage getters are necessary if you want to make them public. In Solidity, 
 
 ### 2.2 Interface
 
-When we create a Solidity instance from a contract, it inherits all the structs/errors/events/functions from the interface, and they commit to implement all the functions found on there. However, in Cairo, there are interfaces but there is no inheritance. This means that we can’t just rely on the interface itself to provide us with the basic structure of our contract. 
+When we create a Solidity instance from a contract, it inherits all the structs/errors/events/functions from the interface, and they commit to implement all the functions found there. However, in Cairo, there are interfaces but there is no inheritance. This means that we can’t just rely on the interface itself to provide us with the basic structure of our contract. 
 
 ### 2.3 Constructor
 
@@ -76,7 +76,7 @@ func this_is_an_event(event_param1 : felt, event_param2 : felt):
 end
 ```
 
-Since declaring everything wtih a func keyword can get confusing, Cairo provides decorators which are used on top of the function declarations to distinguish each. These all start with:
+Since declaring everything with a func keyword can get confusing, Cairo provides decorators which are used on top of the function declarations to distinguish each. These all start with:
 
 - `@event` - Represents an event
 - `@storage_var` - Represents a contract state variable (ie mapping, address, etc.)
@@ -132,8 +132,8 @@ func user_voted(user: User) -> (res: felt) {
 
 StarkNet contracts have no main() function. Instead, each function may be annotated as an external using `@external` or internal function using `@view`.
 
-- `@external`. This functions may be called by the users of StarkNet, and by other contracts. Allow to write the new value to a @storage_var.
-- `@view`. This functions only queries the state rather than modifying it. 
+- `@external`. This function may be called by the users of StarkNet, and by other contracts. Allow to write the new value to a @storage_var.
+- `@view`. This function only queries the state rather than modifying it. 
 
 For example: 
 
@@ -169,7 +169,7 @@ Something that is present in our contract and we haven't talk yet is about impli
 
 ### 4.1 Implicit arguments
 
-Basically they are internal book keeping for the compiler / Cairo VM. They're used to track the internal memory pointers across function calls. Without them, the compiler wouldn't know how/where to continue executing code after a function returns.
+Basically they are internal bookkeeping for the compiler / Cairo VM. They're used to track the internal memory pointers across function calls. Without them, the compiler wouldn't know how/where to continue executing code after a function returns.
 
 Consider the three implicit arguments: syscall_ptr, pedersen_ptr and range_check_ptr:
 
@@ -177,11 +177,11 @@ Consider the three implicit arguments: syscall_ptr, pedersen_ptr and range_check
 - range_check_ptr, which allows to compare integers. 
 - syscall_ptr allows the code to invoke system calls.
 
-But it seems that the contract doesn’t use any hash function or integer comparison, so why are they needed? The reason is that storage variables require these implicit arguments in order to compute the actual memory address of this variable. This may not be needed in simple variables such as balance, but with maps computing the Pedersen hash is part of what read() and write() do. In this example, we are accesing to storage using system calls, so that why it is required the implicit argument syscall_ptr.
+But it seems that the contract doesn’t use any hash function or integer comparison, so why are they needed? The reason is that storage variables require these implicit arguments in order to compute the actual memory address of this variable. This may not be needed in simple variables such as balance, but with maps computing the Pedersen hash is part of what read() and write() do. In this example, we are accessing to storage using system calls, so that why it is required the implicit argument syscall_ptr.
 
 ## 4.2 Function Arguments
 
-Let's continue talking about functions. If we want to create an external function that may get an array of field elements as an argument, we need to define two consecutive argument: a_length of type `felt` and a of type `felt*`. This arguments are the length of the array and the pointer to the first element of the array. For example:
+Let's continue talking about functions. If we want to create an external function that may get an array of field elements as an argument, we need to define two consecutive argument: a_length of type `felt` and a of type `felt*`. These arguments are the length of the array and the pointer to the first element of the array. For example:
 
 ```
 @external
