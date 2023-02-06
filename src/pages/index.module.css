@@ -102,4 +102,7 @@ a:hover{
   .heroBannerRightStar{
     display: none;
   }
+  .heroBannerTitle{
+    font-size: 42px;
+  }
 }
