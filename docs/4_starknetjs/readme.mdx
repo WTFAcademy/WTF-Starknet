@@ -143,7 +143,7 @@ console.log("New Balance =", bal2.toString());
 
 ## 8. Write Contract with Verification
 
-If you interact with a function that need the proof that you have the private key of the account, you have to invoke this function with `account.execute`, and pass following variables:
+If you interact with a function that needs the proof that you have the private key of the account, you have to invoke this function with `account.execute`, and pass following variables:
 
 - `contractAddress`: address of the contract to invoke.
 - `entrypoint`: name of the function to invoke.
@@ -151,7 +151,7 @@ If you interact with a function that need the proof that you have the private ke
 
 
 ```js
-// account.execute: when you interacat with the function that need the proof that you have the private key of the account.
+// account.execute: when you interact with the function that needs the proof that you have the private key of the account.
 const executeHash = await account.execute(
     {
       contractAddress: myContractAddress,

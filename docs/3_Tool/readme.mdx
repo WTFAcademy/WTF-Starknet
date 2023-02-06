@@ -21,7 +21,7 @@ import {CourseId, Lesson_3} from "@site/src/constants/course";
 
 Protostar is a toolchain for developing and testing starknet contracts, comparable to Foundry in Solidity, allowing us to create tests using cairo language. 
 
-In Account Abstraction section we show how to create your Argent Wallet account. So, today we are going to learn how to configurate to use this wallet with protostar. If you have question, you can consult the official documentation [here](https://docs.swmansion.com/protostar/docs/tutorials/introduction)
+In Account Abstraction section we show how to create your Argent Wallet account. So, today we are going to learn how to configurate to use this wallet with protostar. If you have questions, you can consult the official documentation [here](https://docs.swmansion.com/protostar/docs/tutorials/introduction)
 
 To Install protostar, first we need to obtain brew, python3.9 and Cairo-lang environment in our computer. Open terminal and use the following command:
 
@@ -70,9 +70,9 @@ To initialize the new project, run the following command:
 protostar init your-project-name
 ```
 
-With this command, you generates 3 directories: 
+With this command, you generate 3 directories: 
 - src: A directory for your code.
-- lib: A default directory for an external dependencies.
+- lib: A default directory for external dependencies.
 - tests: A directory storing tests.
 
 Also, `protostar.toml` is the file which contains your command configurations. According to the official docs, it can be used to avoid passing arguments every time you run a command. Protostar searches for an argument value in the `["protostar.COMMAND_NAME"]` section, for example: 
@@ -184,13 +184,13 @@ Go to the goerli faucet and obtain some funds, this is necessary to deploy the a
 deploy_account 
 ```
 
-Now, to build our ERC721 contract, create a new contract and copy the contract that provide in the [OpenZeppelin contract](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.5.0/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo), save it and compile it: 
+Now, to build our ERC721 contract, create a new contract and copy the contract that provides in the [OpenZeppelin contract](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.5.0/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo), save it and compile it: 
 
 ```
 starknet-compile contracts/ERC721_exercise01.cairo --output contracts/artifacts/ERC721.json
 ```
 
-If everything is ok, now we are going to check our constructor. This constructor expects 3 arguments name, symbol and owner, this arguments are declared as felt type but we are going to define name and symbol arguments as a string, to transform string or hex to a felt Starkware provides a "utils.py" file to do it and then use the correct values to send it to the constructor. The file is [here](https://github.com/hasselalcala/workshop_ERC721_Starknet/blob/main/utils.py)
+If everything is ok, now we are going to check our constructor. This constructor expects 3 arguments name, symbol and owner, these arguments are declared as felt type but we are going to define name and symbol arguments as a string, to transform string or hex to a felt Starkware provides a "utils.py" file to do it and then use the correct values to send it to the constructor. The file is [here](https://github.com/hasselalcala/workshop_ERC721_Starknet/blob/main/utils.py)
 
 Run the following:
 
@@ -226,7 +226,7 @@ To deploy
 starknet deploy --inputs 71804493054284 4279881 570996064690495235118339479854624184141230437508569589214736207591531188957 --network alpha-goerli --class_hash 0x4769fe9a34a934c169acbc3cb4d7e0a14c66545ca2eed0df9ab658c1015e596
 ```
 
-Once the contract is deploy we going to the contract using voyager and mint a new token using the address to define the owner of the toekn and a token_id.
+Once the contract is deployed we go to the contract using voyager and mint a new token using the address to define the owner of the token and a token_id.
 
 ## 3. Deploying a contract using Argent Wallet
 
