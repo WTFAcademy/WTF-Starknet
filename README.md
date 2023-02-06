@@ -28,7 +28,7 @@ Build a website for WTF StarkWare based on Docusaurus.
   - certificate page
 
 ### 3. Backend
-  - quiz backend
+  - quiz backend @stoneworld
   - certificate backend
 
 ### 4. Contract 
