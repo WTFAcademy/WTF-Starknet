@@ -36,7 +36,7 @@ Build a SBT contract for certificates on starknet.
   - certificate contract
 
 ### 5. Design
-  - web design @Tank [Draft]
+  - web design ([Figma](https://www.figma.com/file/dZiNEsfG5Nkc1uQFy3agEk)): [@tankxu](https://github.com/tankxu)
   - logo design
   
 ### 6. Project Management
