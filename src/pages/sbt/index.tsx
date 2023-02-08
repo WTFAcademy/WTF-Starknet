@@ -19,19 +19,19 @@ import GlobalContext from "@site/src/contexts/GlobalContext";
 
 const contractAddress =
     "0x064bfed736951e98e16fedfd4605960879251f59f2f14427a2ae88a48f379801";
-const checkMintedStatus = async (provider) => {
-    const contract = new Contract(contractAbi, contractAddress, provider);
-    const res = await contract.balanceOf(provider.address);
+const checkMintedStatus = async (account) => {
+    const contract = new Contract(contractAbi, contractAddress, account);
+    const res = await contract.balanceOf(account.address);
     const balance = uint256.uint256ToBN(res[0]).toNumber();
 
     return balance > 0;
 };
 
-const mint = async (provider) => {
-    const contract = new Contract(contractAbi, contractAddress, provider);
+const mint = async (account) => {
+    const contract = new Contract(contractAbi, contractAddress, account);
     const tokenId = uint256.bnToUint256("1");
-    const mintNFT = await contract.mint(provider.address, tokenId);
-    return await provider.waitForTransaction(mintNFT.transaction_hash);
+    const mintNFT = await contract.mint(account.address, tokenId);
+    return await account.waitForTransaction(mintNFT.transaction_hash);
 };
 
 const SBTClaim: React.FC<any> = () => {
