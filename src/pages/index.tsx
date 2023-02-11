@@ -26,7 +26,7 @@ function HomepageHeader() {
             className={styles.tutorialsLink}
             to="/docs/dashboard"
           >
-            StarkNet Tutorials
+            Starknet Tutorials
           </Link>
         </div>
       </div>

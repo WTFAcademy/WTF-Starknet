@@ -130,9 +130,9 @@ func user_voted(user: User) -> (res: felt) {
 
 ## 4. Function
 
-StarkNet contracts have no main() function. Instead, each function may be annotated as an external using `@external` or internal function using `@view`.
+Starknet contracts have no main() function. Instead, each function may be annotated as an external using `@external` or internal function using `@view`.
 
-- `@external`. This function may be called by the users of StarkNet, and by other contracts. Allow to write the new value to a @storage_var.
+- `@external`. This function may be called by the users of Starknet, and by other contracts. Allow to write the new value to a @storage_var.
 - `@view`. This function only queries the state rather than modifying it. 
 
 For example: 

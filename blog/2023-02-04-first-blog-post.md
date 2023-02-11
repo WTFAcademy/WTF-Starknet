@@ -21,7 +21,7 @@ WTF Academy is a web3 open-source university aiming to onboard 10,000 developers
 
 **To start to work in this platform.**
 
-1. Go to main page, and click in "StarkNet tutorials".
+1. Go to main page, and click in "Starknet tutorials".
 
 ![](./img/main_page.png)
 

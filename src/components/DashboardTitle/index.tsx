@@ -13,7 +13,7 @@ export default function DashboardTitle() {
             </h2>
 
             <p>
-                StarkNet uses the Cairo programming language both for its infrastructure and for writing StarkNet
+                Starknet uses the Cairo programming language both for its infrastructure and for writing Starknet
                 contracts. L2 &lt;--&gt; L1 messaging infrastructure is available and contracts are fully composable.
             </p>
         </>

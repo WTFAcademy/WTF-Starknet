@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
     imgUrl: require('@site/static/img/home_feature_item1.png').default,
     description: (
       <>
-        Introduce you to account abstraction on StarkNet.
+        Introduce you to account abstraction on Starknet.
       </>
     ),
   },
@@ -29,11 +29,11 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'StarkNet Dapp',
+    title: 'Starknet Dapp',
     imgUrl: require('@site/static/img/home_feature_item3.png').default,
     description: (
       <>
-      Build a simple NFT minting Dapp on StarkNet.
+      Build a simple NFT minting Dapp on Starknet.
       </>
     ),
   },
@@ -55,11 +55,11 @@ export default function HomepageFeatures(): JSX.Element {
     <section className={styles.features}>
       <div className={styles.overview}>
         <div className={styles.overviewLogo}>
-          <StarkNetLogo/>
+          <StarknetLogo/>
         </div>
         <div className={styles.overviewText}>
-          <h2 className={styles.overviewTextTitle}>Say hi to StarkNet 🤟</h2>
-          <p className={styles.overviewTextDes}>StarkNet is a permissionless decentralized Validity-Rollup (often referred to as ZK-Rollup). It operates as an L2 network over Ethereum, enabling any dApp to achieve unlimited scale for its computation – without compromising Ethereum's composability and security.</p>
+          <h2 className={styles.overviewTextTitle}>Say hi to Starknet 🤟</h2>
+          <p className={styles.overviewTextDes}>Starknet is a permissionless decentralized Validity-Rollup (often referred to as ZK-Rollup). It operates as an L2 network over Ethereum, enabling any dApp to achieve unlimited scale for its computation – without compromising Ethereum's composability and security.</p>
           <a className={styles.overviewLink} href='https://starknet.io' target="_blank">
             <span className={styles.overviewLinkText}>https://starknet.io</span>
             <LinkIcon/>
@@ -88,7 +88,7 @@ export default function HomepageFeatures(): JSX.Element {
 }
 
 
-function StarkNetLogo() {
+function StarknetLogo() {
   return (
     <svg width="92" height="92" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_1_550)">

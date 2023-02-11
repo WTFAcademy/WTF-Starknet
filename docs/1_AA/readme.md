@@ -12,9 +12,8 @@ tags:
 
 import QuizProgress from '@site/src/components/QuizProgress';
 import QuizForm from '@site/src/components/QuizForm';
-import {CourseId, Lesson_1} from "@site/src/constants/course";
 
-<QuizProgress courseId={CourseId} lessonId={Lesson_1}></QuizProgress>
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
 
 # WTF Starknet 1. Account Abstraction
 
@@ -24,7 +23,7 @@ Nothing good, right?
 
 Because your private key is your account, losing your key means losing your account, your money, your data. Everything.
 
-With Account Abstraction (AA) if a user loses everything with a small mistake we can help them to recover their information, because every account is a smart contract that can contain logic and implement flow.
+With Account Abstraction (AA) if a user lose everything with a small mistake we can help them to recover their information, because every account is a smart contract that can contain logic and implement flow.
 
 So allows us to use smart contract logic to specify not just the effects of the transaction, but also the fee payment and validation logic. This allows many important security benefits, such as multisig and smart recovery wallets, being able to change keys without changing wallets, and quantum-safety.
 
@@ -60,7 +59,7 @@ The new experiences you see being built are features made possible by account ab
 It’s no longer one-account-fits-all-use-cases. Instead, each user can have an account that is adapted to their needs. 
 
 * If you want to use a signing scheme other than ECDSA, you can write an account to do that.
-* If you want to use multiple keys to authorize transactions, you can write an account to do that.
+* If you want to use multiples keys to authorize transactions, you can write an account to do that.
 * If you want to change the signer of your account every week, you can write an account to do that too.
 
 Thus AA provides you with "programmable transaction validity."
@@ -78,9 +77,9 @@ Starknet focuses on some key components of the protocol:
     
     You can read the whole proposal [here](https://community.starknet.io/t/starknet-account-abstraction-model-part-1/781). They took the [ERC-4337](https://medium.com/infinitism/erc-4337-account-abstraction-without-ethereum-protocol-changes-d75c9d94dc4a) from Ethereum and improved the model.
     
-## 4. Which wallets support AA?
+## 4. Which wallets supports AA?
 
-If we talk about wallets and tools that implement AA, we have two main options. Let's talk about it.
+If we talk about wallets and tools that implements AA, we have two main options. Let's talk about it.
 
 ### 4.1 Argent
 
@@ -151,7 +150,7 @@ Your mobile is always with you, allowing you to access crypto whenever and where
 ![](./img/7.png)
 
 
-2. Pin the Braavos extension in your browser for quick access and then click "Get Started"
+2. Pin the Braavos extension in your browser for quick access and than click "Get Started"
 
 ![](./img/8.png)
 
@@ -169,7 +168,7 @@ Your mobile is always with you, allowing you to access crypto whenever and where
 
 ![](./img/11.png)
 
-6. Remember that you have to deposit tokens in your wallet if you want to use the mainnet network, in order to activate the smart contract account.
+6. Remember that you have to deposit tokens in your wallet if you want to use the mainnet network, in order to active the smart contract account.
 
 ![](./img/12.png)
 

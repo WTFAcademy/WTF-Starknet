@@ -11,9 +11,8 @@ tags:
 
 import QuizProgress from '@site/src/components/QuizProgress';
 import QuizForm from '@site/src/components/QuizForm';
-import {CourseId, Lesson_4} from "@site/src/constants/course";
 
-<QuizProgress courseId={CourseId} lessonId={Lesson_4}></QuizProgress>
+<QuizProgress courseId={1} lessonId={1}></QuizProgress>
 
 # WTF Starknet 4: Starknet.js
 
@@ -143,7 +142,7 @@ console.log("New Balance =", bal2.toString());
 
 ## 8. Write Contract with Verification
 
-If you interact with a function that needs the proof that you have the private key of the account, you have to invoke this function with `account.execute`, and pass following variables:
+If you interact with a function that need the proof that you have the private key of the account, you have to invoke this function with `account.execute`, and pass following variables:
 
 - `contractAddress`: address of the contract to invoke.
 - `entrypoint`: name of the function to invoke.
@@ -151,7 +150,7 @@ If you interact with a function that needs the proof that you have the private k
 
 
 ```js
-// account.execute: when you interact with the function that needs the proof that you have the private key of the account.
+// account.execute: when you interacat with the function that need the proof that you have the private key of the account.
 const executeHash = await account.execute(
     {
       contractAddress: myContractAddress,

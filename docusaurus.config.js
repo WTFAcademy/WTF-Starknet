@@ -31,8 +31,8 @@ const SECTIONS = [
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "WTF Academy StarkNet",
-  tagline: "Onboarding Developers to StarkNet",
+  title: "WTF Starknet",
+  tagline: "Onboarding Developers to Starknet",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -44,7 +44,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "WTFAcademy", // Usually your GitHub org/user name.
-  projectName: "WTF-Academy-StarkNet-Hackathon", // Usually your repo name.
+  projectName: "WTF-Academy-Starknet-Hackathon", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -89,9 +89,9 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "WTF Academy StarkNet",
+        title: "WTF Starknet",
         logo: {
-          alt: "WTF Academy StarkNet",
+          alt: "WTF Starknet",
           src: "img/logo_300x300.png",
         },
         items: [
@@ -142,7 +142,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/WTFAcademy/WTF-Academy-StarkNet-Hackathon",
+                href: "https://github.com/WTFAcademy/WTF-Academy-Starknet-Hackathon",
               },
             ],
           },
