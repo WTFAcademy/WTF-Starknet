@@ -105,7 +105,6 @@ return <button onClick={disconnect({ clearLastWallet: true })}> Disconnect and r
 
 The starknet-react library includes a set of pre-built hooks for common tasks such as loading contract data, submitting transactions, and managing the user's wallet connection state, which is built on top of the get-starknet library. These hooks abstract away some of the lower-level details of interacting with Starknet, and allow you to focus on building your user interface.
 
-
 [starknet-react](https://github.com/apibara/starknet-react) provides a set of React Hooks that make it easier to interact with the Starknet network in a React application.
 
 
@@ -159,7 +158,7 @@ function GetWallet() {
 
 #### `useConnectors`
 
-`useConnector` provides ways to interact with the connectors. Please notice that he available connectors are computed as soon as the hook is rendered, which could happen *before* the browser wallets had the opportunity to inject themselves in the page. You should periodically refresh the available connectors.
+`useConnector` provides ways to interact with the connectors. Please notice that the available connectors are computed as soon as the hook is rendered, which could happen *before* the browser wallets had the opportunity to inject themselves in the page. You should periodically refresh the available connectors.
 
 Examples:
 
@@ -168,7 +167,7 @@ function ConnectWallet() {
   const { connect, connectors, disconnect, available, refresh } = useConnectors()
 
   useEffect(() => {
-    // refresh theavailable connectors every 5 seconds
+    // refresh all available connectors every 5 seconds
     const interval = setInterval(refresh, 5000)
     return () => clearInterval(interval)
   }, [refresh])
@@ -184,10 +183,10 @@ function ConnectWallet() {
         </div>
       ))}
     </ul>
-	// disconnect wallet
-	<div>
-     <button onClick = {disconnect}> Disconnect </button>
-	</div>
+    // disconnect wallet
+    <div>
+    	<button onClick={disconnect}>Disconnect</button>
+    </div>
   )
 }
 ```
@@ -196,7 +195,7 @@ function ConnectWallet() {
 
 #### `useStarknetExecute`
 
-`useStarknetExecute` is used to interact with contracts on StarkNet and send multicall transactions.
+`useStarknetExecute` is used to interact with contracts on Starknet and send multicall transactions.
 
 Example:
 
@@ -231,6 +230,6 @@ function ExecuteTransaction() {
 
 ## Summary
 
-In this tutorial, we introduced how to use `get-starknet` and `starknet-react`  to build DAPPs on StarkNet.
+In this tutorial, we introduced how to use `get-starknet` and `starknet-react` to build dApps on Starknet.
 
 <QuizForm link={""}></QuizForm>
