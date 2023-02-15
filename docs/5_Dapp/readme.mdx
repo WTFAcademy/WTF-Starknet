@@ -60,7 +60,7 @@ yarn add get-starknet starknet@next
 pnpm add get-starknet starknet@next
 ```
 
-That's it! You should now be able to use the get-starknet library in your project.
+That's it! You should now be able to use the `get-starknet` library in your project.
 
 ### 2. Basic Usage
 
@@ -72,33 +72,72 @@ import { connect, disconnect } from "get-starknet"
 return <button onClick={() => connect()}>Connect wallet</button>
 ```
 
-### 3. Advanced Usage
+Here's an advanced example of react with `get-starknet`: 
 
 ```javascript
-import {
-  type ConnectOptions,
-  type DisconnectOptions,
-  connect,
-  disconnect,
-} from "get-starknet";
-return <button onClick = {() => connect({ modalMode: "alwaysAsk" })} Always ask </button>
+function App() {
+  const [walletName, setWalletName] = useState("")
 
-return <button onClick = {() => connect({ 
-    modalMode: "alwaysAsk",
-	modalTheme: "dark",
-})} Always ask with dark theme</button>
+  function handleConnect(options?: ConnectOptions) {
+    return async () => {
+      const res = await connect(options)
+      console.log(res)
+      setWalletName(res?.name || "")
+    }
+  }
 
-return <button onClick = {() => connect({ 
-    modalMode: "alwaysAsk",
-	modalTheme: "light",
-})} Always ask with light theme</button>
+  function handleDisconnect(options?: DisconnectOptions) {
+    return async () => {
+      await disconnect(options)
+      setWalletName("")
+    }
+  }
 
-return  <button onClick={connect({ modalMode: "neverAsk" })}> Never ask </button>
- 
-return <button onClick={disconnect()}>Disconnect</button>
-
-return <button onClick={disconnect({ clearLastWallet: true })}> Disconnect and reset </button>
+  return (
+    <div className="App">
+      <h1>get-starknet</h1>
+      <div className="card">
+        <button onClick={handleConnect()}>Default</button>
+        <button onClick={handleConnect({ modalMode: "alwaysAsk" })}>
+          Always ask
+        </button>
+        <button onClick={handleConnect({ modalMode: "neverAsk" })}>
+          Never ask
+        </button>
+        <button
+          onClick={handleConnect({
+            modalMode: "alwaysAsk",
+            modalTheme: "dark",
+          })}>
+          Always ask with dark theme
+        </button>
+        <button
+          onClick={handleConnect({
+            modalMode: "alwaysAsk",
+            modalTheme: "light",
+          })}>
+          Always ask with light theme
+        </button>
+        <button onClick={handleDisconnect()}>Disconnect</button>
+        <button onClick={handleDisconnect({ clearLastWallet: true })}>
+          Disconnect and reset
+        </button>
+      </div>
+      {walletName && (
+        <div>
+          <h2>
+            Selected Wallet: <pre>{walletName}</pre>
+          </h2>
+        </div>
+      )}
+    </div>
+  )
+}
 ```
+
+In contrast to `starknet-react`, which is a higher-level library that provides a set of React Hooks for working with Starknet, `get-starknet` is a lower-level library that provides direct access to the Starknet APIs. This makes it a more flexible and customizable solution, but also requires more knowledge of the Starknet platform and its APIs.
+
+`get-starknet` is a useful library for developers who are familiar with the Starknet platform and want more control over their development process. However, for those who are new to Starknet or want a simpler development experience in React ecosystem, `starknet-react` may be a better option.
 
 
 ## starknet-react
@@ -113,7 +152,7 @@ The starknet-react library includes a set of pre-built hooks for common tasks su
 Install `starknet-react` and its dependencies using the following command: 
 
 ```bash
-npm add @starknet-react/core get-starknet starknet
+npm install @starknet-react/core get-starknet starknet
 ```
 
 ### 2. Usage
@@ -124,7 +163,7 @@ Before using hooks of `starknet-react`, you need to import following statements 
 import { StarknetConfig, InjectedConnector } from '@starknet-react/core'
 ```
 
-Then edit the application component to include the StarkNet provider.
+Then edit the application component to include the Starknet provider.
 ```javascript
 function AppContainer({ Component, pageProps }) {
   const connectors = [
@@ -160,7 +199,7 @@ function GetWallet() {
 
 `useConnector` provides ways to interact with the connectors. Please notice that the available connectors are computed as soon as the hook is rendered, which could happen *before* the browser wallets had the opportunity to inject themselves in the page. You should periodically refresh the available connectors.
 
-Examples:
+Example:
 
 ```javascript
 function ConnectWallet() {
