@@ -36,7 +36,7 @@ A [demo](https://starknetfinal.kongtaoxing.repl.co/)
 
 To install the get-starknet library, you will need to have [Node.js](https://nodejs.org/en/download/) installed on your system, then you can follow these steps:
 
-To initialize an npm project:
+**To initialize an npm project:**
 
 1. Open a terminal window or command prompt.
 2. Navigate to an empty directory where you want to initialize an npm project.
@@ -44,7 +44,7 @@ To initialize an npm project:
 
 This will start a command-line interface that will guide you through the process of creating a `package.json` file. You will be prompted to enter various settings for your project, such as its name, version, description, and entry point.
 
-To install `get-starknet`:
+**To install get-starknet:**
 
 1. Navigate to the project directory where you want to install the library.
 2. Run the following command to install the `get-starknet` library:
@@ -53,10 +53,10 @@ To install `get-starknet`:
 # using npm
 npm install get-starknet starknet@next
 
-# (alternatively) using yarn
+# (alternative) using yarn
 yarn add get-starknet starknet@next
 
-# (alternatively) using pnpm
+# (alternative) using pnpm
 pnpm add get-starknet starknet@next
 ```
 
@@ -64,7 +64,7 @@ That's it! You should now be able to use the get-starknet library in your projec
 
 ### 2. Basic Usage
 
-Connect your dApp with wallet using following command:
+You can use the built-in UI to connect to any Starknet wallet as fast as possible like this:
 
 ```javascript
 import { connect, disconnect } from "get-starknet"
@@ -103,15 +103,19 @@ return <button onClick={disconnect({ clearLastWallet: true })}> Disconnect and r
 
 ## starknet-react
 
-[Starknet-react](https://github.com/apibara/starknet-react) provides a set of React Hooks that make it easier to interact with the Starknet network in a React application.
+The starknet-react library includes a set of pre-built hooks for common tasks such as loading contract data, submitting transactions, and managing the user's wallet connection state, which is built on top of the get-starknet library. These hooks abstract away some of the lower-level details of interacting with Starknet, and allow you to focus on building your user interface.
+
+
+[starknet-react](https://github.com/apibara/starknet-react) provides a set of React Hooks that make it easier to interact with the Starknet network in a React application.
 
 
 ### 1. Install
 
-Install `starknet-react` using following command.
+Install `starknet-react` and its dependencies using the following command: 
 
-`npm add @starknet-react/core`
-
+```bash
+npm add @starknet-react/core get-starknet starknet
+```
 
 ### 2. Usage
 
