@@ -29,17 +29,42 @@ A [demo](https://starknetfinal.kongtaoxing.repl.co/)
 
 ## get-starknet
 
-[Get-starknet](https://github.com/starknet-io/get-starknet) provides a series of hooks that makes it easy to connect wallet to your DAPPs.
+[get-starknet](https://github.com/starknet-io/get-starknet) provides a JavaScript library that provides a set of APIs for interacting with the Starknet network. Developers can install the get-starknet library using npm, and then use it in their JavaScript code to deploy and manage contracts on the network, as well as call functions and query data from existing contracts. The library provides a set of functions and classes for tasks such as compiling contracts, deploying contracts, and interacting with the network.
 
-### 1. install
 
-First, you need to get [VSCode](https://code.visualstudio.com/download) and [Node.js](https://nodejs.org/en/download/), then install `get-starknet` using following command:
+### 1. Install
 
-`npm install get-starknet`
+To install the get-starknet library, you will need to have [Node.js](https://nodejs.org/en/download/) installed on your system, then you can follow these steps:
+
+To initialize an npm project:
+
+1. Open a terminal window or command prompt.
+2. Navigate to an empty directory where you want to initialize an npm project.
+3. run the following command: `npm init -y`
+
+This will start a command-line interface that will guide you through the process of creating a `package.json` file. You will be prompted to enter various settings for your project, such as its name, version, description, and entry point.
+
+To install `get-starknet`:
+
+1. Navigate to the project directory where you want to install the library.
+2. Run the following command to install the `get-starknet` library:
+
+```bash
+# using npm
+npm install get-starknet starknet@next
+
+# (alternatively) using yarn
+yarn add get-starknet starknet@next
+
+# (alternatively) using pnpm
+pnpm add get-starknet starknet@next
+```
+
+That's it! You should now be able to use the get-starknet library in your project.
 
 ### 2. Basic Usage
 
-Connect your DAPP with wallet using following command:
+Connect your dApp with wallet using following command:
 
 ```javascript
 import { connect, disconnect } from "get-starknet"
@@ -76,16 +101,17 @@ return <button onClick={disconnect({ clearLastWallet: true })}> Disconnect and r
 ```
 
 
-
 ## starknet-react
 
-[Starknet-react](https://github.com/apibara/starknet-react)  provides a collection of React hooks for Starknet.
+[Starknet-react](https://github.com/apibara/starknet-react) provides a set of React Hooks that make it easier to interact with the Starknet network in a React application.
 
-### 1. install
 
-Install `starknet-react`using following command.
+### 1. Install
+
+Install `starknet-react` using following command.
 
 `npm add @starknet-react/core`
+
 
 ### 2. Usage
 
@@ -127,11 +153,9 @@ function GetWallet() {
 }
 ```
 
-
-
 #### `useConnectors`
 
-​	`useConnector` provides ways to interact with the connectors. Please notice that he available connectors are computed as soon as the hook is rendered, which could happen *before* the browser wallets had the opportunity to inject themselves in the page. You should periodically refresh the available connectors.
+`useConnector` provides ways to interact with the connectors. Please notice that he available connectors are computed as soon as the hook is rendered, which could happen *before* the browser wallets had the opportunity to inject themselves in the page. You should periodically refresh the available connectors.
 
 Examples:
 
