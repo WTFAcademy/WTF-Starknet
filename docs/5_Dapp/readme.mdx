@@ -17,11 +17,11 @@ import {CourseId, Lesson_5} from "@site/src/constants/course";
 
 <QuizProgress courseId={CourseId} lessonId={Lesson_5}></QuizProgress>
 
-# WTF Starknet 5: Starknet Dapp
+# WTF Starknet 5: Starknet dApp
 
 Work in Progress... 
 
-You will learn how to use `get-starknet` and `starknet-react` to build a simple dapp for minting NFTs on Starknet. 
+You will learn how to use `get-starknet` and `starknet-react` to build a simple dApp for minting NFTs on Starknet. 
 
 A [demo](https://starknetfinal.kongtaoxing.repl.co/)
 
@@ -29,17 +29,42 @@ A [demo](https://starknetfinal.kongtaoxing.repl.co/)
 
 ## get-starknet
 
-[Get-starknet](https://github.com/starknet-io/get-starknet) provides a series of hooks that makes it easy to connect wallet to your DAPPs.
+[get-starknet](https://github.com/starknet-io/get-starknet) provides a JavaScript library that provides a set of APIs for interacting with the Starknet network. Developers can install the `get-starknet` library using npm, and then use it in their JavaScript code to deploy and manage contracts on the network, as well as call functions and query data from existing contracts. The library provides a set of functions and classes for tasks such as compiling contracts, deploying contracts, and interacting with the network.
 
-### 1. install
 
-First, you need to get [VSCode](https://code.visualstudio.com/download) and [Node.js](https://nodejs.org/en/download/), then install `get-starknet` using following command:
+### 1. Install
 
-`npm install get-starknet`
+To install the `get-starknet` library, you will need to have [Node.js](https://nodejs.org/en/download/) installed on your system, then follow these steps:
+
+**To initialize an npm project:**
+
+1. Open a terminal window or command prompt.
+2. Navigate to an empty directory where you want to initialize an npm project.
+3. run the following command: `npm init -y`
+
+This will start a command-line interface that will guide you through the process of creating a `package.json` file. You will be prompted to enter various settings for your project, such as its name, version, description, and entry point.
+
+**To install get-starknet:**
+
+1. Navigate to the project directory where you want to install the library.
+2. Run the following command to install the `get-starknet` library:
+
+```bash
+# using npm
+npm install get-starknet starknet@next
+
+# (alternative) using yarn
+yarn add get-starknet starknet@next
+
+# (alternative) using pnpm
+pnpm add get-starknet starknet@next
+```
+
+That's it! You should now be able to use the `get-starknet` library in your project.
 
 ### 2. Basic Usage
 
-Connect your DAPP with wallet using following command:
+You can use the built-in UI to connect to any Starknet wallet as fast as possible like this:
 
 ```javascript
 import { connect, disconnect } from "get-starknet"
@@ -47,45 +72,88 @@ import { connect, disconnect } from "get-starknet"
 return <button onClick={() => connect()}>Connect wallet</button>
 ```
 
-### 3. Advanced Usage
+Here's an advanced example of react with `get-starknet`: 
 
 ```javascript
-import {
-  type ConnectOptions,
-  type DisconnectOptions,
-  connect,
-  disconnect,
-} from "get-starknet";
-return <button onClick = {() => connect({ modalMode: "alwaysAsk" })} Always ask </button>
+function App() {
+  const [walletName, setWalletName] = useState("")
 
-return <button onClick = {() => connect({ 
-    modalMode: "alwaysAsk",
-	modalTheme: "dark",
-})} Always ask with dark theme</button>
+  function handleConnect(options?: ConnectOptions) {
+    return async () => {
+      const res = await connect(options)
+      console.log(res)
+      setWalletName(res?.name || "")
+    }
+  }
 
-return <button onClick = {() => connect({ 
-    modalMode: "alwaysAsk",
-	modalTheme: "light",
-})} Always ask with light theme</button>
+  function handleDisconnect(options?: DisconnectOptions) {
+    return async () => {
+      await disconnect(options)
+      setWalletName("")
+    }
+  }
 
-return  <button onClick={connect({ modalMode: "neverAsk" })}> Never ask </button>
- 
-return <button onClick={disconnect()}>Disconnect</button>
-
-return <button onClick={disconnect({ clearLastWallet: true })}> Disconnect and reset </button>
+  return (
+    <div className="App">
+      <h1>get-starknet</h1>
+      <div className="card">
+        <button onClick={handleConnect()}>Default</button>
+        <button onClick={handleConnect({ modalMode: "alwaysAsk" })}>
+          Always ask
+        </button>
+        <button onClick={handleConnect({ modalMode: "neverAsk" })}>
+          Never ask
+        </button>
+        <button
+          onClick={handleConnect({
+            modalMode: "alwaysAsk",
+            modalTheme: "dark",
+          })}>
+          Always ask with dark theme
+        </button>
+        <button
+          onClick={handleConnect({
+            modalMode: "alwaysAsk",
+            modalTheme: "light",
+          })}>
+          Always ask with light theme
+        </button>
+        <button onClick={handleDisconnect()}>Disconnect</button>
+        <button onClick={handleDisconnect({ clearLastWallet: true })}>
+          Disconnect and reset
+        </button>
+      </div>
+      {walletName && (
+        <div>
+          <h2>
+            Selected Wallet: <pre>{walletName}</pre>
+          </h2>
+        </div>
+      )}
+    </div>
+  )
+}
 ```
 
+In contrast to `starknet-react`, which is a higher-level library that provides a set of React Hooks for working with Starknet, `get-starknet` is a lower-level library that provides direct access to the Starknet APIs. This makes it a more flexible and customizable solution, but also requires more knowledge of the Starknet platform and its APIs.
+
+`get-starknet` is a useful library for developers who are familiar with the Starknet platform and want more control over their development process. However, for those who are new to Starknet or want a simpler development experience in React ecosystem, `starknet-react` may be a better option.
 
 
 ## starknet-react
 
-[Starknet-react](https://github.com/apibara/starknet-react)  provides a collection of React hooks for Starknet.
+The starknet-react library includes a set of pre-built hooks for common tasks such as loading contract data, submitting transactions, and managing the user's wallet connection state, which is built on top of the get-starknet library. These hooks abstract away some of the lower-level details of interacting with Starknet, and allow you to focus on building your user interface.
 
-### 1. install
+[starknet-react](https://github.com/apibara/starknet-react) provides a set of React Hooks that make it easier to interact with the Starknet network in a React application.
 
-Install `starknet-react`using following command.
 
-`npm add @starknet-react/core`
+### 1. Install
+
+Install `starknet-react` and its dependencies using the following command: 
+
+```bash
+npm install @starknet-react/core get-starknet starknet
+```
 
 ### 2. Usage
 
@@ -95,7 +163,7 @@ Before using hooks of `starknet-react`, you need to import following statements 
 import { StarknetConfig, InjectedConnector } from '@starknet-react/core'
 ```
 
-Then edit the application component to include the StarkNet provider.
+Then edit the application component to include the Starknet provider.
 ```javascript
 function AppContainer({ Component, pageProps }) {
   const connectors = [
@@ -127,20 +195,18 @@ function GetWallet() {
 }
 ```
 
-
-
 #### `useConnectors`
 
-​	`useConnector` provides ways to interact with the connectors. Please notice that he available connectors are computed as soon as the hook is rendered, which could happen *before* the browser wallets had the opportunity to inject themselves in the page. You should periodically refresh the available connectors.
+`useConnector` provides ways to interact with the connectors. Please notice that the available connectors are computed as soon as the hook is rendered, which could happen *before* the browser wallets had the opportunity to inject themselves in the page. You should periodically refresh the available connectors.
 
-Examples:
+Example:
 
 ```javascript
 function ConnectWallet() {
   const { connect, connectors, disconnect, available, refresh } = useConnectors()
 
   useEffect(() => {
-    // refresh theavailable connectors every 5 seconds
+    // refresh all available connectors every 5 seconds
     const interval = setInterval(refresh, 5000)
     return () => clearInterval(interval)
   }, [refresh])
@@ -156,19 +222,17 @@ function ConnectWallet() {
         </div>
       ))}
     </ul>
-	// disconnect wallet
-	<div>
-     <button onClick = {disconnect}> Disconnect </button>
-	</div>
+    // disconnect wallet
+    <div>
+    	<button onClick={disconnect}>Disconnect</button>
+    </div>
   )
 }
 ```
 
-
-
 #### `useStarknetExecute`
 
-`useStarknetExecute` is used to interact with contracts on StarkNet and send multicall transactions.
+`useStarknetExecute` is used to interact with contracts on Starknet and send multicall transactions.
 
 Example:
 
@@ -203,6 +267,6 @@ function ExecuteTransaction() {
 
 ## Summary
 
-In this tutorial, we introduced how to use `get-starknet` and `starknet-react`  to build DAPPs on StarkNet.
+In this tutorial, we introduced how to use `get-starknet` and `starknet-react` to build dApps on Starknet.
 
 <QuizForm link={""}></QuizForm>
