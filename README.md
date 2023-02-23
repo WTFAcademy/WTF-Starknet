@@ -1,3 +1,5 @@
+![](./static/img/wtfcairo_banner.png)
+
 # WTF Starknet
 
 Recently, we have been learning Starknet, and writing a "WTF Starnet" tutorial for Ethereum developers who want to get his/her hands dirty on Starknet.
@@ -18,7 +20,7 @@ Tutorials and codes are open-sourced on github: [github.com/WTFAcademy/WTF-Stark
 
 **Chapter 4: Starknet.js**：[Tutorial](https://starknet.wtf.academy/docs/starknetjs/) | [Code](./docs/4_starknetjs/)
 
-**Chapter 5: Starknet Dapp**：[Tutorial](https://starknet.wtf.academy/docs/Dapp/)
+**Chapter 5: Starknet Dapp**：[Tutorial](https://starknet.wtf.academy/docs/Dapp/) | [Code](https://github.com/WTFAcademy/WTF-Starknet-Dapp-demo)
 
 
 ## How to contribute
