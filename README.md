@@ -1,93 +1,36 @@
 # WTF Starknet
-Todo list of WTF Starknet during Starknet Building Hacker House Tel Aviv, 31st Jan-7th Feb, 2023.
 
-## Background
-1. WTF Academy is a web3 open-source university for developers.
-  - WTF Solidity (5,700 ⭐): https://github.com/AmazingAng/WTF-Solidity
-  - WTF Ethers (1,100 ⭐): https://github.com/WTFAcademy/WTF-Ethers
-  - Integrated Education Platform (3,300 users): https://wtf.academy
-  
-2. WTF Starknet is a platform to onboard developers to Starknet, which includes tutorial, examples, and on-chain certificates.
+Recently, we have been learning Starknet, and writing a "WTF Starnet" tutorial for Ethereum developers who want to get his/her hands dirty on Starknet.
 
-## Todo and Progress
+Twitter: [@WTFAcademy_](https://twitter.com/WTFAcademy_) |  [@0xAA_Science](https://twitter.com/0xAA_Science)
 
-### 1. Tutorials
-Minimal tutorials on Starknet, assuming the learners have Ethereum development experience.
-- Account Abstraction: @ocandocrypto
-- Cairo: @hasselalcala [Draft] [Quiz]
-- Tooling: @hasselalcala [Draft]
-- Starknet.js @AmazingAng [Draft]
-- Build a minimal Dapp
-  
-### 2. Frontend
+Community: [Discord](https://discord.wtf.academy) | [Website: starknet.wtf.academy](https://starknet.wtf.academy)
 
-Build a website for WTF StarkWare based on Docusaurus.
-  - dashboard page
-  - tutorial page
-  - quiz page
-  - certificate page
+Tutorials and codes are open-sourced on github: [github.com/WTFAcademy/WTF-Starknet](https://github.com/WTFAcademy/WTF-Starknet)
 
-### 3. Backend
-  - quiz backend @stoneworld @reborn-sama(huashui)
-  - certificate backend
+## Tutorials
 
-### 4. Contract 
-Build a SBT contract for certificates on starknet.
-  - certificate contract
+**Chapter 1: Account Abstraction**： [Tutorial](https://starknet.wtf.academy/docs/AA/)
 
-### 5. Design
-  - web design ([Figma](https://www.figma.com/file/dZiNEsfG5Nkc1uQFy3agEk)): [@tankxu](https://github.com/tankxu)
-  - logo design
-  
-### 6. Project Management
-  - github todo list [x]
-  
+**Chapter 2: Cairo**： [Tutorial](https://starknet.wtf.academy/docs/Cairo/) | [Code](./docs/2_Cairo/)
+
+**Chapter 3: Tooling (Protostar)**：[Tutorial](https://starknet.wtf.academy/docs/Tool/) | [Code](./docs/3_Tool/)
+
+**Chapter 4: Starknet.js**：[Tutorial](https://starknet.wtf.academy/docs/starknetjs/) | [Code](./docs/4_starknetjs/)
+
+**Chapter 5: Starknet Dapp**：[Tutorial](https://starknet.wtf.academy/docs/Dapp/)
+
+
 ## How to contribute
 
-We will manage the project on Github (yes, this repo), so you can see all the tasks and contributors here.
+We will manage the project on Github (yes, this repo), so you can see all the tasks and contributors here. Please check issues for current tasks.
 
-1. Read [Project Brief](https://onlydust.notion.site/WTF-Academy-Starknet-cec45bfe02694dbc895eb42e8f3f1c31)
-2. Contact project lead 0xAA's Telegram (@not0xAA) or [Twitter](https://twitter.com/0xAA_Science), briefly introduce yourself and which part you want to contribute to.
-3. You can create a PR update your github ID after corresponding tasks, or I will do it for you.
-
-## Website
-
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
-
-### Installation
-
-```
-$ yarn
-```
-
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## WTF Contributors
+<div align="center">
+  <h4 align="center">
+    Contributors are the basis of WTF Academy
+  </h4>
+  <a href="https://github.com/WTFAcademy/WTF-Starknet/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=WTFAcademy/WTF-Starknet" />
+  </a>
+</div>
