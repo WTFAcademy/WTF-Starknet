@@ -6,7 +6,7 @@ Recently, we have been learning Starknet, and writing a "WTF Starnet" tutorial f
 
 Twitter: [@WTFAcademy_](https://twitter.com/WTFAcademy_) |  [@0xAA_Science](https://twitter.com/0xAA_Science)
 
-Community: [Discord](https://discord.wtf.academy) | [Website: starknet.wtf.academy](https://starknet.wtf.academy)
+Community: [Discord](https://discord.gg/5akcruXrsk) | [Website: starknet.wtf.academy](https://starknet.wtf.academy)
 
 Tutorials and codes are open-sourced on github: [github.com/WTFAcademy/WTF-Starknet](https://github.com/WTFAcademy/WTF-Starknet)
 
