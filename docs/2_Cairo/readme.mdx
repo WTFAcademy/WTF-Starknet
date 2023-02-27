@@ -95,7 +95,7 @@ func balance() -> (res: felt) {
 }
 ```
 
-To use this variable, we will use the balance.read() and balance.write() functions which are automatically created by the `@storage_var` decorator. When a contract is deployed, all its storage cells are initialized to zero. In particular, all storage variables are initially zero.
+To use this variable, we will use the balance.read() and balance.write() functions which are automatically created by the `@storage_var` decorator. When a contract is deployed, all its storage cells are initialized to zero.
 
 
 Let's suppose that instead of maintaining one global variable balance, we would like to have a balance for each user (users will be identified by their STARK public keys). We need to change the balance storage variable to a map from public key (user) to balance (instead of a single value). This can be done by simply adding an argument:
@@ -171,7 +171,7 @@ Something that is present in our contract and we haven't talk yet is about impli
 
 Basically they are internal bookkeeping for the compiler / Cairo VM. They're used to track the internal memory pointers across function calls. Without them, the compiler wouldn't know how/where to continue executing code after a function returns.
 
-Consider the three implicit arguments: syscall_ptr, pedersen_ptr and range_check_ptr:
+Consider the three implicit arguments: syscall_ptr, pedersen_ptr and range_check_ptr. 
 
 - pedersen_ptr, which allows to compute the Pedersen hash function.
 - range_check_ptr, which allows to compare integers. 
@@ -236,9 +236,9 @@ func sum_points_arr(a_len: felt, a: Point*) -> (res: Point) {
 
 ## 5. Constructor
 
-A contract may need to initialize its state before it is ready for public use. For example, one may want to designate a contract owner, that can do certain operations that other users can’t. Setting a storage variable to the owner can be done by the contract constructor. The contract constructor is defined using the `@constructor` decorator and its name must be constructor. The constructor semantics are similar to that of any other external function, except that the constructor is guaranteed to run during the contract deployment and it cannot be invoked again after the contract is deployed.
+A contract may need to initialize its state before it is ready for public use. For example, one may want to designate a contract owner, that can do certain operations that other users can’t. Setting a storage variable to the owner can be done by the contract constructor. The contract constructor is defined using the `@constructor` decorator and its name must be `constructor`. The constructor semantics are similar to that of any other external function, except that the constructor is guaranteed to run during the contract deployment and it cannot be invoked again after the contract is deployed.
 
-For example, we can define an ownable contract as follows:
+In the following example, we can see how to define an ownable contract as follows:
 
 ```
 %lang starknet
