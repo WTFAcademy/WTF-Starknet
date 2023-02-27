@@ -1,0 +1,294 @@
+---
+title: 2. Cairo
+tags:
+  - cairo
+  - starknet
+  - contract
+  - wtfacademy
+---
+
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+import {CourseId, Lesson_2} from "@site/src/constants/course";
+
+<QuizProgress courseId={CourseId} lessonId={Lesson_2}></QuizProgress>
+
+# WTF Starknet 2. Cairo
+
+**Cairo** es un lenguaje de programación para escribir programas comprobables, esto signifca que una parte (*prover*) puede probar a otra (*verifier*) que cierto cálculo se ejecutó correctamente. *Cairo* y otros sistemas similares proporcionan escalabilidad a las cadenas de bloques.
+
+Starknet usa el lenguaje de programación Cairo tanto para su infraestructura como para escribir contratos de Starknet.
+
+## 1. Estructura de un contrato en Cairo
+
+Si comparamos la estructura que usamos en un contrato inteligente de *solidity*, normalmente se organizan de la siguiente manera:
+
+![Structure of a smart contract using solidity and Cairo Starknet](./img/1.png)
+
+## 2. Diferencias entre Solidity y Cairo
+
+### 2.1 Funciones tipo *Getter* 
+
+Las funciones de tipo *getter* son necesarios cuando queremos hacer público un valor. En *Solidity*, el compilador crea getters para todas las variables de estado declaradas como públicas. En *Cairo*, este tipo de variable se declara usando la palabra reservada `@storage_var` y son privadas. Por lo tanto, si queremos hacerlos públicos, debemos construir nosostros mismos una función *getter* para acceder a estos valores.
+
+### 2.2 Interface
+
+En *Solidity* cuando creamos una instancia a partir de un contrato, este hereda todas las estructuras/errores/eventos/funciones de la interfaz y se comprometen a implementar todas las funciones que se encuentran allí. Sin embargo, en *Cairo* hay interfaces pero no hay herencia. Esto significa que no podemos confiar simplemente en la interfaz en sí misma para proporcionarnos la estructura básica de nuestro contrato.
+
+### 2.3 Constructor
+
+Una de las características principales que diferencian a *Cairo* con *Solidity*, es que Cairo solo admite un constructor por contrato compilado (es decir, si un contrato tiene varios contratos secundarios, solo debe haber un constructor definido en todos).
+
+### 2.4 Felt
+
+Otra diferencia importante entre *Solidity* y *Cairo* son los tipos de datos primitivos. Solo hay un tipo de dato llamado: `felt`.
+
+Un `felt` (por su significado en inglés *field element*) es el tipo de datos primitivo en *Cairo*, representa un número entero sin signo con hasta 76 decimales. Comunmente, se utiliza para almacenar direcciones, cadenas, enteros, etc. Se declara como:
+
+```
+let magic_number = 666;
+let my_address = "WTF Academy";
+```
+
+*Cairo* admite cadenas cortas (*Strings*) de hasta 31 caracteres, pero en realidad se almacenan en `felt`. Por ejemplo:
+
+```
+let hello_string = 'Hello world!'
+```
+
+Solo hay un tipo de ejecución: `func`. Todas las variables de almacenamiento (excepto estructuras) como mappings, eventos, constructores y funciones se declaran con la misma palabra clave `func`:
+
+```
+@storage_var
+func this_is_single_storage_slot() -> (value : felt):
+end
+```
+
+```
+@storage_var
+func this_is_a_mapping_slot(key : felt) -> (value : felt):
+end
+```
+
+```
+@event
+func this_is_an_event(event_param1 : felt, event_param2 : felt):
+end
+```
+
+Dado que declarar todo con una palabra clave puede resultar confuso, *Cairo* proporciona decoradores que se utilizan encima de las declaraciones de función para distinguir cada uno. Todos estos comienzan con:
+
+- `@event` - Representa un evento. 
+- `@storage_var` - Se usa para declarar un variable de almacenamiento del contrato, como mappings, direcciones, etc.
+- `@constructor` - El constructor es lo primero que se ejecuta cuando se depliega nuestro contrato.
+- `@view` - Esta función se usa para solo leer los valores en nuestras variables de almacenamiento `storage_vars`.
+- `@external` - Se usa para escribir los valores en nuestras variables de almacenamiento `storage_vars`.
+- `@l1_handler` - Se usa para procesar un mensaje que se envia desde un contrato en L1.
+
+## 3. Storage Variables
+
+La etiqueta `@storage_var` declara una variable que se mantendrá como parte de este almacenamiento. En el siguiente ejemplo, esta variable consta de un solo `felt, llamado saldo (*balance*).
+
+```
+@storage_var
+func balance() -> (res: felt) {
+}
+```
+
+Cuando declaramos una variable con esta etiqueta, de manera automatica se generan 2 funciones que nos permiten leer (`balance.read()`) y escribir (`balance.write()`) en ellas. Además, cuando se implementa un contrato, todas sus celdas de almacenamiento se inicializan a cero.
+
+Supongamos que en lugar de mantener una sola variable global para el saldo (*balance*), nos gustaría tener un saldo para cada usuario (en donde los usuarios serán identificados por sus claves públicas STARK). Necesitamos cambiar la variable de almacenamiento de saldo a un mapping entre la clave pública (del usuario) y el saldo (en lugar de un valor único). Esto se puede hacer simplemente agregando un argumento:
+
+```
+@storage_var
+func balance(user: felt) -> (res: felt) {
+}
+```
+
+De hecho, el decorador `@storage_var` le permite agregar múltiples argumentos para crear mapas aún más complicados. Una variable de almacenamiento no tiene que ser un solo elemento de campo, también puede ser una tupla de varios elementos de campo. Por ejemplo, una asignación de usuario a un par (mín., máx.):
+
+```
+@storage_var
+func range(user: felt) -> (res: (felt, felt)) {
+}
+```
+
+Un argumento de una variable de almacenamiento también puede ser una estructura o una tupla, siempre que no contengan punteros (estos tipos, que no contienen punteros, se denominan de tipo *felt-only*). Por ejemplo:
+
+```
+struct User {
+    first_name: felt,
+    last_name: felt,
+}
+
+// Un mapping desde un usuario a un valor que nos dice si una persona votó(1) o no(0). 
+@storage_var
+func user_voted(user: User) -> (res: felt) {
+}
+```
+
+## 4. Funciones
+
+Los contratos en Starknet no tiene una función main(). 
+En su lugar, cada función puede anotarse como una función externa (usando `@external`) o interna (usando `@view`).
+
+- `@external`. Esta función puede ser llamada por otros usuarios de StarkNet y por otros contratos. Nos permite escribir un nuevo valor en las variables de almacenamiento declaradas con la etiqueta `@storage_var`.
+- `@view`. Esta función solo consulta el estado en lugar de modificarlo. 
+
+For example: 
+
+``` 
+%lang starknet
+
+from starkware.cairo.common.cairo_builtins import HashBuiltin
+
+// Definimos una variable de almacenamietno.
+@storage_var
+func balance() -> (res: felt) {
+}
+
+// Incrementamos el saldo (*balance*) con la cantidad proporcionada. 
+@external
+func increase_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(amount: felt) {
+    let (res) = balance.read();
+    balance.write(res + amount);
+    return ();
+}
+
+// Regresa el saldo (*balance*) actual. Returns the current balance.
+@view
+func get_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (res: felt) {
+    let (res) = balance.read();
+    return (res=res);
+}
+```
+
+Este contrato tiene una funcion externa: `increase_balance`, la cual lee el saldo (*balance*) actual en la variable de almacenamiento, suma la cantidad dada y escribe el nuevo valor en la variable correspondiente. Por otra parte, `get_balance` es una función interna que simplemente lee el saldo (*balance*) y regresa ese valor.
+
+Algo que está presente en nuestro contrato y de lo que aún no hemos hablado es sobre los argumentos implícitos.
+
+### 4.1 Argumentos implicitos
+
+Básicamente, es como un libro de registros contables internos para el compilador/Cairo VM. Estos se utilizan para realizar un seguimiento de los punteros de la memoria interna en las llamadas a funciones. Sin ellos, el compilador no sabría cómo o dónde continuar ejecutando el código después de que regresa una función.
+
+Considere los tres argumentos implícitos: `syscall_ptr`, `pedersen_ptr` and `range_check_ptr`. 
+
+- `pedersen_ptr`, que nos permite computar la función *Pedersen hash*.
+- `range_check_ptr`, se usa para comparar dos enteros. 
+- `syscall_ptr` permite que el código invoque llamadas al sistema.
+
+Pero parece que el contrato no usa ninguna función hash o comparación entre enteros, entonces ¿Por qué son necesarios? La razón es que las variables de almacenamiento requieren estos argumentos implícitos para calcular la dirección de memoria real de esta variable. Es posible que esto no sea necesario en variables simples como el saldo, pero con mapas que calculan el *Pedersen hash* es parte de lo que hacen las funciones read() y write(). En este ejemplo, estamos accediendo al almacenamiento mediante llamadas al sistema, por lo que se requiere el argumento implícito `syscall_ptr`.
+
+## 4.2 Function Arguments
+
+Sigamos hablando de funciones. Si queremos crear una función externa que pueda obtener una matriz de elementos de campo como argumento, debemos definir dos argumentos consecutivos: a_length de tipo `felt` y a de tipo `felt*`. Estos argumentos son la longitud de la matriz y el puntero al primer elemento de la matriz. Por ejemplo:
+
+```
+@external
+func compare_arrays(
+    a_len: felt, a: felt*, b_len: felt, b: felt*
+) {
+    assert a_len = b_len;
+    if (a_len == 0) {
+        return ();
+    }
+    assert a[0] = b[0];
+    return compare_arrays(
+        a_len=a_len - 1, a=&a[1], b_len=b_len - 1, b=&b[1]
+    );
+}
+```
+
+Ahora, considere una función que llame argumentos de datos y retorne valores que pueden ser de cualquier tipo que no contenga punteros. Por ejemplo, estructuras con miembros de tipo `felt`, tuplas de tipo `felt` y tuplas de tuplas de `felt`. Por ejemplo:
+
+```
+struct Point {
+    x: felt,
+    y: felt,
+}
+
+@view
+func sum_points(points: (Point, Point)) -> (res: Point) {
+    return (
+        res=Point(
+        x=points[0].x + points[1].x,
+        y=points[0].y + points[1].y),
+    );
+}
+```
+
+De manera similar, se admite el paso de vectores de estructuras, siempre que las estructuras no contengan punteros:
+
+```
+struct Point {
+    x: felt,
+    y: felt,
+}
+@external
+func sum_points_arr(a_len: felt, a: Point*) -> (res: Point) {
+    if (a_len == 0) {
+        return (res=Point(0, 0));
+    }
+    let (res) = sum_points_arr(a_len=a_len - 1, a=&a[1]);
+    return (res=Point(x=res.x + a[0].x, y=res.y + a[0].y));
+}
+```
+
+## 5. Constructor
+
+
+Es posible que un contrato deba inicializar su estado antes de que esté listo para uso público. Por ejemplo, es posible que queramos asignar un propietario del contrato y que pueda realizar ciertas operaciones que otros usuarios no pueden. El constructor del contrato puede establecer una variable de almacenamiento para el propietario. El constructor del contrato se define utilizando el decorador `@constructor` y su nombre debe ser `constructor`. La semántica del constructor es similar a la de cualquier otra función externa, excepto que se garantiza que el constructor se ejecutará durante la implementación del contrato y no se puede volver a invocar después de que se implemente el contrato.
+
+A continuación vemos como podemos definir un contrato con propietario de la siguiente manera:
+
+```
+%lang starknet
+
+from starkware.cairo.common.cairo_builtins import HashBuiltin
+
+// Define una variable de almacenamiento para guardar la dirección del dueño.
+@storage_var
+func owner() -> (owner_address: felt) {
+}
+
+@constructor
+func constructor{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr,
+}(owner_address: felt) {
+    owner.write(value=owner_address);
+    return ();
+}
+
+@view
+func get_owner{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr,
+}() -> (address: felt) {
+    let (address) = owner.read();
+    return (address=address);
+}
+```
+
+## 6. Uint256
+
+Todo en *Cairo* está representado por `felt`, que significa *Field Element*, este es el único tipo de dato y es un entero sin signo de 251 bits.
+
+Debido a que un número `uint256` tiene un tamaño de 256 bits, no se puede representar mediante un `felt` de 251 bits. Por lo tanto, es necesario dividir el número `uint256` en dos componentes: bajo y alto. El componente bajo representa los 128 bits bajos del número `uint256` y el componente alto son los 128 bits altos del número `uint256`. El valor binario de bajo y alto se completa con ceros iniciales hasta la resolución máxima y se juntan uno al lado del otro para formar el número `uint256`.
+
+`Uint256` se define como una estructura:
+
+```
+struct Uint256 {
+    low: felt,
+    high: felt,
+}
+```
+
+## 7. Summary
+
+![Summary](./img/summary_1.png)
+
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLSclhNbKlEGWM0HrAdlrU-GX6oQ0hi_A36oTJwUlobmVOsURKg/viewform?usp=sf_link"}></QuizForm>
