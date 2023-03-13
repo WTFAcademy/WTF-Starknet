@@ -8,12 +8,6 @@ from starkware.cairo.common.alloc import alloc
 
 from interfaces.ISBT import ISBT
 
-struct Contracts {
-    ADMIN: felt,
-    FREN: felt,
-    sbt_address: felt,
-}
-
 const URI = 'ipfs:/';
 
 const ADMIN_PK = 101;
@@ -118,6 +112,7 @@ func test_mint{syscall_ptr: felt*, range_check_ptr}(
         print("mint test successful")
     %}
 
+    // mint by unauthorized
     %{ expect_revert(error_message="Ownable: caller is not the owner") %}
     %{ stop_prank = start_prank(ids.fren, ids.sbt_address) %}
     ISBT.mint(contract_address=sbt_address, to=fren, id=one_as_uint256, value=one_as_uint256, data_len=0, data=data);
@@ -178,6 +173,7 @@ func test_mint_batch{syscall_ptr: felt*, range_check_ptr}(
         print("mintBatch test successful")
     %}
 
+    // mintBatch by unauthorized
     %{ expect_revert(error_message="Ownable: caller is not the owner") %}
     %{ stop_prank = start_prank(ids.fren, ids.sbt_address) %}
         ISBT.mintBatch(contract_address=sbt_address, to=fren, ids_len=3, ids=ids, values_len=3, values=values, data_len=0, data=data);
@@ -363,7 +359,7 @@ func test_batch_transfer{syscall_ptr: felt*, range_check_ptr}(
     ISBT.mintBatch(contract_address=sbt_address, to=fren, ids_len=3, ids=ids, values_len=3, values=values, data_len=0, data=data);
     %{ stop_prank() %}
 
-    // transfer
+    // batchTransfer
     %{ expect_revert(error_message="SBT, no transfer") %}
     %{ stop_prank = start_prank(ids.fren, ids.sbt_address) %}
     ISBT.safeBatchTransferFrom(contract_address=sbt_address, from_=fren, to=admin, ids_len=3, ids=ids, values_len=3, values=values, data_len=0, data=data);
