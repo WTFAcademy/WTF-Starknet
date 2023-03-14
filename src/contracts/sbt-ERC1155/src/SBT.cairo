@@ -96,6 +96,7 @@ func setApprovalForAll{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_che
 func safeTransferFrom{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
     from_: felt, to: felt, id: Uint256, value: Uint256, data_len: felt, data: felt*
 ) {
+    ERC1155.assert_owner_or_approved(owner=from_);
     with_attr error_message("SBT, no transfer") {
         assert 0 = to;
     }
@@ -115,6 +116,7 @@ func safeBatchTransferFrom{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range
     data_len: felt,
     data: felt*,
 ) {
+    ERC1155.assert_owner_or_approved(owner=from_);
     with_attr error_message("SBT, no transfer") {
         assert 0 = to;
     }
