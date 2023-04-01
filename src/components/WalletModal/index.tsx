@@ -10,13 +10,6 @@ export function WalletModal(props) {
   const { status } = useAccount();
   const connectorStyle = [styles.braavos_button, styles.argent_button];
 
-  useEffect(() => {
-    const lastUsedConnector = localStorage.getItem("lastUsedConnector");
-    if (lastUsedConnector !== null) {
-      connect(connectors.find((c) => c.id() === lastUsedConnector));
-    }
-  }, [connectors]);
-
   return (
     <Modal {...props}>
       <div className={styles.corner} />
