@@ -12,7 +12,9 @@ Tutorials and codes are open-sourced on github: [github.com/WTFAcademy/WTF-Stark
 
 ## Tutorials
 
-**Chapter 1: Account Abstraction**： [Tutorial](https://starknet.wtf.academy/docs/AA/)
+**Tutorials Dashboard**: [Dashboard](https://starknet.wtf.academy/docs/dashboard) | [Code](https://github.com/WTFAcademy/WTF-Starknet/blob/main/docs/dashboard.mdx)
+
+**Chapter 1: Account Abstraction**： [Tutorial](https://starknet.wtf.academy/docs/AA/) | [Code](./docs/1_AA/)
 
 **Chapter 2: Cairo**： [Tutorial](https://starknet.wtf.academy/docs/Cairo/) | [Code](./docs/2_Cairo/)
 
