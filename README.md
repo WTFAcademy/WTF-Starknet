@@ -4,7 +4,7 @@
 
 Recently, we have been learning Starknet, and writing a "WTF Starnet" tutorial for Ethereum developers who want to get his/her hands dirty on Starknet.
 
-Twitter: [@WTFAcademy\_](https://twitter.com/WTFAcademy_) | [@0xAA_Science](https://twitter.com/0xAA_Science)
+Twitter: [@WTFAcademy_](https://twitter.com/WTFAcademy_) | [@0xAA_Science](https://twitter.com/0xAA_Science)
 
 Community: [Discord](https://discord.gg/5akcruXrsk) | [Website: starknet.wtf.academy](https://starknet.wtf.academy)
 
