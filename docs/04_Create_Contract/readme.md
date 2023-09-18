@@ -165,5 +165,6 @@ More about events, (here)[https://github.com/WTFAcademy/WTF-Cairo/tree/main/16_E
 
 In this chapter, we learned how to create a smart contract from scratch. We covered topics such as declaring our storage, defining a constructor function, and implementing both public and private functions. Additionally, we learned how to create events within our smart contract and how to emit them. You can find the deployed contract below:
 
-Starkscan:
-Voyager:
+Starkscan: link
+
+Voyager: link
