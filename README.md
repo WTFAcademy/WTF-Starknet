@@ -2,64 +2,49 @@
 
 # WTF Starknet
 
-Recently, we have been learning Starknet, and writing a "WTF Starnet" tutorial for Ethereum developers who want to get his/her hands dirty on Starknet.
+WTF Starknet is an education platform to onboard developers to Starknet.
+
+WTF Starknet是帮助开发者进入Starknet的教育平台。
 
 Twitter: [@WTFAcademy_](https://twitter.com/WTFAcademy_) | [@0xAA_Science](https://twitter.com/0xAA_Science)
 
 Community: [Discord](https://discord.gg/5akcruXrsk) | [Website: starknet.wtf.academy](https://starknet.wtf.academy)
 
-Tutorials and codes are open-sourced on GitHub: [github.com/WTFAcademy/WTF-Starknet](https://github.com/WTFAcademy/WTF-Starknet)
+## Tutorials 教程
 
-## [WTF Starknet Tutorials](https://starknet.wtf.academy/docs/dashboard)
+1. [WTF Starknet Tutorials](https://starknet.wtf.academy/docs/dashboard): Introduction of the essentials of Starknet stacks. 介绍Starknet上的核心开发技巧。
 
-**Tutorials Dashboard**: [Dashboard](https://starknet.wtf.academy/docs/dashboard) | [Code](https://github.com/WTFAcademy/WTF-Starknet/blob/main/docs/dashboard.mdx)
+2. [WTF Cairo Tutorial](https://github.com/WTFAcademy/WTF-Cairo): Open-source tutorials for Cairo (based on version 2.2), including 25 chapters. 开源的Cairo教程，共25讲。
 
-**Chapter 1: Account Abstraction**： [Tutorial](https://starknet.wtf.academy/docs/AA/) | [Code](./docs/1_AA/)
+## Starknet中文训练营（Starknet Basecamp Chinese）
 
-**Chapter 2: Cairo**： [Tutorial](https://starknet.wtf.academy/docs/Cairo/) | [Code](./docs/2_Cairo/)
+🦄 Starknet中文训练营：一场为期7周的在线培训项目，专为开发者而设。
 
-**Chapter 3: Tooling (Protostar)**：[Tutorial](https://starknet.wtf.academy/docs/Tool/) | [Code](./docs/3_Tool/)
+👑 旨在帮助开发者在以太坊Layer2 Starknet上开发应用🎫
 
-**Chapter 4: Starknet.js**：[Tutorial](https://starknet.wtf.academy/docs/starknetjs/) | [Code](./docs/4_starknetjs/)
+💎 本活动由 WTF Academy 主办，Starknet中文社区 协办，Starknet基金会支持。
 
-**Chapter 5: Starknet Dapp**：[Tutorial](https://starknet.wtf.academy/docs/Dapp/) | [Code](https://github.com/WTFAcademy/WTF-Starknet-Dapp-demo)
+⏰ 日期： 2023年11月12日至12月22日，每周五晚8点，线上举行
 
+💻 为了提高教学质量，本次训练营限制100人参与，报名截止日期：11月11日
 
-## [WTF Cairo Tutorials](https://github.com/WTFAcademy/WTF-Cairo)
+🎬 所有教学视频和教程会全部上传 https://starknet.wtf.academy
 
-**Chapter 1：Hello Cairo**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme_cn.md)】
+💰 完成课程的学员将获得链上证书；优秀学员将获得奖学金，并且我们将协助申请Starknet早期社区成员计划（ECMP）
 
-**Chapter 2：Primitive Types 基础数据类型**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme_cn.md)】
+### 课程表 Calender
 
+| 日期    | 课程                 | 主讲人      |
+| ----- | ------------------ | -------- |
+| 11.12 | 1.  Starknet基础     | Zelig    |
+| 11.19 | 2.  Cairo          | 0xNezha  |
+| 11.26 | 3.  Starknet智能合约   | WongSSH  |
+| 12.3  | 4.  合约测试           | 0xKrisss |
+| 12.10 | 5.  Starknet去中心化应用 | Daxiong  |
+| 12.17 | 6.  Starknet架构     | Asten    |
+| 12.24 | 7.  生态先驱           | Leo      |
 
-**Chapter 3: Local and Storage Variables 局部和状态变量**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme_cn.md)】
-
-**Chapter 4: Varible Mutability 变量可变性**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability/readme_cn.md)】
-
-**Chapter 5: Function 函数**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function/readme_cn.md)】
-
-**Chapter 6: Tuple 元组**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple/readme_cn.md)】
-
-**Chapter 7: Array 数组**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array/readme_cn.md)】
-
-**Chapter 8: Struct 结构体**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct/readme_cn.md)】
-
-**Chapter 9: Enum**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme_cn.md)】
-
-**Chapter 10: Mapping**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme_cn.md)】
-
-**Chapter 11: Control Flow 控制流**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow/readme_cn.md)】
-
-**Chapter 12: Pattern Matching 模式匹配**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching/readme_cn.md)】
-
-**Chapter 13: Option**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option/readme_cn.md)】
-
-**Chapter 14: Type Conversion**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion/readme_cn.md)】
-
-**Chapter 15: Constructor 构造函数**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor/readme_cn.md)】
-
-
-## How to contribute
+## 如何贡献 How to contribute
 
 We will manage the project on GitHub (yes, this repo), so you can see all the tasks and contributors here. Please check issues for current tasks.
 
