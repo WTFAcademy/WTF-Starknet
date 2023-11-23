@@ -38,11 +38,12 @@ Community: [Discord](https://discord.gg/5akcruXrsk) | [Website: starknet.wtf.aca
 | ----- | ------------------ | -------- |
 | 11.12 | 1.  Starknet基础     | Zelig    |
 | 11.19 | 2.  Cairo          | 0xNezha  |
-| 11.26 | 3.  Starknet智能合约   | WongSSH  |
-| 12.3  | 4.  合约测试           | 0xKrisss |
-| 12.10 | 5.  Starknet去中心化应用 | Daxiong  |
-| 12.17 | 6.  Starknet架构     | Asten    |
-| 12.24 | 7.  生态先驱           | Leo      |
+| 11.26 | 3.  Starknet密码学基础   | Eli Ben-Sasson  |
+| 12.3  | 4.  Starknet智能合约   | WongSSH  |
+| 12.10 | 5.  合约测试           | 0xKrisss |
+| 12.17 | 6.  Starknet去中心化应用 | Daxiong  |
+| 12.24 | 7.  Starknet架构     | Asten    |
+| 12.31 | 8.  生态先驱           | Leo      |
 
 ## 如何贡献 How to contribute
 
