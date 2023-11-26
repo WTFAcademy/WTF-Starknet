@@ -9,13 +9,13 @@ StarkWare 主要由世界顶级密码学家构成，
 - Uri Kolodny：Co-Founder & CEO，Uri 是一个商业经验丰富、善于合作的连续创业者。
 - Michael Riabzev：Co-Founder & 首席架构师。以色利理工学院的博士，曾在 Intel、IBM 工作。
 - Oren Katz：工程副总裁。Hebrew大学计算机专业毕业，Tel Aviv MBA，20 年经验的资深工程师。
-  - ![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NzI1MmU0ODI2NTc3OGU0ZWMwZjMxYjE2ZDA2OGM1ZmVfRU54VnBIbWdSZmtocFBkU3JTVWFvTTBvOTBXWHBJTDhfVG9rZW46Q1o4bGJlc0syb1FjbUt4R3ByMmNiTVhybklmXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+  - ![](./starknet_fundamentals.assets/1700999763648-38.jpeg)
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjIwYjgyNWY3YjJiYzNiOGNhZjU2NTY1MjRiZWI2OTVfcGFIOTIzN29xdFFrdzZLZmVYT09GSFlaaFNIbktCRTBfVG9rZW46WGJHM2J1aVlvb0pCV3B4cjNvUmNNb3RsbnhkXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763644-1.png)
 
 截止目前，StarkWare  （StarkNet 背后团队）已经完成 6 轮融资，共计 2.73 亿美元。尤其是最近一轮融资金额达到 1 亿美元，使其估值翻了两番，达到 80 亿，是所有 L2 项目中估值最高的。Vitalik 是种子轮投资者，此外，投资方名单中还包括 Paradigm  、红杉资本  、Tiger Global、Founders Fund 等多轮投资者。
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGYwNTg2ZjhjYWU1NTE0MTVkMjZjYWE0OTgwYzNlNDJfbW85UUxqOVlyTGIybVhlYlBtWVNDSEQyRmd4bjRmMTNfVG9rZW46VU5HbGJCZHZvb2FsczB4eUJVamNTMWtObjBjXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763645-2.png)
 
 参考链接：https://mp.weixin.qq.com/s/VthPnsONmW8yywna0QzFQg
 
@@ -25,7 +25,7 @@ StarkWare 主要由世界顶级密码学家构成，
 
 **解决什么问题？-- 扩容**
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=MTA2OTM2Mjc2NTk0YTU3Y2QzZTk2OGU0YTlmNzdkOThfbmRZRHA1dlVuS3lhenl0a2tiRWRRUVp4U0VvR1h2NWJfVG9rZW46SWVZdWI2UXBRb25WdjB4OGFxNGNXazgzbmJiXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763645-3.png)
 
 在传统货币理论中存在“不可能三角”，即一国无法同时实现货币政策的独立性、汇率稳定与资本自由流动，最多只能同时满足两个目标，而放弃另外一个目标。
 
@@ -43,7 +43,7 @@ StarkWare 主要由世界顶级密码学家构成，
 
 对于以太坊而言，过去几年内关于以太坊扩容的方案不断出现。其主流的方案如下所示:
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=M2UyODRiNTU2NGJkNTRlMWU0ZGIwMmM0ZDNiNTU4MWRfU0xFVDlUSXdNeVVkRFR5Q2k4MTk3cmNFV3ltRnIxQ0FfVG9rZW46QXZIZWJERnBObzVEbnV4RWswWGMwV1VVbjdjXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763645-4.png)
 
 - 链上扩容：
   - 分片（Sharding）技术：Sharding一词本来源于数据库的术语，表示将大型数据库分割为很多更小的、更易管理的部分，从而能够实现更加高效的交互。区块链分片是指对区块链网络进行分片，从而增加其扩展性。根据最新的以太坊2.0规范，以太坊区块链会被分为1024个分片链，这也意味着以太坊的TPS将提高1000倍以上。但目前Sharding方案仍然在跨分片通信、欺诈识别、随机分配与选举安全性等方面存在不足。
@@ -61,25 +61,25 @@ StarkWare 主要由世界顶级密码学家构成，
 
 ### 基本概念
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmExZDg5NDAyMGQyZTlmN2U2OWNjMzg1YTY1MzRlMzFfeFdiUGptQ0R2OVRtRG1PUUw4bHp3NkRjMjJhOEQ1UGFfVG9rZW46Q0JRQmIyTHhSbzI1c3N4dmZMOWNWenVLbm1iXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763645-5.png)
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=OTBmNTVkYmZjZjlhOTU4MDEzNDU3YTkyNTkyNzFiNDVfQXVLdEZWM2h4Tm03d3dlalNZWjdhWUhFMVFHcVlycE9fVG9rZW46VEg0OGI3V1Bhb0Y3WFZ4T3lYS2N1Ym9ibjJkXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763645-6.png)
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=ODRlMmEzOTMxNDU1Y2IxZWQ2NTA5MGZhZTE3YTU3ZDlfR2ZTTWZZTGdvRDQ5aWVqbnh4dm9nM3hiRGZVdFFlcFlfVG9rZW46VzJ5N2JXMUlZb05yZU94b3F4dWNwQ3F2bmxlXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763645-7.png)
 
 ### Starknet中的哈希函数
 
 #### sn_keccak
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjQyZWMyODE4OTU3YjA5MzZiZWRlZDYxODhiNDQwZTVfNUVnZkxEekR5WkxndnZ1VjV1MWNQME12WDdFUjVRdmNfVG9rZW46UTFNOWJ0YkVEbzFsN0d4cGo3RGNFcE16bnFlXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763645-8.png)
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=N2I2ZTQzNzYxZDYzNDYyNDkwZjg3MzI4MThlNTY4NzBfZnBKUDA3Yld2YTRTN2tpaUE1eXF6NElpTVNLaU5xdHZfVG9rZW46SGZBdGIxWFRhb1UzY2N4bXFFWmNISzBTbnhlXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763645-9.png)
 
 The first 250 bits of the Keccak256 hash (this is just Keccak256 augmented in order to fit into a field element).
 
 #### **Pedersen hash**
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NTRhMmYzNWZhYWEwMTNmMDEwMjI4ZWU0MTQzZGVmZjdfTU44VjgwbmpqbThVTVFLUXpHOElaWHBNa09DcGFaUkhfVG9rZW46SE5odWJCMlBzb201Tm14Njlpb2NvaU94bmNjXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763645-10.png)
 
 ```Plain
 P0=(2089986280348253421170679821480865132823066470938446095505822317253594081284,
@@ -98,11 +98,12 @@ P4=(2379962749567351885752724891227938183011949129833673362440656643086021394946
 776496453633298175483985398648758586525933812536653089401905292063708816422)
 ```
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NTY4ZGIyYTdmYzFiYmM5NDI2ZjFmYzQ1MTQ1NDMxZDVfaUhmOENJYk1GcTdDWnp2OEJvMVRZTWxKeE1BZTgzdzBfVG9rZW46SjAyemJVWlFGbzRMSEV4TjdremNNcEhublVoXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-11.png)
 
 **用途**
 
 - Block Hash
+
   - 
 
   - ```Plain
@@ -120,7 +121,9 @@ P4=(2379962749567351885752724891227938183011949129833673362440656643086021394946
         parent_block_hash
     )
     ```
+
 - tx_hash
+
   - ```SQL
     deploy_tx_hash = ℎ(
         "deploy",
@@ -132,6 +135,7 @@ P4=(2379962749567351885752724891227938183011949129833673362440656643086021394946
         chain_id
     )
     ```
+
 - MPT树
 
 #### **Poseidon hash**
@@ -146,11 +150,12 @@ Poseidon函数是一种基于HADES permutation构建的海绵结构的哈希函�
 
 定义如下：
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NTI3NGNjMWVlMGFjMjJmYTgyYjI2OTU0ZmEwNzIwYzNfMGlxY21EZEMyNU11aVdYRjg5ZEdZSW1JU1ZiaGw4dzlfVG9rZW46VkQ2aWJPNDhBb083NVB4WkM1amNydkNlblNkXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-12.png)
 
 用途：
 
 - declare_v2_tx_hash 
+
   - ```SQL
     declare_v2_tx_hash = ℎ(
         "declare",
@@ -164,6 +169,7 @@ Poseidon函数是一种基于HADES permutation构建的海绵结构的哈希函�
         compiled_class_hash
     )
     ```
+
 - state_commitment 
 
 ## 零知识证明
@@ -202,7 +208,7 @@ Poseidon函数是一种基于HADES permutation构建的海绵结构的哈希函�
 
 #### ZK-Stark vs ZK-Snark
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=OTM1NDAxOGJkOGQyM2Q1Y2E0ZDRmMGI5Mjg1N2RmN2VfV3FiQWFqNWNBdjJ3dlA1TTVra21xYzhsY3lhYXRadVhfVG9rZW46UkpqYmJqSHJDb2lNbDN4TFBtaGN6dHNDblJiXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-13.png)
 
 - 相同点
   - 都实现了将隐私的输入可靠隐藏；
@@ -214,7 +220,7 @@ Poseidon函数是一种基于HADES permutation构建的海绵结构的哈希函�
   - zk-stark同样具有简洁性，但是是验证简洁性。所谓简洁性，通常是指即使验证程序很大，生成的proof size也不会很大，同时又能很快的完成验证（比native computation快很多）。相比对zk-snark，zk-stark的proof size要大的多，因此在简洁性上，zk-snark要胜一筹。
   - zk-stark有更简单的密码学假设，避免了对椭圆曲线、配对和指数知识假设的需要，纯粹依赖哈希和信息论，因此抗量子攻击。总体来讲 STARK 比 SNARK 更安全。
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NzExOWZkODllY2EyZGVhZWMzZTE4MzMwMzhiY2VjMzRfMlAzN0swSThOMWhkdENqc0NzbVBkWkhPN01qT3A5V0lfVG9rZW46UTF3S2JCZHVqbzJDMUd4OWNoVWM4OXhIbmVoXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-14.png)
 
 #### 扩展性详解
 
@@ -222,13 +228,13 @@ Poseidon函数是一种基于HADES permutation构建的海绵结构的哈希函�
 
 在 80 比特的安全级，STARK 每 12288 次哈希调用的证明者执行时间为 1 秒，得 12288次/S；而每 98304 次哈希调用需要 10 秒，得 9830次/S，因此，我们可以知道 STARK 的证明时间和哈希调用基本呈近似线性关系。如下图所示。
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=OWMwMWI5ZWUzOTJjZWZmMmU5MjY5ZTE5MGRkMDU3YTRfV1dVR0dwRHBDVU5HZnoxdjFXeWhITnkzdnIyS3Y1eFVfVG9rZW46U2RobmI4QWI4b05la3B4SFZXVmNlSTRVbnZXXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-15.png)
 
 https://eprint.iacr.org/2021/582.pdf
 
 **验证时间和证明大小对数扩展：验证时间（与证明大小）与哈希调用呈现对数关系。**如下图所示：
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NDU2YjQ4MzU4MDEzZTZhYzgxMGUwZTI5MzI5YzU1OGJfbzh2cnhRdjZLNHFtck5TOXN6UXBGMWhlWTFJVDM4OUZfVG9rZW46TVFPOGJFb2RRbzk3QWV4YnpZdGNmbDhxbnZnXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-16.png)
 
 左图可以看出，当哈希调用从 3072 增加到 49152，验证时间从 40 毫秒增加到 60 毫秒。而当哈希调用从 49152 增加到 786432，验证时间仅从 60 毫秒增加到 80 毫秒。证明大小同理。**因此，我们可得知，哈希调用次数越多，平均验证时间越短，平均证明大小也会更小（调用哈希生成哈希值/证明）。**
 
@@ -238,7 +244,7 @@ https://eprint.iacr.org/2021/582.pdf
 
 在理解递归证明的所有优势之前，需先了解当前SHARP采用的非递归证明方案：
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NmEwZDg2NzUzOWM3NDMzNTc1NzMxNmE2YWVhMjU1YzhfaWFLNDZ4b1kxRUo2Q3ZNR25XSVBpOGVBbXVPUlIzejhfVG9rZW46UmNqR2JRbUJvb3Z2RlF4NzlVbmNnNm1SbktlXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-17.png)
 
 随着statement到来，当达到某特定容量（或某时间）阈值，会生成一个大的combined statement（又名Train）。仅当收到所有独立statement之后，才会为combined statement生成证明。生成证明的时间将很长（约为 为每个statement独立生成证明的时间之和）。
 
@@ -258,7 +264,7 @@ Cairo用于表示通用计算statement，可由Prover用于生成STARK证明，�
 
 当实现了递归证明之后，当statement到来，无需等待，SHARP即可开始为其生成证明，这些证明将以多种模式不断合并为递归证明，直到某个点，最终的证明将提交到链上verifier contract：
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=YmM0OGU2ZDc5NzZiYjUyZGQxNzM4MTM5NzBmZDQwNjZfRzlGc0hYT1J2Tkk1QmtjeUxLWWxnNFU5OHNZeHlpRmFfVG9rZW46VzNOTGJ3VjZub25VWXF4M1dwSWNOQXIybkFmXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-18.png)
 
 如上图中，（可能源自4个不同来源的）4个statement发送给SHARP：
 
@@ -283,13 +289,13 @@ StarkEx 是一款 Layer2 扩展引擎，为 dApp 提供技术服务，可以将�
 
 ## 数据
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=MmYwYTMzNzkwNGVhZjU2OGUwYzQ3YzNmY2MwNzhiMDJfYUJYaURHYXEwbGRXNTB0dlJzWlE0U250NWMzN0hLWTdfVG9rZW46UXJ5ZGJJdk1YbzhqZGZ4Q1RDbmM4NWg2bjhiXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-19.png)
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NzhjNzI2MTc5MWE3ZmNhODJhNzJiOGVhNzE4OWJkYjBfVDhUdUpIV2FEVHJKelVDTFlvSjNQZGRRdDhuUnpiZGRfVG9rZW46VGdQR2JwRTRXb1VaUG14ZTVIMmN4cE5pbnpoXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-20.png)
 
 ## 整体架构
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=YjU3MzQ2OTliMmI3MzNlNzgyMTM4ZDVjODk1MWY1ZDBfS01FVVFiMXdvWVFnaHN5QTA2RnVhbVc4U1I2aVZHbUxfVG9rZW46WFFWMWJlSGl6b1lvNUJ4QmZSZWNXRzI1bkFjXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-21.png)
 
 组成部分：
 
@@ -317,7 +323,7 @@ StarkEx 是一款 Layer2 扩展引擎，为 dApp 提供技术服务，可以将�
 
 ## **StarkEx合约架构**
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=ODBiMzJiZGU3NzI0MjllMDQ4YTAwMGRhMzgxMmRhOTNfeEtnMXo4dVBqNXZBRTdmaDJxRjdmb20xZ3JUUTN6eGFfVG9rZW46RmpNUmJ6Q2tsb3BYclN4WURyWmMyUktJbmVlXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763646-22.png)
 
 ​     StarkEx 合约实现了去中心化的用户自托管资产，例如对于去中心化交易所的实现，StarkEx 合约允许用户在任何情况下能够有效的充值或提款。另外，StarkEx 合约也保存了每次从链下提交的合法的状态（以 Merkle树哈希的形式保存）。 **组成部分：**
 
@@ -338,11 +344,9 @@ StarkEx 是一款 Layer2 扩展引擎，为 dApp 提供技术服务，可以将�
   - 流程：
     - 在第一阶段，fact和相应的witness传递给注册表合约，它验证有效性并将事实添加到集合中。
     - 在第二阶段，当调用应用程序合约时，它调用注册表合约来检查fact的有效性。
-  - ![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=YjA5YzQxMTU2YmE0NTUzMmVjNzI0MzdjYTNmYzQ1ZjRfS0NlZXBESmdvWldzT0dkOVZSQzI1SGpVazl4dGFTQlhfVG9rZW46SHREdWJnQ01jb2lON1l4VUZVWmNpeVU1bldkXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
-
+  - ![](./starknet_fundamentals.assets/1700999763646-23.png)
   - Trade Off
     -   使用注册表合约会增加一些存储和通信的开销，当验证语句的总成本（计算和 calldata）较低时，使用注册表合约可能会增加不可忽略的 gas 成本开销，在这种情况下，我们直接将验证过程放在应用合约中更好。然而，当验证的成本较高时，这些开销变得微不足道，并且使用所提议的设计模式有许多优点：
-
     - 应用程序合约和注册表合约之间的清晰分离，包括能够升级其中一个而不更改另一个的能力；
     - 将 gas 成本分摊给不同的参与方。当一个参与方应支付用于验证语句的 gas 成本，而另一个参与方应支付用于引用验证的事实的应用程序合约的 gas 成本时，这是很有用的。
     - 多次重用Fact（即缓存）；
@@ -352,12 +356,12 @@ StarkEx 是一款 Layer2 扩展引擎，为 dApp 提供技术服务，可以将�
 
 ## **StarkEx后端架构**
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NjRiY2YyZjAzMzdiYmE2YWI5NjE4NjI4ZGRmMWUzYWNfVzlyUmd5WVB1VUp2VnlHUlcxb25qRFFTWEhlTjl4UFdfVG9rZW46TmxBdGI1VVdlb1RCbDB4VFhGSWNwRWM4bkdmXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-24.png)
 
 - Gateway网关：接收来自应用方的交易，并且把交易排序到队列中。
 - Batching & Validation：批量发送交易并验证：负责一个batch一个batch的批量发送交易，并且保证每个子交易的合法性（例如，同时检查链下和链上状态，用户的余额是否充足）。每个batch的状态依赖前一个batch的执行情况，如果前一个batch执行失败例如链上回滚，那么后面batch的执行依赖再前一个batch的执行状态（例如下图中的batch4，原本应该在batch3之后执行，但是batch3执行失败，使得batch4自动接在batch2后面执行）。
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NWMwZjhmYjMyMzE5YWUxMDc1NGUyMDk5MzY1NmM4NzRfaER0MUhRMkNaSURkQ1pyYm01MksyelpBWUpwRWNmaXZfVG9rZW46RWRvS2JnR2o0bzJQaGp4R1RzWWNCakM4bkJiXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-25.png)
 
 - Batches Info (Feeder)：一个外部监视器，用来监听batch中的交易数据。
 - Change Approval Gateway：为了保持 StareWare 后端保存的数据和应用（例如dydx交易所）数据的一致性，同时为了保证链下数据可用性。采用了第三方 approver 进行对batch交易数据进行签名的方式，来保证batch数据的有效性。
@@ -370,7 +374,7 @@ StarkEx 是一款 Layer2 扩展引擎，为 dApp 提供技术服务，可以将�
 
  任何合作项目方集成 StarkEx 服务，可以参考下面的架构图（去中心化交易所的架构图dydx为例）。StarkEx 能接收合作方后端发来的交易，使用 zk rollup 批量提交上链，提高交易TPS，减少每笔交易的手续费，提升用户体验。
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=ODcwMjFlMmJjYzMxOGRkMGQwY2U3MTgzZjdhZDVhMTdfY0NNYlgwdzVUMXluVllsQWkxVnpObTV5T1VWaGpNZUhfVG9rZW46Uk1nZGIyVHUwb2RYQW54ZHdORGM3UEJFbkpMXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-26.png)
 
 **组成部分：**
 
@@ -387,6 +391,12 @@ StarkEx 是一款 Layer2 扩展引擎，为 dApp 提供技术服务，可以将�
 
 # StarkNet：通用 ZKR 
 
+https://book.starknet.io/ch03-02-sequencers.html
+
+https://book.starknet.io/chapter_3/index.html
+
+优先看下面的
+
 ## 简介
 
 不同于为不同的应用定制 ZK Rollup 的 StarkEx，StarkNet是一个通用的ZK Rollup，开发者可在 StarkNet 上部署应用。
@@ -401,7 +411,7 @@ StarkNet网络中主要有三个组成部分：
 
 同时，还有部署在L1以太坊上的验证者合约（Verifier，验证zk-Stark Proof）和核心状态合约（StarkNet Core）。
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NTYwYjdiYTdjY2VkNmY1NGU4MGJiZmU4ZGZkNjZhMjNfVVVSS0RQWlJacVdVNXE2ZGVOeTY2YmJ1V0p6WE5VTU9fVG9rZW46Rlc3dGJHcG9lb0JtZ3N4Yk9mcGMyWkRmbnpkXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-27.png)
 
 https://david-barreto.com/starknets-architecture-review/
 
@@ -440,17 +450,17 @@ StarkNet L1 Core Contract 储存着 L2 上状态们的证明，大家常常说 R
 
 **StarkNet vs Hermez**
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTljNzRkYjZmNjE0NDU1MjUxMTY1NWNjMmY3MGEwMTBfeXZPSXhuYm1KQkwxUXdYTjRNMWVOU09uMG1Hc0lPZHZfVG9rZW46Rk1Xc2IyMVNEb3FtSlJ4aFFiWmNkcGxobmtkXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-28.png)
 
 ## 交易生命周期
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=YTkwZWRjOGIxNDg5YWFkMTY1NGFhMWU1NDlkOTFlYjhfMmdmYTROUmhZZkVoWDl2ZEVBRm9MN0NiYXFwU1ZZR0dfVG9rZW46TE9qWWJxQzBlb3ZabWp4aWI3Q2NWY2UxbmlmXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-29.png)
 
 ## EVM 兼容
 
 ZK-Rollup早期为人诟病的地方是不能兼容 EVM，不能支持智能合约功能，例如早期 Gitcoin 捐赠主要支付途径的 zkSync 1.0 仅能支持转账等基本功能。同时，由于不同 ZK 应用有各种专用电路，无法相互调用，可组合性差。因此市场急需能够支持以太坊智能合约的ZK-Rollup，而其中关键门槛就是能够支持零知识证明的虚拟机。随着引入 EVM 兼容的 zkVM，zk-rollups 才开始支持以太坊 dApps。
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=YjBjYjlkNmQzODhiMTgwYTViY2EzNTVlZGM5ZTAzM2VfMmw1S1NjZTJLYm1nZFg3OWFjb091TmtoSDFEUVB4WUJfVG9rZW46R1JnUGJoS1BtbzY1T0p4ZVBza2NPZmpMbnlkXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-30.png)
 
  Credit:Zhangye@scroll
 
@@ -475,7 +485,7 @@ Starkware 的 ZK-Rollup 通用解决方案 StarkNet 可以运行任意的以太�
 
 类似 Starkware，zkSync 2.0 通过开发编译器前端 Yul 和 Zinc 来实现 ZK-EVM 功能。Yul 是一种中间 Solidity 表示，可以编译为不同后端的字节码。Zinc 是用于智能合约和通用零知识证明电路的基于 Rust 的语言。它们都是基于开源框架 LLVM，能够实现最高效的 ZK-EVM 字节码。
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=M2RiMmU3OGI3NTQ1MWFkNzhjNDQ5NWM3MjNlNmVlNzlfdTBaRmxzdkhySk84ZkJOdm9aSGgyellnYkRyU1JYTVFfVG9rZW46Rjd3TGJWMHV5b3VOQkZ4U0lIbmNYbGpnbkZnXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-31.png)
 
 https://miro.medium.com/max/1400/0*S3TKmlfGRTx5MNkE
 
@@ -495,7 +505,7 @@ https://github.com/privacy-scaling-explorations/zkevm-circuits
 
 **Which is better?**
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDZlYzllYTNjYjdkZjE0MGVlOGY0ZWUzZmUxMWQ3OWFfa3Nxb2ZiRkhGYllvbURJVHdVQmJnNVd0dFR6MUh6ZHRfVG9rZW46S2piT2I0TlNJb1gwUml4aGh0UWMyN2dSblVoXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-32.png)
 
 https://vitalik.ca/general/2022/08/04/zkevm.html
 
@@ -503,7 +513,7 @@ https://vitalik.ca/general/2022/08/04/zkevm.html
 
 **从理论上讲，以太坊不需要为 L1 使用单一的 ZK-EVM 实现进行标准化；不同的客户可以使用不同的证明，因此我们继续从代码冗余中受益。**— Vitalik Buterin
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=YTg0M2Q1ODg4MmM2OTc3ZWUxODQ3OWY4NTU1OWMyOGJfalliRXBMM2hvS1BhbTJORVcxZndtclBlMmp5M0ZSNFdfVG9rZW46RGdkemIzUndtb3lSQU14VFRPU2NpNUJFbkpnXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-33.png)
 
 **StarkNet 网络本身不兼容 EVM，而设计了另外一套 ZK 友好的 Cairo VM。**
 
@@ -515,13 +525,13 @@ StarkNet 属于 Vitalik 定义的 type 4 级别——语言兼容的 zkEVM（Sta
 
 1、[Warp](https://github.com/NethermindEth/warp)：将 Solidity 转译为 Cairo 语言的转译器
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=YzI5OWNmZmVkZGRkYTFlYTc2NzhmYjAzMGVkZmMzYTBfRDlIZXpoeVhzZjgycE1CYU5RU3ZaT2IzOWdkOWNPR1ZfVG9rZW46T3NnWGJEaEFxb1k4NHZ4eWJXd2NrYkJLblpkXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-34.png)
 
 Warp 是一个 Solidity-Cairo 转译器，目前已经由以太坊著名基础设施团队 [Nethermind](https://twitter.com/nethermindeth) 开发完成。Warp 可以把 Solidity 代码转译为 Cairo，但转译后的 Cairo 程序往往需要修改并增添 Cairo 特性（如调用内置函数，优化内存等）才能最大化执行效率。
 
 2、[Kakarot](https://twitter.com/KakarotZkEvm)：一个用 Cairo 语言编写的 zkEVM
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=MWY2NmZlODk5OTZjMzc1YzhkOGZhMzlkMDE4YTc3NjdfMTA2a2NCOTdqUUprYjJydXBUQ3NFcmVERUtXVmFFQTdfVG9rZW46Qk1FV2JWdUtIb2FtSjN4aUU5ZWNnelpobnpiXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-35.png)
 
 Kakarot 是一个用 Cairo 写的智能合约，目前部署在 Starknet（goerli测试网）上，字节码等效 EVM。目前处于测试阶段。以太坊应用可以通过部署到 Kakarot 的方式移植到 StarkNet。
 
@@ -530,7 +540,7 @@ Kakarot 是一个用 Cairo 写的智能合约，目前部署在 Starknet（goerl
 
 目前已经支持 EVM 全部操作码。
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGE3MDRhMWU5ODU3NmNmZjUyYmY4ZTU0ZTZjZTRkMzJfNDg3RGFMVFU0TlBkeXZBRFo5cEt3aUJhT1h2YnJEOWVfVG9rZW46UjRZb2J3cWRtbzJ6dml4SWpEY2NiREpabmNiXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-36.png)
 
 https://github.com/sayajin-labs/kakarot
 
@@ -538,7 +548,7 @@ https://github.com/sayajin-labs/kakarot
 
 为通用计算程序创建有效性证明，需要深入了解 STARKs 背后的复杂数学原理。对于每项计算，构建一个代数中间层表示（AIR）至关重要，它包含了一组多项式约束，能够准确地描述给定的计算。Cairo 最初被称为 「CPU AIR」，是一个虚拟 CPU 和一个单一的 AIR，能够用相同的「通用」 AIR 描述任何计算。Cairo VM 专门为有效性证明系统量身定制，并不受 EVM （以太坊虚拟机）所施加的限制所约束。
 
-![img](https://u0p9kera3v.feishu.cn/space/api/box/stream/download/asynccode/?code=NDE4MTVhNDg1MDA4YTUyNmE4MmI2ZmRiOTA2YzI2MDBfb0h3SFBtb0EzUzdaQU5hOWZaRzlpUlozY3BJQ0NLeG5fVG9rZW46WW42cmJYREM3b2JPeUN4aXhuSmNKZjRqbmtnXzE3MDA5MjQxNTQ6MTcwMDkyNzc1NF9WNA)
+![](./starknet_fundamentals.assets/1700999763647-37.png)
 
 ### CASM
 
