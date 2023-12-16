@@ -1,0 +1,16 @@
+{
+  "name": "wtf_starknet_example",
+  "version": "1.0.0",
+  "description": "WTF starknet erc721 example",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "miracle",
+  "license": "ISC",
+  "dependencies": {
+    "starknet": "^5.24.3"
+  }
+}
