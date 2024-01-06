@@ -34,10 +34,11 @@ npm install starknet
 
 `Provider` allows you to interact with the Starknet network, without signing transactions or messages.
 
+After Starknet v0.12.3, the Starknet feeder gateway was replaced by Starknet full nodes (Pathfinder, Juno, Papyrus, etc). You can get full-nodes & RPC services [here](https://www.starknet.io/en/ecosystem/fullnodes-and-rpc-services).
+
 ```js
-const provider = new Provider({ sequencer: { network: 'goerli-alpha' } }) // for testnet 1
-// output chainId
-console.log("Chain ID: ", await provider.getChainId());
+const provider = new RpcProvider({nodeUrl: `https://rpc.starknet-testnet.lava.build`});
+console.log("ChainID:", await provider.getChainId());
 ```
 
 ## 3. Account
@@ -47,10 +48,11 @@ It is similar to `Wallet` in ethers.js, but different since all accounts are abs
 
 ```js
 const privateKey = process.env.PRIVATE_KEY;
-console.log(privateKey)
-const accountAddr = "0x06b59aEC7b1cC7248E206abfabe62062ba1aD75783E7A2Dc19E7F3f351Ac3309";
-const starkKeyPair = ec.getKeyPair(privateKey);
-const account = new Account(provider, accountAddr, starkKeyPair);
+const address = process.env.ADDRESS;
+const account = new Account(provider, address, privateKey);
+
+// If this account is based on a Cairo v2 contract (for example OpenZeppelin account 0.7.0 or later), do not forget to add the parameter "1" after the privateKey parameter
+// const account = new Account(provider, address, privateKey, '1');
 ```
 
 ## 4. Get Account Nonce
