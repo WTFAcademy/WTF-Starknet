@@ -1,0 +1,31 @@
+[package]
+name = "wtf_starknet_example"
+version = "0.1.0"
+
+# See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
+
+[dependencies]
+starknet = ">=2.2.0"
+openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.8.0" }
+
+[release]
+
+
+[[target.starknet-contract]]
+sierra = true
+# Enable CASM codegen.
+casm = true
+# Emit Python-powered hints in order to run compiled CASM class with legacy Cairo VM.
+casm-add-pythonic-hints = false
+
+# Enable allowed libfuncs validation.
+allowed-libfuncs = true
+# Raise errors instead of warnings if disallowed libfuncs are found.
+allowed-libfuncs-deny = false
+# Reference to the libfuncs allowlist used for validation.
+# - Use `allowed-libfuncs-list.name` to use built-in named allowlist.
+# - Use `allowed-libfuncs-list.path` to read an allowlist from file.
+
+# Emit Starknet artifacts for contracts defined in dependencies.
+build-external-contracts = []
+

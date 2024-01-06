@@ -1,0 +1,262 @@
+---
+title: 3. Toolings
+tags:
+  - cairo
+  - starknet
+  - protostar
+  - argent
+  - contract
+  - wtfacademy
+---
+
+import QuizProgress from '@site/src/components/QuizProgress';
+import QuizForm from '@site/src/components/QuizForm';
+import {CourseId, Lesson_3} from "@site/src/constants/course";
+
+<QuizProgress courseId={CourseId} lessonId={Lesson_3}></QuizProgress>
+
+# WTF Starknet 3: Herramientas de desarrollo
+
+## 1. Protostar
+
+Protostar es una herramienta para desarrollar y probar contratos de Starknet, parecido a Foundry en Solidity, que nos permite crear pruebas utilizando el lenguaje Cairo.
+
+En la sección "Abstracción de cuenta", les mostramos cómo crear su cuenta con Argent Wallet. Entonces, hoy vamos a aprender cómo configurar para usar esta billetera con protostar. Si tiene dudas, puede consultar la documentación oficial [aquí](https://docs.swmansion.com/protostar/docs/tutorials/introduction)
+
+Para instalar protostar, primero debemos obtener el entorno brew, python3.9 y Cairo-lang en nuestra computadora. Abra la terminal y use el siguiente comando:
+
+- Para instalar brew: 
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
+```
+
+- Para instalar python3.9:
+
+	- Using brew: 
+``` 
+brew install python@3.9
+```
+
+	- Desde la página oficial de python: 
+```
+https://www.python.org/downloads/release/python-390/
+```
+
+- Instalando gmp: 
+```
+brew install gmp
+```
+
+- Instalando el paquete de cargo-lang python: 
+```
+pip3 install cairo-lang
+```
+
+Ahora, vamos a instalar protostar para poder usarlo con un nuevo proyecto de Cairo. Copia y corre en tu terminal los siguientes comandos:
+
+```
+curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash
+```
+
+Reinicia tu terminal y verifica que la instalación está completa ejecutando el siguiente comando:
+
+```
+protostar -v
+```
+
+### 1.1 Configurar un nuevo proyecto usando protostar.  
+
+Para inicializar un nuevo proyecto, ejecuta el siguiente comando: 
+```
+protostar init your-project-name
+```
+
+Con este comando se generan 3 carpetas: 
+- src: donde almacena nuestro código fuente.
+- lib: esta carpeta se crea por defecto para administrar las dependencias externas.
+- tests: para almacenar los test.
+
+Además, `protostar.toml` es el archivo que contiene los comandos de configuración. Con base en la documnetación oficial, se puede usar para evitar el paso de argumentos cada vez que se ejecuta un comando. Protostar busca por un valor del argumento en la sección `["protostar.COMMAND_NAME"]`, por ejemplo: 
+
+```
+["protostar.build"]
+cairo-path = ["./lib/cairo_contracts/src"]
+```
+
+Colocamos nuestro código fuente en la carpeta "src" y ahora podemos crear los tests.
+
+### 1.2 Test en protostar
+
+Protostar provee un entorno flexible para realiazar los tests para los contratos inteligentes que se escriben en Cairo. Cuando queremos hacer un test para evaluar una función, se debe crear un nuevo archivo con el nombre `test_[FUNCTION_NAME].cairo` en el directorio correspondiente; este archivo contiene un solo test. 
+
+Para ejecutar nuestros tests, se ejecuta el comando:
+```
+protostar test ./tests
+```
+
+Después de que nuestro contrato pase el test, podemos compilar nuestro código fuente como se muestra a continuación:  
+
+```
+protostar build
+```
+
+Una vez que termina la ejecución del comando anterior, se obtiene:
+```
+Building projects' contracts                                                                                                                                
+Class hash for contract "main": 0x63c8113870a0028905684995a4b64460287a0e4c816e93ce70f9327316d3ea3
+17:52:32 [INFO] Execution time: 6.07 s
+```
+
+Si es la primera vez que se usa protostar, es necesario desplegar la cuenta usando el comando `protostar calculate-account-address`: 
+
+```
+protostar calculate-account-address --account-class-hash [ACCOUNT_CLASS_HASH] --account-address-salt 1 
+```
+El valor del parámetro `[ACCOUNT_CLASS_HASH]` se obtiene cuando creamos nuestra cuenta en ArgentX (puedes ver como crear esta cuenta en la sección de "Abstracción de Cuenta") y lo podemos visualizar en Starkscan o Voyager usando nuestra dirección de cuenta. Despues de ejecutar el comando `protostar calculate-account-address`, tenemos: 
+
+```
+Address: 0x00b89a4302ea68352488fe1bcc9b0e01cd71dc4d630e5e69194c9e60084996fe                                                                                 
+17:55:47 [INFO] Execution time: 2.57 s
+```
+
+Además, necesitamos exportar la llave privada de nuestra cuenta. Verificamos la variable de entorno `PROTOSTAR_ACCOUNT_PRIVATE_KEY` y la usamos si está disponible.
+
+```
+export PROTOSTAR_ACCOUNT_PRIVATE_KEY=[PRIVATE_KEY_FROM_ARGENTX_WALLET] 
+```
+
+Ahora, se declara el contrato `json`: 
+
+```
+protostar declare ./build/main.json --account-address [ACCOUNT_ADDRESS_FROM_ARGENTX_ WALLET] —max-fee auto —network testnet 
+```
+
+El resultado de este comando es:
+```
+Declare transaction was sent.                                                                                                                               
+Class hash: 0x063c8113870a0028905684995a4b64460287a0e4c816e93ce70f9327316d3ea3 <----- MANTEN ESTE VALOR
+StarkScan https://testnet.starkscan.co/class/0x063c8113870a0028905684995a4b64460287a0e4c816e93ce70f9327316d3ea3
+Voyager   https://goerli.voyager.online/class/0x063c8113870a0028905684995a4b64460287a0e4c816e93ce70f9327316d3ea3
+
+Transaction hash: 0x045877346ba1ea22a15012e4a028c33196592c35d3d0f94471744fd8c52cbc22
+StarkScan https://testnet.starkscan.co/tx/0x045877346ba1ea22a15012e4a028c33196592c35d3d0f94471744fd8c52cbc22
+Voyager   https://goerli.voyager.online/tx/0x045877346ba1ea22a15012e4a028c33196592c35d3d0f94471744fd8c52cbc22
+18:00:50 [INFO] Execution time: 11.63 s
+```
+
+Con este último comando, obtenemos el `[CLASS_HASH]` que se usa para desplegar el contrato en la red de prueba: 
+```
+protostar deploy [CLASS_HASH] --network testnet --max-fee auto --account-address [ACCOUNT_ADDRESS_FROM_ARGENTX_ WALLET]
+```
+
+Se obtiene: 
+```
+Invoke transaction was sent to the Universal Deployer Contract.                                                                                             
+Contract address: 0x03af31eac66655778fe4cd6614416657557dc685c703e020a10477a656e2ca42
+StarkScan https://testnet.starkscan.co/contract/0x03af31eac66655778fe4cd6614416657557dc685c703e020a10477a656e2ca42
+Voyager   https://goerli.voyager.online/contract/0x03af31eac66655778fe4cd6614416657557dc685c703e020a10477a656e2ca42
+
+Transaction hash: 1069811621407037610972459756819955221880607029463709887313447568671420675488
+StarkScan https://testnet.starkscan.co/tx/0x025d7dee76458b782d106006f6d0bf8337b8854f7f2c1433053fbb999b4375a0
+Voyager   https://goerli.voyager.online/tx/0x025d7dee76458b782d106006f6d0bf8337b8854f7f2c1433053fbb999b4375a0
+18:05:52 [INFO] Execution time: 4.61 s
+```
+
+Hasta ahora hemos aprendido como usar protostar para trabajar en cada uno de nuestros proyectos. Continuemos aprendiendo Cairo/Starknet y hablemos sobre ERC721.
+
+## 2. ERC721 en Starknet
+
+El estandár ERC721 es usado para representar "non-fungible tokens". El caso de uso más popular ha sido PFP (Imagen de perfil) NFT, comúnmente utilizado para crear identidades digitales en línea. Otros casos de uso incluyen tokenización de activos digitales, recuerdos para experiencias y arte digital. Gracias a OpenZeppelin, quienes desarrollaron una implementación ERC721 con Cairo, el cual soporta cualquier caso de uso que se pueda realizar con la implementación de Solidity.
+
+### 2.1 Como desplegar un ERC721
+
+Para desplegar un ERC721, usaremos el siguiente [contrato de OpenZeppelin](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.5.0/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo) para trabajar y desplegar en la red de prueba.
+
+Nota: Estaremos usando la CLI (Command Line Interface, por sus siglas en inglés) oficial de Starknet. Primero necesitamos crear la cuenta y obtener fondos. Ejecutamos los siguientes comandos:
+
+``` 
+starknet new_account
+```
+
+Vamos al goerli faucet y obtenemos algunos fondos, necesarios para desplegar nuestra cuenta. Ya que tenemos fondos, se realiza el despliegue de la cuenta:
+```
+deploy_account 
+```
+
+Ahora, para construir el contrato ERC721, creamos un nuevo archivo para copiar el [contrato de OpenZeppelin](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.5.0/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo), lo guardamos y lo compilamos con el siguiente comando: 
+
+```
+starknet-compile contracts/ERC721_exercise01.cairo --output contracts/artifacts/ERC721.json
+```
+
+Si todo va bien, debemos verificar los parámetros que espera nuestro constructor; los cuales son 3 argumentos: "name", "symbol" y "owner", estos argumentos son declarados de tipo felt, pero nosotros vamos a definir "name" y "symbol" como string y despues convertirlo al tipo felt usando el archivo "utils.py" que Starkware proporciona con algunas funciones de ayuda para la ejecución de nuestro programa. El arhivo se encuentra disponible en el siguiente enlace [aqui](https://github.com/hasselalcala/workshop_ERC721_Starknet/blob/main/utils.py)
+
+Ejecutamos lo siguiente:
+
+```
+python -i utils.py
+
+str_to_felt("ANIMAL") 
+$ 71804493054284 <--- argumento 1 
+
+str_to_felt("ANI") 
+$ 4279881 <--- argumento 2 
+
+hex_to_felt("0x01432C1d26d4b210A8cd7e3418F5aad4886FCA75b579da88D73c3C0902E192dD") <---- Usamos nuestra dirección de argent wallet 
+$ 570996064690495235118339479854624184141230437508569589214736207591531188957 <--- argumento 3
+```
+
+Con estos argumentos, podemos declara y desplegar nuestro contrato, como sigue: 
+
+```
+starknet declare --contract contracts/artifacts/ERC721.json --account=[ARGENT_WALLET_ADDRESS] --network alpha-goerli --no_wallet --sender [ARGENT_WALLET_ADDRESS] --max_fee 1
+```
+
+Obtenemos el "class hash" del contrato, el cual se usa para desplegar el contrato: 
+
+```
+Declare transaction was sent. 
+Contract class hash: 0x4769fe9a34a934c169acbc3cb4d7e0a14c66545ca2eed0df9ab658c1015e596 <-- use this value to deploy the contract Transaction hash: 0x2f5d5541776af32faf248458dd728e4c43e92d1b36ecfcd1acb733432782d96
+```
+
+Ejecutamos el siguiente comando para desplegar el contrato:
+
+```
+starknet deploy --inputs 71804493054284 4279881 570996064690495235118339479854624184141230437508569589214736207591531188957 --network alpha-goerli --class_hash 0x4769fe9a34a934c169acbc3cb4d7e0a14c66545ca2eed0df9ab658c1015e596
+```
+
+Una vez que el contrato fue desplegado, podemos usar voyager para "mintear" un nuevo token usando la dirección para definir el dueño del token y el token_id.
+
+## 3. Desplegar un contrato usando Argent Wallet
+
+Ya que nos hemos familiarizado con escribir y compilar contratos en Cairo, podemos usar nuestra Argent Wallet para declarar y desplegar un contrato. Abrimos Argent X, damos click en el icono de "settings" que se ubica arriba a la derecha, seleccionamos la opción "Developer settings" y "Smart contract development"
+
+![Argent Wallet Settings](./img/argent_wallet_01.png)
+
+!["Developer Settings"](./img/argent_wallet_02.png)
+
+!["Smart contract development"](./img/argent_wallet_03.png)
+
+Para desplegar un contrato, obtenemos el "class hash" cuando declaramos el contrato. Para declarar el contrato, seleccionamos “Declare smart contract”, pero primero debemos compilar nuestro contrato para obtener el archivo `.json`. Para compilar nuestro contrato `ERC721.cairo`, ejecutamos en la terminal:
+
+````
+starknet-compile contracts/ERC721_exercise01.cairo --output contracts/artifacts/ERC721.json --abi contracts/artifacts/ERC721_abi.json
+````
+Entonces, regresamos a nuesra Argent Wallet, elegimos "Declare smart contract" -> click en "upload contract json" y seleccionamos nuetro `ERC721_abi.json`, elegimos una red y nuestra cuenta.
+
+!["Declare smart contract"](./img/argent_wallet_04.png)
+
+!["Upload contract json"](./img/argent_wallet_05.png)
+
+Ya que declaramos el contrato, podemos desplegarlo y nuevamente seleccionar la red y la cuenta en la que se desplegará el contrato. Una vez que haya hecho eso, los campos de entrada del constructor aparecerán automáticamente. Complete los parámetros del constructor y elija un "salt" aleatorio (5 en nuestro caso).
+
+!["Upload contract json"](./img/argent_wallet_06.png)
+
+También podemos usar una dirección única y finalmente presionar el botón de "Deploy". Firmamos la transacción y serás redirigido a una pagina con la dirección del contrato que fue desplegado. 
+Después de implementar su contrato en Starknet, puede usar Voyager/Starkscan para interactuar con él.
+
+## 4. Resumen
+
+![Resumen](./img/summary_2.png)
+
+<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLSdGCStMqRq1rvDv_fRF7poL8MvZvMT_YddCQE0mchKk4HnKcw/viewform?usp=sf_link"}></QuizForm>

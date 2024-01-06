@@ -13,11 +13,11 @@ export default function Root({children}) {
     const [uid, setUid] = useState(undefined);
 
     return (
-        <StarknetConfig connectors={connectors}>
-            <GlobalContext.Provider value={{uid, setUid}}>
-                {children}
-                <Toaster position="top-center" />
-            </GlobalContext.Provider>
-        </StarknetConfig>
+      <StarknetConfig autoConnect connectors={connectors}>
+        <GlobalContext.Provider value={{ uid, setUid }}>
+          {children}
+          <Toaster position="top-center" />
+        </GlobalContext.Provider>
+      </StarknetConfig>
     );
 }
