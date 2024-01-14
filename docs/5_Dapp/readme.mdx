@@ -14,6 +14,8 @@ tags:
 import QuizProgress from '@site/src/components/QuizProgress';
 import QuizForm from '@site/src/components/QuizForm';
 import {CourseId, Lesson_5} from "@site/src/constants/course";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <QuizProgress courseId={CourseId} lessonId={Lesson_5}></QuizProgress>
 
@@ -21,7 +23,7 @@ import {CourseId, Lesson_5} from "@site/src/constants/course";
 
 You will learn how to use `get-starknet` and `starknet-react` to build a simple dApp for minting NFTs on Starknet. 
 
-A [demo](https://starknetfinal.kongtaoxing.repl.co/)
+You can find a  [demo](https://wtf-starknet-dapp-demo.vercel.app/) here.
 
 ![](img/5-1.png)
 
@@ -47,16 +49,25 @@ This will start a command-line interface that will guide you through the process
 1. Navigate to the project directory where you want to install the library.
 2. Run the following command to install the `get-starknet` library:
 
-```bash
-# using npm
-npm install get-starknet starknet@next
+<Tabs>
+  <TabItem value="npm" lable="npm" default>
+    <pre>
+    npm install get-starknet starknet
+    </pre>
+  </TabItem>
+  <TabItem value="yarn" lable="yarn" default>
+    <pre>
+    yarn add get-starknet starknet
+    </pre>
+  </TabItem>
+  <TabItem value="pnpm" lable="pnpm" default>
+    <pre>
+    pnpm add get-starknet starknet
+    </pre>
+  </TabItem>
+</Tabs>
 
-# (alternative) using yarn
-yarn add get-starknet starknet@next
-
-# (alternative) using pnpm
-pnpm add get-starknet starknet@next
-```
+<br/>
 
 That's it! You should now be able to use the `get-starknet` library in your project.
 
@@ -149,9 +160,24 @@ The starknet-react library includes a set of pre-built hooks for common tasks su
 
 Install `starknet-react` and its dependencies using the following command: 
 
-```bash
-npm install @starknet-react/core get-starknet starknet
-```
+<Tabs>
+  <TabItem value="npm" lable="npm" default>
+    <pre>
+    npm install @starknet-react/core starknet
+    </pre>
+  </TabItem>
+  <TabItem value="yarn" lable="yarn" default>
+    <pre>
+    yarn add @starknet-react/core starknet
+    </pre>
+  </TabItem>
+  <TabItem value="pnpm" lable="pnpm" default>
+    <pre>
+    pnpm add @starknet-react/core starknet
+    </pre>
+  </TabItem>
+</Tabs>
+
 
 ### 2. Usage
 
