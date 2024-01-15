@@ -181,25 +181,61 @@ Install `starknet-react` and its dependencies using the following command:
 
 ### 2. Usage
 
-Before using hooks of `starknet-react`, you need to import following statements to `_app.jsx` file.
+Before using hooks of `starknet-react`, You need to configure the `Provider.jsx` file like the following.
 
-```javascript
-import { StarknetConfig, InjectedConnector } from '@starknet-react/core'
+```javascript title="Provider.jsx"
+import React from "react";
+
+import { sepolia, mainnet, goerli } from "@starknet-react/chains";
+import {
+  StarknetConfig,
+  publicProvider,
+  argent,
+  braavos,
+  useInjectedConnectors,
+  voyager
+} from "@starknet-react/core";
+
+export function StarknetProvider({ children }) {
+  const { connectors } = useInjectedConnectors({
+    // Show these connectors if the user has no connector installed.
+    recommended: [
+      argent(),
+      braavos(),
+    ],
+    // Hide recommended connectors if the user has any connector installed.
+    includeRecommended: "onlyIfNoConnectors",
+    // Randomize the order of the connectors.
+    order: "random"
+  });
+
+  return (
+    <StarknetConfig
+      chains={[mainnet, sepolia, goerli]}
+      provider={publicProvider()}
+      connectors={connectors}
+      explorer={voyager}
+    >
+      {children}
+    </StarknetConfig>
+  );
+}
 ```
 
 Then edit the application component to include the Starknet provider.
-```javascript
-function AppContainer({ Component, pageProps }) {
-  const connectors = [
-    new InjectedConnector({ options: { id: 'braavos' }}),
-    new InjectedConnector({ options: { id: 'argentX' }}),
-  ]
-  return (
-    <StarknetConfig connectors={connectors}>
-      <App {...pageProps} />
-    </StarknetConfig>
-  )
-}
+```javascript title="main.jsx or other name"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { StarknetProvider } from "./Provider";
+import App from "./App";
+
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
+  <StarknetProvider>
+    <App />
+  </StarknetProvider>
+)
 ```
 
 ### 3.Hooks
@@ -211,83 +247,115 @@ function AppContainer({ Component, pageProps }) {
 Examples:
 
 ```javascript
-function GetWallet() {
-  const { account, address, status } = useAccount()
+import { useAccount } from "@starknet-react/core";
 
-  if (status === 'disconnected') return <p>Disconnected</p>
-  return <p>Account: {address}</p>
+export default function Component() {
+  const { account, address, status } = useAccount();
+
+  if (status === "disconnected") return <p>Disconnected</p>;
+  return <p>Account: {address}</p>;
 }
 ```
 
-#### `useConnectors`
+#### `useConnect` and `useDisconnect`
 
-`useConnector` provides ways to interact with the connectors. Please notice that the available connectors are computed as soon as the hook is rendered, which could happen *before* the browser wallets had the opportunity to inject themselves in the page. You should periodically refresh the available connectors.
+`useConnect` and `useDisconnect` provide ways to interact with the connectors.
 
 Example:
 
 ```javascript
-function ConnectWallet() {
-  const { connect, connectors, disconnect, available, refresh } = useConnectors()
+// useConnect
+import { useConnect } from "@starknet-react/core";
 
-  useEffect(() => {
-    // refresh all available connectors every 5 seconds
-    const interval = setInterval(refresh, 5000)
-    return () => clearInterval(interval)
-  }, [refresh])
-
+export default function Component() {
+  const { connect, connectors } = useConnect();
   return (
-    // connect wallet
     <ul>
-      {available.map((connector) => (
-        <div key={connector.id()}>
-         <button key={connector.id()} onClick={() => connect(connector)}>
-          Connect {connector.id()}
-         </button>
-        </div>
+      {connectors.map((connector) => (
+        <li key={connector.id}>
+          <button onClick={() => connect({ connector })}>
+            {connector.name}
+          </button>
+        </li>
       ))}
     </ul>
-    // disconnect wallet
-    <div>
-    	<button onClick={disconnect}>Disconnect</button>
-    </div>
-  )
+  );
 }
+
+// useDisconnect
+import { useDisconnect} from "@starknet-react/core"
+
+export default function Component() {
+    const { disconnect } = useDisconnect();
+
+  return <button onClick={() => disconnect()}>Disconnect</button>
+}
+
 ```
 
-#### `useStarknetExecute`
+#### `useContractWrite`
 
 `useStarknetExecute` is used to interact with contracts on Starknet and send multicall transactions.
 
 Example:
 
 ```javascript
-function ExecuteTransaction() {
-  const { address } = useAccount()
-  const [count, setCount] = useState(0)
+import { useContractWrite } from "@starknet-react/core";
+import { erc20ABI } from "./erc20";
+import { useMemo } from "react";
 
-  // define calls
-  const calls = useMemo(() => {
-    const tx = {
-      contractAddress: ethAddress,
-      entrypoint: 'transfer',
-      calldata: [address, 1, 0]
-    }
-    return Array(count).fill(tx)
-  }, [address, count])
+export function App() {
+  const { address } = useAccount();
+	const { chain } = useNetwork();
 
-  // execute transaction
-  const { execute } = useStarknetExecute({ calls })
+	const { contract } = useContract({
+		abi: erc20ABI,
+		address: chain.nativeCurrency.address,
+	});
 
-  return (
-    <>
-      <p>Sending {count} transactions</p>
-      <p>
-        <button onClick={execute}>Execute</button>
-      </p>
-    </>
-  )
+	const calls = useMemo(() => {
+		if (!address || !contract) return [];
+		return contract.populateTransaction["transfer"]!(address, { low: 1, high: 0 });
+	}, [contract, address]);
+
+	const {
+		writeAsync,
+		data,
+		isPending,
+	} = useContractWrite({
+		calls,
+	});
+
+	return (
+		<>
+			<button onClick={() => writeAsync()}>Transfer</button>
+			<p>status: {isPending && <div>Submitting...</div>}</p>
+			<p>hash: {data?.transaction_hash}</p>
+		</>
+	);
 }
+
 ```
+
+#### `useWaitForTransaction`
+
+Fetches a single transaction receipt. This hook keeps a cache of receipts by chain and transaction hash so that you can use the hook freely in your application without worrying about sending duplicate network requests.
+
+```js
+import { useWaitForTransaction } from "@starknet-react/core";
+
+export default function Component() {
+    const transaction = "0x1059391b8c4fba9743b531ba371908195ccb5dcf2a9532fac247256fb48912f"
+    const { isLoading, isError, error, data } = useWaitForTransaction({hash: transaction, watch: true})
+
+    if (isLoading) return <div>Loading ...</div>;
+    if (isError || !data) return <div>{error?.message}</div>;
+    return <div>{data.status?.length}</div>
+}
+
+```
+
+
 
 ## Summary
 
