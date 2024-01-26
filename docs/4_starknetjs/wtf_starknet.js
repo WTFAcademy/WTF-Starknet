@@ -1,35 +1,38 @@
-import {Provider, Contract, Account, ec, number} from 'starknet';
-import 'dotenv/config';
-const provider = new Provider({ sequencer: { network: 'goerli-alpha' } }) // for testnet 1
+const { Account, RpcProvider, Contract } = require("starknet");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const main = async () => {
-    // output chainId
-    console.log("Chain ID: ", await provider.getChainId());
+    // Provider
+    const provider = new RpcProvider({nodeUrl: `https://rpc.starknet-testnet.lava.build`});
+    console.log("ChainID:", await provider.getChainId());
 
-    // get account nonce
-    const addr = "0x06b59aEC7b1cC7248E206abfabe62062ba1aD75783E7A2Dc19E7F3f351Ac3309"
-    const nonce = await provider.getNonceForAddress(addr)
-    console.log(Number(nonce));
+    // Account
+    const privateKey = process.env.PRIVATE_KEY;
+    const address = process.env.ADDRESS;
+    // const account = new Account(provider, address, privateKey);
 
-    // read contract 
-    const testAddress = "0x0352654644b53b008b9fd565846cca116c0911d0eeabb57df00b55ed77ad211e";
+    // If this account is based on a Cairo v2 contract (for example OpenZeppelin account 0.7.0 or later), do not forget to add the parameter "1" after the privateKey parameter
+    const account = new Account(provider, address, privateKey, '1');
+
+    // Account Nonce
+    const nonce = await provider.getNonceForAddress(address);
+    console.log("Nonce:", Number(nonce));
+
+    // Read Conract
+    const testAddress = "0x064bc29b6a58a30f119b4e0a8cd0a637f27207991e4d92433b2b23ae16e1002d";
     // Read ABI from contract address
     const { abi: testAbi } = await provider.getClassAt(testAddress);
     if (testAbi === undefined) { throw new Error("no abi.") };
     // create contract instance
     const myTestContract = new Contract(testAbi, testAddress, provider);
     // call read_balance method
-    const bal1 = await myTestContract.read_balance();
+    // const bal1 = await myTestContract.read_balance();
     // you can also use call method
-    // const bal1 = await myTestContract.call("read_balance");
-    console.log("Current Balance =", bal1.toString()); // .res because the  return value is called 'res' in the cairo contract
+    const bal1 = await myTestContract.call("read_balance");
+    console.log("Current Balance =", bal1.toString());
 
-    // Write contract
-    const privateKey = process.env.PRIVATE_KEY;
-    console.log(privateKey)
-    const accountAddr = "0x06b59aEC7b1cC7248E206abfabe62062ba1aD75783E7A2Dc19E7F3f351Ac3309";
-    const starkKeyPair = ec.getKeyPair(privateKey);
-    const account = new Account(provider, accountAddr, starkKeyPair);
+    // Write Contract
     // Connect account with the contract
     myTestContract.connect(account);
     // or you can use invoke
@@ -51,7 +54,7 @@ const main = async () => {
     //     }
     //   );
     // await provider.waitForTransaction(executeHash.transaction_hash);
-    
+
     // Events
     // there are multiple events in the tx, because ERC20 and argent tx also emit events.
     // we need to filter out the event that we care    
@@ -60,6 +63,14 @@ const main = async () => {
         (it) => number.cleanHex(it.from_address) === number.cleanHex(testAddress)
       ) || {data: []};
     console.log("event: ", event);
+    }
 
+const runMain = async () => {
+    try {
+        await main();
+    } catch (e) {
+        console.error(e);
+    }
 }
-main()
+
+runMain();
