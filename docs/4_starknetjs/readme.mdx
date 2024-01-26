@@ -69,7 +69,7 @@ console.log(Number(nonce));
 
 We deployed a simple contract to interact with. It has a storage variable `balance`, an event `log_data`, and 2 functions: `read_balance()` and `set_balance()` to read and set the `balance`. You can find the contract on starkscan [here](https://testnet.starkscan.co/contract/0x064bc29b6a58a30f119b4e0a8cd0a637f27207991e4d92433b2b23ae16e1002d#overview).
 
-```cairo
+```rust
 #[starknet::contract]
 mod HelloCairo {
     // storage variable: balance
