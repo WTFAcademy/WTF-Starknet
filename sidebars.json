@@ -1,0 +1,20 @@
+{
+    "starknet-101": [
+        "starknet-101/dashboard",
+        "starknet-101/Cairo/readme",
+        "starknet-101/Tool/readme",
+        "starknet-101/starknetjs/readme",
+        "starknet-101/Dapp/readme"
+    ],
+    "starknet-basecamp-2023": [
+        "starknet-basecamp-2023/readme",
+        "starknet-basecamp-2023/fundamentals/readme",
+        "starknet-basecamp-2023/cairo/readme",
+        "starknet-basecamp-2023/Stark/readme",
+        "starknet-basecamp-2023/SmartContracts/readme",
+        "starknet-basecamp-2023/Testing/readme",
+        "starknet-basecamp-2023/Dapp/readme",
+        "starknet-basecamp-2023/Architecture/readme",
+        "starknet-basecamp-2023/Ecosystem/readme"
+    ]
+}

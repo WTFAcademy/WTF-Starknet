@@ -1,0 +1,389 @@
+---
+title: 02 Cairo
+---
+
+<div className="relative w-full h-0 mb-10" style={{ paddingBottom: '56.25%' }}>
+  <iframe className="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/QsJG9qsey74?si=LjKWea2RPo93J1yo&vq=hd1080" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+# Starknet 中文训练营：Cairo 基础教程
+
+在由 [WTF Academy](https://x.com/0xAA_Science/status/1721113230293234068) 举办的 Starknet 中文训练营（Starknet Basecamp Chinese）中，由我为大家讲解 Cairo 基础教程。通过本节学习，你可以对 Cairo 语言有一个大致的了解，并了解 [Scarb](https://docs.swmansion.com/scarb/docs.html) 和 [Starklings](https://github.com/shramee/starklings-cairo1) 的安装配置，学习 Cairo 的编程概念、变量类型、控制流、数据集合、所有权等知识。在练习环节，我们将使用 Starklings 通过交互式的学习来进一步掌握 Cairo 语言。
+
+
+## 一、Cairo 简介
+
+
+如 [Cairo 文档](https://book.cairo-lang.org/) 中所言，Cairo 是第一个图灵完备的，可用于创建可证明的通用计算程序的语言。它是一种类似 Rust 的高级语言。与 Rust 一样，它旨在让开发人员轻松编写高效且安全的代码。（*作者注：这里所讲的 Cairo 是指 Cairo 1.0 及之后的版本，其与初代的 Cairo 0 相比，语法上存在很大差异。* ）
+
+Cairo 1.0 还引入了 Sierra，这是一种新的中间表示形式，可确保每次 Cairo 运行都能得到验证。这使得 Cairo 1.0 特别适合在 Starknet 这样的无需许可的网络中使用，它可以提供强大的 DoS 保护和审查抵抗能力。您可以在此处阅读有关 Sierra 的更多信息。
+
+简单来说，Cairo 就是一种编写 **Starknet 智能合约** 的高级语言，如同 Solidity 之于 Ethereum 智能合约。从实践中来看，如果你有 Rust 基础的话，将会比较容易上手 Cairo。不过如果你之前没接触过 Rust 也没关系，本文将尽量用最通俗易懂的语言来讲解 Cairo 。
+
+## 二、环境配置
+### 开发环境（Scarb）
+编译型的语言需要编译器。正如 C 语言与其编译器 gcc , Rust 语言与其编译器 rustc 一样, Cairo 也有属于它的[编译工具](https://github.com/starkware-libs/cairo/releases), 我们可以直接下载这些二进制程序，使用命令 ```cairo-run --single-file HellWorld.cairo```来编译和运行源文件 HellWorld.cairo 。
+ 
+ 但以上只是 Cairo 的编译及运行的最小环境，为了更方便地进行项目开发，本文更推荐使用 [Scarb](https://docs.swmansion.com/scarb/docs.html) 作为代码构建及项目管理的工具：
+
+ 其文档中所说，Scarb 是一款 Cairo 包管理器。可以方便地下载 Cairo 包的依赖项，编译 Cairo 程序 或 StarkNet 合约，并作为其他工具（例如 Starknet Foundry 或 IDE）处理代码的入口。
+*作者注：Scarb和 Cargo (用于 Rust 的构建工具和包管理器) 很相似。*
+其 [安装方式](https://docs.swmansion.com/scarb/download.html) 如下 ：
+(通过安装脚本进行安装，此方法仅适用于 macOS 和 Linux。如果你用的是 Windows10及以上系统，建议开启 WSL2 以获得 Linux 运行环境)
+```shell
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
+```
+安装完毕后，通过命令
+```shell
+scarb new hello_world
+```
+就可以创建出一个名为 ```hello_world``` 的 Cairo 项目了。
+
+注：以上示例创建了一个 Cairo 本地程序项目。如果项目要作为 Starknet 合约进行编译的话，需要在`Scarb.toml`中添加如下依赖:
+```
+[dependencies]
+starknet = ">=2.1.0"
+
+[[target.starknet-contract]]
+```
+想要了解更多的Scarb用法，可以查阅[官网文档](https://docs.swmansion.com/scarb/docs.html)。
+
+还可以通过 [Remix](https://remix.ethereum.org) + Starknet 插件进行开发。这个组合的优点是十分便捷，无需本地安装，打开网页即可开始编程。
+### 练习环境（Starklings）
+为了更好地巩固和应用我们所学的内容，我们介绍一款可以交互练习 Cairo 和 Starknet 的工具： [Starklings](https://github.com/shramee/starklings-cairo1)   并将其安装到本地，用来巩固我们所学的知识。
+
+由于这款工具是用 Rust 编写的而且需要在本地编译运行，所以我们首先要安装 Rust 及其包管理器 Cargo :
+```shell
+curl https://sh.rustup.rs -sSf | sh -s
+```
+然后 Git Clone 这个项目,并进入 starklings-cairo1 目录下（ 请确保你安装了 Git ）:
+```shell
+git clone https://github.com/shramee/starklings-cairo1.git && cd starklings-cairo1
+```
+在 starklings-cairo1 目录下执行以下命令，以编译并运行 Starklings 。首次运行需要下载很多依赖，所以用时会比较长：
+```shell
+cargo run -r --bin starklings
+```
+编译完成后，就可以执行以下命令开始练习了：
+```shell
+cargo run -r --bin starklings watch
+```
+更多帮助说明可以查看 [Starklings](https://github.com/shramee/starklings-cairo1) 主页。
+
+## 三、Cairo 基础
+### 0.初识 Cairo 程序和 Starknet 合约
+先看一个最简单的 Cairo 程序：
+```Rust
+use debug::PrintTrait;
+
+fn main() {
+    'Hello, world!'.print();
+}
+```
+
+再看一个简单的 Starknet 合约：
+```Rust
+#[starknet::interface]
+trait ISimpleStorage<TContractState> {
+    fn set(ref self: TContractState, x: u128);
+    fn get(self: @TContractState) -> u128;
+}
+
+#[starknet::contract]
+mod SimpleStorage {
+    use starknet::get_caller_address;
+    use starknet::ContractAddress;
+
+    #[storage]
+    struct Storage {
+        stored_data: u128
+    }
+
+    #[external(v0)]
+    impl SimpleStorage of super::ISimpleStorage<ContractState> {
+        fn set(ref self: ContractState, x: u128) {
+            self.stored_data.write(x);
+        }
+        fn get(self: @ContractState) -> u128 {
+            self.stored_data.read()
+        }
+    }
+}
+```
+可以发现， 常规的 Cairo 程序需要要有一个 main() 函数；而Starknet 合约则不需要 main() 函数，但却多了 #[storage] 一类的宏定义。（*作者注：实质上, Starknet 合约就是一个 Cairo module*）。
+
+我们就先以 Cairo 程序作为学习切入点，了解 Cairo 的基本语法和数据类型，直到最终搭建起一个 Starknet 合约。
+
++ 小练习
+可以用上面的 Cairo 程序覆盖掉 ```hello_world/src/lib.cairo```里的内容，然后在 hello_world/ 目录下执行
+```shell
+scarb cairo-run
+```
+看看这个 Cairo 程序的运行结果。
+
+### 1.变量与可变性
+出于安全原因，与 Rust 类似，Cairo 中的变量默认是不可变的，一旦将值绑定到变量，就不能再更改。如果想要让变量的值可变，则需要加上 mut 关键字。
+```Rust
+const TOTAL_SUPPLY: u32 = 1000; // 常量，必须注明类型如 u32
+fn main() {
+    let x = 1; //不可变变量
+        x = 2; // 赋值报错 Cannot assign to an immutable variable
+    let mut y = 333; //可变变量
+            y = 888; //可以赋值
+    
+}
+```
+
+### 2.数据类型
+felt 是 Cairo 中最基本的数据类型，也是其他数据类型的构建基石。它可以表示 252位（31字节）的数据，支持加法、减法、乘法和除法等基本运算。
+
+Cairo支持长度少于 31 个字符的短字符串。然而，它们实际上以 felt 的形式进行存储。
+
+布尔数据类型有两种可能的值：true 或 false。
+
+Cairo支持不同大小的无符号整数，包括 u8（uint8，无符号 8 位整数）、u16、u32、u64 和 u128。uint256 不是原生支持的，可以通过 use integer::u256_from_felt252 导入它。
+
+元组是由不同类型的值组成的集合。使用圆括号 () 来定义。
+```Rust
+fn main() {
+    let score = 100;    // 默认类型 felt252
+    let name = 'LiLei'; // 默认类型 felt252
+
+    let height: u64 = 30; // Int 类型
+    let width: u64  = 20; // Int 类型
+    let area = height * width; // 数值运算
+
+    let is_night = true;  // Bool 类型
+
+    let cat = ('MiMi',3 , true); // 元组类型
+    let blank = (); //  uint类型，大小总是为零，不存在于编译后的代码中
+}
+```
+### 3.函数
+Cairo 与 Rust 类似，函数使用 fn 关键字声明。参数类型像声明变量一样需要标明，当函数返回一个值时，必须在箭头 -> 之后指定返回类型。
+```Rust
+fn main() {
+    is_even(9);// 语句带分号，不会返回值
+}
+
+// 在函数签名中，必须声明参数的类型
+fn is_even(num: u32) -> bool { // -> 表示函数有返回值
+    num % 2 == 0  // 表达式不带分号，会返回一个值
+}
+```
+### 4.控制流 if
+if-else 表达式允许你根据特定条件执行代码逻辑：如果满足特定条件，则执行一段代码，否则将执行另一段代码。
+
+可以使用else-if表达式创建多个条件，这对于处理复杂逻辑非常有用。
+```Rust
+use debug::PrintTrait;
+
+fn main() {
+    let a :u64 = 10;
+    let b :u64 = 10;
+
+    if a > b {
+        'Big'.print();
+    }else if a < b { // 用 else if 处理多个条件
+        'Less'.print();
+    }else{
+        'equal'.print();
+    }
+}
+```
+### 5.控制流 loop
+循环允许你在特定条件下反复执行代码。与其他具有多种循环类型（for，while等）的编程语言不同，Cairo目前仅支持一种循环类型：loop。
+
+loop关键字将反复执行一段代码，直到见到break关键字才停止。可以通过在break关键字后添加表达式从循环返回值。
+```Rust
+// Cairo 目前只有 loop 一种循环：
+fn main() {
+    let mut counter = 0;
+    loop {
+        counter += 1;  // 想要循环执行的代码
+
+        if counter == 10{ // 终止执行的条件
+        break (); // 终止循环的语句
+        }
+    };
+}
+```
+### 6.数组
+数组是相同类型（如 u32, felt252 等）的对象的集合，存储在连续的内存中，并可使用索引进行访问。数组在Cairo中并非原生支持，需要导入ArrayTrait库来使用它。
+```Rust
+use debug::PrintTrait;
+use array::ArrayTrait; //导入数组特性
+
+fn main(){
+    let mut a = ArrayTrait::new(); // 初始化数组
+    a.append(0x111); // 新增数组元素
+    a.append(0x222);
+    a.append(0x333);
+
+    let num_1 = *a.get(1).unwrap().unbox(); //获取下标1的值
+    let num_2 = *a.at(2); //获取下标2的值,(备注：desnap 操作符 * 可将快照转换回值)
+    num_1.print(); // 0x222
+    num_2.print(); // 0x333
+}
+```
+### 7.字典
+字典类型表示键值对的集合，其中每个键都是唯一的，并与相应的值相关联。这种类型的数据结构在其它编程语言中可能有不同的名称，如映射、哈希表、关联数组等。
+```Rust
+use dict::Felt252DictTrait; // 导入字典特性
+
+fn main(){
+    let mut menu = felt252_dict_new::<felt252>();
+    menu.insert('fish', 1024);       // 写入键对应的值
+    let price_1 = menu['fish'];      // 方式1 读取键值，1024
+    let price_2 = menu.get('meat');  // 方式2 读取键值，初始值为 0
+}
+```
+### 8.结构体的定义及实例化
+结构体是一种自定义的数据类型，可以将多个相关值组合成一个有意义的数据类型。
+```Rust
+//定义一种结构体
+#[derive(Copy, Drop)]
+struct PlayerStruct {
+    id: u64,
+    name: felt252,
+    level: u64,
+}
+
+fn main(){
+    // 实例化结构体
+    let player_1 = PlayerStruct{
+            id:9527,
+            name:'HA',
+            level:1 
+        };
+}
+```
+### 9.结构体的方法
+Cairo 中没有类和对象的概念，但可以用结构体 + 方法 来实现类似功能。结构体方法与函数类似：使用 fn 关键字和名称来声明它们，它们可以具有参数和返回值。用 trait 关键字来定义函数签名，用 impl 关键字来完成函数的具体实现。
+```Rust
+//定义一种结构体
+#[derive(Copy, Drop)]
+struct PlayerStruct {
+    id: u64,
+    name: felt252,
+    level: u64,
+}
+//在结构体的 trait 里，定义函数签名
+trait PlayerTrait { // 函数参数:该结构体快照
+    fn attack(self: @PlayerStruct) -> u64;
+}
+
+//在 trait 的 impl 里，完善函数体
+impl PlayerImpl of PlayerTrait {
+    fn attack(self: @PlayerStruct) -> u64 {
+        (*self.level) * (0x100)
+    }
+}
+
+fn main(){
+    // 实例化结构体
+    let player_1 = PlayerStruct{
+            id:9527,
+            name:'HA',
+            level:5 
+        };
+    //获取结构体的字段的值
+    let name = player_1.name;
+    // 调用结构体方法，返回 0x500
+    let attack_point = player_1.attack(); 
+}
+```
+### 10.枚举和模式匹配
+Cairo 中的枚举是一种定义一组命名值（变量）的方法，每个值都有一个关联的数据类型。使用枚举可以提高代码的可读性并减少错误。
+
+match 属于控制流运算符，可以以清晰、简洁的方式处理枚举的不同可能值。类似于其他语言中的 switch 语句，但表达能力更强，也更安全。
+```Rust
+//示例10 枚举和模式匹配
+
+use array::ArrayTrait; //导入数组特性
+
+// 定义一个枚举类型
+enum Direction {
+    Left,
+    Right,
+    Stay,
+}
+
+fn main(){
+    let mut position = 100;
+    // 创建枚举类型的变量
+    let move = Direction::Left;
+    // 使用 match 表达式对 move 进行模式匹配
+    match move {
+        Direction::Left  => position + 1, // 分支1
+        Direction::Right => position - 1, // 分支2
+        Direction::Stay  => position + 0, // 分支3
+    };
+}
+```
+### 11.所有权
+在 Cairo 中，当数据从一个变量分配到另一个变量或作为函数参数传递时，该数据的所有权会被转移。所有权一旦转移，在当前作用域中将无法再使用该数据。
+```Rust
+use array::ArrayTrait; //导入数组特性
+
+fn read_0(arr: Array<u64>) { arr.get(0); }
+fn read_1(arr: Array<u64>) { arr.get(1); }
+
+fn main(){
+    // 创建 数组_1。此时其所有权属于 main()
+    let mut arr_1 = ArrayTrait::<u64>::new();
+    arr_1.append(111);
+    arr_1.append(222);
+
+    read_0(arr_1); //正常执行。此后 数组_1 的所有权将转移给 read_0(）
+    read_1(arr_1); //无法执行。因为 main() 已失去 数组_1 的所有权  
+}
+```
+### 12.快照
+Cairo 中的快照（snapshot）为某个值提供了一个不可变的视图。当一个函数接受一个快照作为参数时，它并不接管底层值的所有权。
+
+可以使用快照操作符 @ 创建快照。
+```Rust
+use array::ArrayTrait; //导入数组特性
+// “ @ ” 表明函数接收的数据类型为 “ 快照 ”
+fn read_0(arr: @Array<u64>) { arr.get(0); }
+fn read_1(arr: @Array<u64>) { arr.get(1); }
+
+fn main(){
+    // 创建 数组_1。此时其所有权属于 main()
+    let mut arr_1 = ArrayTrait::<u64>::new();
+    arr_1.append(111);
+    arr_1.append(222);
+
+    read_0(@arr_1); //正常执行。 “ @ ” 表明传入的数据类型为“ 快照 ”
+    read_1(@arr_1); //正常执行。因为 传给 read_0(）的只是 “复印件”
+                    // 数组_1 的 “原件” 还保留在 main() 函数里。
+}
+```
+### 13.引用
+在 Cairo 中，如果我们希望一个函数更改参数的值同时保留其所有权，就可以使用可变引用（mutable reference）。可变引用在函数执行结束时会被隐式返回，允许函数修改它的值，并且该值在调用函数的作用域中仍可使用。
+```Rust
+use debug::PrintTrait;
+use array::ArrayTrait; //导入数组特性
+// “ ref ” 表明函数接收的数据类型为 “ 引用 ”
+fn increase(ref arr: Array<u64>) { arr.append(0x333); }
+fn decrease(ref arr: Array<u64>) { arr.pop_front();   }
+
+fn main(){
+    // 创建 数组_1。此时其所有权属于 main()
+    //只有使用 mut 声明变量为可变，才能使用 ref 修饰符。
+    let mut arr_1 = ArrayTrait::<u64>::new();
+    arr_1.append(0x111);
+    arr_1.append(0x222);
+
+    increase(ref arr_1); //正常执行。 “ ref ” 表明传入的数据类型为“ 引用 ”
+    decrease(ref arr_1); //正常执行。传给 read_0(）执行后，所有权又返还了。
+    arr_1.len().print(); //正常执行。
+}
+```
+**Reference:**
+1. [Cairo](https://github.com/starkware-libs/cairo)
+2. [Cairo Book](https://book.cairo-lang.org)
+3. [WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
+4. [Scarb Docs](https://docs.swmansion.com/scarb/docs.html)
+5. [Starkling Cairo1](https://github.com/shramee/starklings-cairo1)

@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const path = require('path');
 
 function defineSection(section, version = {}, options = {}) {
   return [
@@ -36,7 +37,7 @@ const config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-test-site.com",
+  url: "https://starknet.wtf.academy",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -63,10 +64,11 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          path: 'docs',
+          sidebarPath: path.resolve(__dirname, './sidebars.json'),
           editUrl: "https://github.com/WTFAcademy/WTF-Starknet/edit/main/",
+          breadcrumbs: false,
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
@@ -95,9 +97,15 @@ const config = {
         items: [
           {
             type: "doc",
-            docId: "dashboard",
-            position: "left",
             label: "Tutorial",
+            docId: "starknet-101/dashboard",
+            position: "left",
+          },
+          {
+            type: 'doc',
+            label: 'Starknet Basecamp 2023',
+            docId: 'starknet-basecamp-2023/readme',
+            position: 'left',
           },
           { to: "/blog", label: "Blog", position: "left" },
           // {
@@ -117,7 +125,7 @@ const config = {
             items: [
               {
                 label: "Tutorial",
-                to: "/docs/dashboard",
+                to: "/docs/starknet-101",
               },
             ],
           },

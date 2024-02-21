@@ -56,3 +56,28 @@ html,body {
 .menu__list > .menu__list-item--hide {
   display: none;
 }
+
+.relative{
+  position: relative;
+}
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+.h-0 {
+  height: 0;
+}
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%;
+}
+.absolute {
+  position: absolute;
+}
+.top-0 {
+  top: 0;
+}
+.left-0 {
+  left: 0;
+}
