@@ -1,6 +1,6 @@
 {
     "starknet-101": [
-        "starknet-101/dashboard",
+        "starknet-101/readme",
         "starknet-101/Cairo/readme",
         "starknet-101/Tool/readme",
         "starknet-101/starknetjs/readme",

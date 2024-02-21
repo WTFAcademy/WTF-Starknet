@@ -47,7 +47,7 @@ const config = {
   organizationName: "WTFAcademy", // Usually your GitHub org/user name.
   projectName: "WTF-Academy-Starknet-Hackathon", // Usually your repo name.
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -98,7 +98,7 @@ const config = {
           {
             type: "doc",
             label: "Tutorial",
-            docId: "starknet-101/dashboard",
+            docId: "starknet-101/readme",
             position: "left",
           },
           {
