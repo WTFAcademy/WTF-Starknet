@@ -34,23 +34,25 @@ npm install starknet
 
 `Provider` allows you to interact with the Starknet network, without signing transactions or messages.
 
+After Starknet v0.12.3, the Starknet feeder gateway was replaced by Starknet full nodes (Pathfinder, Juno, Papyrus, etc). You can get full-nodes & RPC services [here](https://www.starknet.io/en/ecosystem/fullnodes-and-rpc-services).
+
 ```js
-const provider = new Provider({ sequencer: { network: 'goerli-alpha' } }) // for testnet 1
-// output chainId
-console.log("Chain ID: ", await provider.getChainId());
+const provider = new RpcProvider({nodeUrl: `https://rpc.starknet-testnet.lava.build`});
+console.log("ChainID:", await provider.getChainId());
 ```
 
 ## 3. Account
 
 `Account` extends `Provider` and allows you to create and verify signatures. 
-It is similar to `Wallet` in ethers.js, but different since all accounts are abstract on Starknet. You need a `KeyPair` to create an account instance.
+It is similar to `Wallet` in ethers.js, but different since all accounts are abstract on Starknet. 
 
 ```js
 const privateKey = process.env.PRIVATE_KEY;
-console.log(privateKey)
-const accountAddr = "0x06b59aEC7b1cC7248E206abfabe62062ba1aD75783E7A2Dc19E7F3f351Ac3309";
-const starkKeyPair = ec.getKeyPair(privateKey);
-const account = new Account(provider, accountAddr, starkKeyPair);
+const address = process.env.ADDRESS;
+const account = new Account(provider, address, privateKey);
+
+// If this account is based on a Cairo v2 contract (for example OpenZeppelin account 0.7.0 or later), do not forget to add the parameter "1" after the privateKey parameter
+// const account = new Account(provider, address, privateKey, '1');
 ```
 
 ## 4. Get Account Nonce
@@ -65,46 +67,42 @@ console.log(Number(nonce));
 
 ## 5. A Simple Contract
 
-We deployed a simple contract to interact with. It has a storage variable `balance`, an event `log_data`, and 2 functions: `read_balance()` and `set_balance()` to read and set the `balance`. You can find the contract on starkscan [here](https://testnet.starkscan.co/contract/0x05844982dc2e548395fb4fc6e4abd16f893ff1b5baaea80bd8de522f784473ef#overview).
+We deployed a simple contract to interact with. It has a storage variable `balance`, an event `log_data`, and 2 functions: `read_balance()` and `set_balance()` to read and set the `balance`. You can find the contract on starkscan [here](https://testnet.starkscan.co/contract/0x064bc29b6a58a30f119b4e0a8cd0a637f27207991e4d92433b2b23ae16e1002d#overview).
 
-```python
-%lang starknet
+```rust
+#[starknet::contract]
+mod HelloCairo {
+    // storage variable: balance
+    #[storage]
+    struct Storage {
+        balance: felt252,
+    }
 
-from starkware.cairo.common.cairo_builtins import HashBuiltin
+    // event
+    #[event]
+    #[derive(Drop, starknet::Event)]
+    enum Event {
+        LogData: LogData,
+    }
 
-// starage variable: balance
-@storage_var
-func balance() -> (res: felt) {
-}
+    #[derive(Drop, starknet::Event)]
+    struct LogData {
+        #[key]
+        value: felt252,
+    }
 
-// event
-@event
-func log_data(value: felt) {
-}
+    // set balance
+    #[external(v0)]
+    fn set_balance(ref self: ContractState, amount: felt252) {
+        self.balance.write(amount);
+        self.emit(LogData { value: amount });
+    }
 
-
-// set balance.
-@external
-func set_balance{
-    syscall_ptr: felt*,
-    pedersen_ptr: HashBuiltin*,
-    range_check_ptr,
-}(amount: felt) {
-    balance.write(amount);
-    // 释放事件
-    log_data.emit(amount);
-    return ();
-}
-
-// read balance.
-@view
-func read_balance{
-    syscall_ptr: felt*,
-    pedersen_ptr: HashBuiltin*,
-    range_check_ptr,
-}() -> (amount: felt) {
-    let (res) = balance.read();
-    return (amount=res);
+    // read balance
+    #[external(v0)]
+    fn read_balance(self: @ContractState) -> felt252 {
+        self.balance.read()
+    }
 }
 ```
 
@@ -113,7 +111,7 @@ func read_balance{
 You can create a contract instance with `Contract` method, and pass ABI, contract address, and provider to it. Then you can interact with the contract on Starknet.
 
 ```js
-const testAddress = "0x0352654644b53b008b9fd565846cca116c0911d0eeabb57df00b55ed77ad211e";
+const testAddress = "0x064bc29b6a58a30f119b4e0a8cd0a637f27207991e4d92433b2b23ae16e1002d";
 // Read ABI from contract address
 const { abi: testAbi } = await provider.getClassAt(testAddress);
 if (testAbi === undefined) { throw new Error("no abi.") };
