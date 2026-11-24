@@ -12,7 +12,7 @@ Community: [Discord](https://discord.gg/5akcruXrsk) | [Website: starknet.wtf.aca
 
 ## Tutorials 教程
 
-1. [WTF Starknet Tutorials](https://starknet.wtf.academy/docs/dashboard): Introduction of the essentials of Starknet stacks. 介绍Starknet上的核心开发技巧。
+1. [WTF Starknet Tutorials](./docs/starknet-101/readme.mdx): Introduction of the essentials of Starknet stacks. 介绍Starknet上的核心开发技巧。
 
 2. [WTF Cairo Tutorial](https://github.com/WTFAcademy/WTF-Cairo): Open-source tutorials for Cairo (based on version 2.2), including 25 chapters. 开源的Cairo教程，共25讲。
 
