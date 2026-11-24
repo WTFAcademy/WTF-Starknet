@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import Modal from "../Modal";
 import clsx from "clsx";
 import styles from "./index.module.css";
-import { Connector, useAccount, useConnectors } from "@starknet-react/core";
+import { useAccount, useConnect } from "@starknet-react/core";
 
 export function WalletModal(props) {
-  const { connectors, connect } = useConnectors();
+  const { connectors, connect } = useConnect();
   const { status } = useAccount();
   const connectorStyle = [styles.braavos_button, styles.argent_button];
 
@@ -17,8 +17,8 @@ export function WalletModal(props) {
       <div className={styles.connectors_group}>
         {connectors.map((c, idx) => (
           <button
-            key={c.id()}
-            onClick={() => connect(c)}
+            key={c.id}
+            onClick={() => connect({ connector: c })}
             disabled={status === "connected"}
             className={clsx(connectorStyle[idx])}
           />

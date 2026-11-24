@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import styles from "./index.module.css";
 import {
-    useConnectors,
+    useDisconnect,
     useAccount,
 } from "@starknet-react/core";
 import Button from "@site/src/components/Button";
@@ -17,7 +17,7 @@ const LOCAL_FLAG = (address) => 'login-test-' + address;
 
 const UserInfo = () => {
     const {account, address} = useAccount();
-    const {disconnect} = useConnectors();
+    const {disconnect} = useDisconnect();
 
     return (
         <div className={styles.userInfo} onClick={() => {
@@ -48,7 +48,7 @@ export const Profile = (props) => {
     }, [status]);
 
     useEffect(() => {
-        if (address && address !== '') {
+        if (address) {
             // 特殊处理，原因在于每次切换页面都会触发该组件的重新渲染
             const Flag = LOCAL_FLAG(address);
             if (localStorage.getItem(Flag)) {

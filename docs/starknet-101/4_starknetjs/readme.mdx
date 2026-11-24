@@ -21,56 +21,15 @@ import {CourseId, Lesson_4} from "@site/src/constants/course";
 
 > If you are not familiar with Ethers.js, check [WTF Ethers Tutorial](https://github.com/WTFAcademy/WTF-Ethers).
 
-## 1. Install with `npm`
+## 1. Set up the example
 
-First, get your [VSCode](https://code.visualstudio.com/download) and [Node.js](https://nodejs.org/en/download/) ready. Then open your terminal to install starknet.js with npm.
+This lesson uses Starknet.js 10.8.0 and Node.js 22+. From this lesson directory run `npm ci`, then set `STARKNET_RPC_URL` and `CONTRACT_ADDRESS` to the RPC endpoint and deployment address for the Cairo contract below.
 
+Run `node wtf_starknet.js` to read the contract. On a local devnet, set `ADDRESS` and `PRIVATE_KEY` for a disposable test account and add `--write` to try a state change and read its event. Use an endpoint that supports the SDK's RPC version.
 
-```shell
-npm install starknet@4.21.0
-```
+## 2. Contract
 
-This lesson uses the legacy Starknet.js 4.21.0 API. Set `STARKNET_RPC_URL` to an older local devnet compatible with that release. Run `node wtf_starknet.js` from this folder to read the deployed contract. To try the write and event example, set `ADDRESS` and `PRIVATE_KEY` for a local devnet account, then run `node wtf_starknet.js --write`.
-
-## 2. Provider
-
-`Provider` allows you to interact with the Starknet network, without signing transactions or messages.
-
-After Starknet v0.12.3, the Starknet feeder gateway was replaced by Starknet full nodes (Pathfinder, Juno, Papyrus, etc). You can get full-nodes & RPC services [here](https://www.starknet.io/en/ecosystem/fullnodes-and-rpc-services).
-
-```js
-const { RpcProvider } = require("starknet");
-const provider = new RpcProvider({ nodeUrl: process.env.STARKNET_RPC_URL });
-console.log("ChainID:", await provider.getChainId());
-```
-
-## 3. Account
-
-`Account` extends `Provider` and allows you to create and verify signatures. 
-It is similar to `Wallet` in ethers.js, but different since all accounts are abstract on Starknet. 
-
-```js
-const privateKey = process.env.PRIVATE_KEY;
-const address = process.env.ADDRESS;
-const account = new Account(provider, address, privateKey);
-
-// If this account is based on a Cairo v2 contract (for example OpenZeppelin account 0.7.0 or later), do not forget to add the parameter "1" after the privateKey parameter
-// const account = new Account(provider, address, privateKey, '1');
-```
-
-## 4. Get Account Nonce
-
-Gets the nonce of the account with respect to a specific block.
-
-```js
-const addr = process.env.ADDRESS
-const nonce = await provider.getNonceForAddress(addr)
-console.log(Number(nonce));
-```
-
-## 5. A Simple Contract
-
-Deploy the contract below to your compatible local devnet. It stores `balance`, emits `log_data`, and exposes `read_balance()` and `set_balance()`. Set `CONTRACT_ADDRESS` to your deployment address.
+Deploy this contract to a local devnet to try the example. It stores `balance`, exposes a setter and getter, and emits `log_data` on writes.
 
 ```rust
 #[starknet::contract]
@@ -109,82 +68,8 @@ mod HelloCairo {
 }
 ```
 
-## 6. Read Contract
+## 3. Read, write, and inspect a receipt
 
-You can create a contract instance with `Contract` method, and pass ABI, contract address, and provider to it. Then you can interact with the contract on Starknet.
+The complete script, `wtf_starknet.js`, initializes `RpcProvider` and passes it to `new Contract({ abi, address, providerOrAccount: provider })`. The optional write path connects `new Account({ provider, address, signer })`, calls the setter, and checks the receipt before reading events.
 
-```js
-const testAddress = process.env.CONTRACT_ADDRESS;
-// Read ABI from contract address
-const { abi: testAbi } = await provider.getClassAt(testAddress);
-if (testAbi === undefined) { throw new Error("no abi.") };
-// create contract instance
-const myTestContract = new Contract(testAbi, testAddress, provider);
-// call read_balance method
-const bal1 = await myTestContract.read_balance();
-// you can also use call method
-// const bal1 = await myTestContract.call("read_balance");
-console.log("Current Balance =", bal1.toString());
-```
-
-## 7. Write Contract
-
-To write on the blockchain, you need to connect the contract instance with account.
-
-```js
-// Connect account with the contract
-myTestContract.connect(account);
-// or you can use invoke
-// const result = await myTestContract.invoke("set_balance", [888]);
-const result = await myTestContract.set_balance(999);
-const txReceiptDeployTest = await provider.waitForTransaction(result.transaction_hash);
-const bal2 = await myTestContract.read_balance();
-console.log("New Balance =", bal2.toString());
-```
-
-## 8. Write Contract with Verification
-
-If you interact with a function that needs the proof that you have the private key of the account, you have to invoke this function with `account.execute`, and pass following variables:
-
-- `contractAddress`: address of the contract to invoke.
-- `entrypoint`: name of the function to invoke.
-- `calldata`: array of parameters for this function.
-
-
-```js
-// account.execute: when you interact with the function that needs the proof that you have the private key of the account.
-const executeHash = await account.execute(
-    {
-      contractAddress: myContractAddress,
-      entrypoint: 'transfer',
-      calldata: stark.compileCalldata({
-        recipient: receiverAddress,
-        amount: ['10']
-      })
-    }
-  );
-await provider.waitForTransaction(executeHash.transaction_hash);
-```
-
-## 9. Read Events
-
-It is easy to read event from transaction receipt. But a transaction can contain multiple events, so you need to filter out the one you need.
-
-```js
-const { number } = require("starknet");
-
-// Events
-// there are multiple events in the tx, because ERC20 and argent tx also emit events.
-// we need to filter out the event that we care    
-const events = txReceiptDeployTest.events;
-const event = events.find(
-    (it) => number.cleanHex(it.from_address) === number.cleanHex(testAddress)
-  ) || {data: []};
-console.log("event: ", event);
-```
-
-## 10. Summary
-
-In this tutorial, we introduced how to use Starknet.js, including provider, account, read/write contract, and read events.
-
-<QuizForm link={"https://docs.google.com/forms/d/e/1FAIpQLScenTbrGFFFcsYwmPpDJkiRaD21hVbI6D2k1TLi6Vsyi3HsWg/viewform?usp=sf_link"}></QuizForm>
+See the [Starknet.js docs](https://starknetjs.com/docs/) for supported RPC versions and optional contract call settings.

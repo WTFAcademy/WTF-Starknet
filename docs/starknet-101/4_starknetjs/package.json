@@ -1,0 +1,5 @@
+{
+  "private": true,
+  "type": "commonjs",
+  "dependencies": { "starknet": "10.8.0" }
+}

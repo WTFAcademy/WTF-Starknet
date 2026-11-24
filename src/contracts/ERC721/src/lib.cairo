@@ -5,16 +5,15 @@ trait IWTFMint<TContractState> {
 
 #[starknet::contract]
 mod WTF {
-    use starknet::{ ContractAddress, get_caller_address };
-    use openzeppelin::token::erc721::erc721::ERC721Component::InternalTrait;
-    use openzeppelin::token::erc721::ERC721Component;
-    use openzeppelin::introspection::src5::SRC5Component;
+    use openzeppelin_introspection::src5::SRC5Component;
+    use openzeppelin_token::erc721::{
+        ERC721Component, ERC721HooksEmptyImpl, ERC721OwnerOfDefaultImpl, ERC721TokenURIDefaultImpl,
+    };
+    use starknet::get_caller_address;
+    use starknet::storage::{StoragePointerReadAccess, StoragePointerWriteAccess};
+
     #[abi(embed_v0)]
-    impl ERC721Impl = ERC721Component::ERC721Impl<ContractState>;
-    #[abi(embed_v0)]
-    impl ERC721CamelOnlyImpl = ERC721Component::ERC721CamelOnlyImpl<ContractState>;
-    #[abi(embed_v0)]
-    impl ERC721MetadataCamelOnlyImpl = ERC721Component::ERC721MetadataCamelOnlyImpl<ContractState>;
+    impl ERC721MixinImpl = ERC721Component::ERC721MixinImpl<ContractState>;
 
     impl ERC721InternalImpl = ERC721Component::InternalImpl<ContractState>;
 
@@ -40,15 +39,15 @@ mod WTF {
 
 
     #[constructor]
-    fn constructor(ref self: ContractState, name: felt252, symbol: felt252) {
-        self.erc721.initializer(name, symbol);
+    fn constructor(ref self: ContractState, name: ByteArray, symbol: ByteArray) {
+        self.erc721.initializer(name, symbol, "");
     }
 
-    #[external(v0)]
+    #[abi(embed_v0)]
     impl IWTFMintImpl of super::IWTFMint<ContractState> {
         fn mint(ref self: ContractState) {
-            let mut nextTokenId = self.nextTokenId.read();
-            self.erc721._mint(get_caller_address(), nextTokenId);
+            let nextTokenId = self.nextTokenId.read();
+            self.erc721.mint(get_caller_address(), nextTokenId);
             self.nextTokenId.write(nextTokenId + 1);
         }
     }

@@ -1,8 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const {themes} = require('prism-react-renderer');
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 const path = require('path');
 
 function defineSection(section, version = {}, options = {}) {
@@ -65,6 +66,7 @@ const config = {
       ({
         docs: {
           path: 'docs',
+          exclude: ['**/node_modules/**', '**/_*/**', '**/_*.{js,jsx,ts,tsx,md,mdx}'],
           sidebarPath: path.resolve(__dirname, './sidebars.json'),
           editUrl: "https://github.com/WTFAcademy/WTF-Starknet/edit/main/",
           breadcrumbs: false,

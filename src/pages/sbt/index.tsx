@@ -20,15 +20,15 @@ import GlobalContext from "@site/src/contexts/GlobalContext";
 const contractAddress =
     "0x064bfed736951e98e16fedfd4605960879251f59f2f14427a2ae88a48f379801";
 const checkMintedStatus = async (account) => {
-    const contract = new Contract(contractAbi, contractAddress, account);
+    const contract = new Contract({ abi: contractAbi, address: contractAddress, providerOrAccount: account });
     const res = await contract.balanceOf(account.address);
-    const balance = uint256.uint256ToBN(res[0]).toNumber();
+    const balance = uint256.uint256ToBN(res[0]);
 
-    return balance > 0;
+    return balance > 0n;
 };
 
 const mint = async (account) => {
-    const contract = new Contract(contractAbi, contractAddress, account);
+    const contract = new Contract({ abi: contractAbi, address: contractAddress, providerOrAccount: account });
     const tokenId = uint256.bnToUint256("1");
     const mintNFT = await contract.mint(account.address, tokenId);
     return await account.waitForTransaction(mintNFT.transaction_hash);
@@ -76,7 +76,7 @@ const SBTClaim: React.FC<any> = () => {
             const signature = nftSignRes.data.sign.split(",");
             const mintResult = await mint(account);
             console.log(mintResult);
-            if(mintResult.status === "ACCEPTED_ON_L2" || mintResult.status === "PENDING") {
+            if(mintResult.isSuccess()) {
                 toast.success('Mint succeeded!');
             }
             else {

@@ -15,25 +15,29 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "2.3.0",
-    "@docusaurus/preset-classic": "2.3.0",
-    "@mdx-js/react": "^1.6.22",
-    "@starknet-react/core": "^0.14.8",
-    "@web3auth/sign-in-with-starkware": "^1.0.0",
-    "ahooks": "^3.7.4",
-    "axios": "^1.3.1",
-    "clsx": "^1.2.1",
-    "prism-react-renderer": "^1.3.5",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-hot-toast": "^2.4.0",
-    "react-jazzicon": "^1.0.4",
-    "starknet": "^4.17.1"
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/preset-classic": "3.10.2",
+    "@mdx-js/react": "3.1.1",
+    "@starknet-react/core": "5.0.3",
+    "@web3auth/sign-in-with-starkware": "5.0.0",
+    "ahooks": "3.11.0",
+    "axios": "1.21.1",
+    "clsx": "2.1.1",
+    "prism-react-renderer": "2.4.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hot-toast": "2.6.1",
+    "react-jazzicon": "1.0.4",
+    "starknet": "8.9.2",
+    "@starknet-react/chains": "5.0.3",
+    "lodash": "4.18.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.3.0",
-    "@tsconfig/docusaurus": "^1.0.5",
-    "typescript": "^4.7.4"
+    "@docusaurus/module-type-aliases": "3.10.2",
+    "typescript": "7.0.2",
+    "@types/react": "18.3.31",
+    "@types/node": "26.6.6",
+    "@types/lodash": "4.17.27"
   },
   "browserslist": {
     "production": [
