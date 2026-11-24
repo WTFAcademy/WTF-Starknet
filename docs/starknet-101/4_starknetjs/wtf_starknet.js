@@ -1,26 +1,17 @@
-const { Account, RpcProvider, Contract } = require("starknet");
-const dotenv = require("dotenv");
-dotenv.config();
+const { Account, RpcProvider, Contract, number } = require("starknet");
 
 const main = async () => {
-    // Provider
-    const provider = new RpcProvider({nodeUrl: `https://rpc.starknet-testnet.lava.build`});
+    const { STARKNET_RPC_URL, CONTRACT_ADDRESS: testAddress, ADDRESS, PRIVATE_KEY } = process.env;
+    const write = process.argv.includes("--write");
+    if (!STARKNET_RPC_URL || !testAddress) {
+        throw new Error("Set STARKNET_RPC_URL and CONTRACT_ADDRESS for a compatible local devnet.");
+    }
+    if (write && (!ADDRESS || !PRIVATE_KEY)) {
+        throw new Error("Set ADDRESS and PRIVATE_KEY for the local devnet account before using --write.");
+    }
+    const provider = new RpcProvider({ nodeUrl: STARKNET_RPC_URL });
     console.log("ChainID:", await provider.getChainId());
 
-    // Account
-    const privateKey = process.env.PRIVATE_KEY;
-    const address = process.env.ADDRESS;
-    // const account = new Account(provider, address, privateKey);
-
-    // If this account is based on a Cairo v2 contract (for example OpenZeppelin account 0.7.0 or later), do not forget to add the parameter "1" after the privateKey parameter
-    const account = new Account(provider, address, privateKey, '1');
-
-    // Account Nonce
-    const nonce = await provider.getNonceForAddress(address);
-    console.log("Nonce:", Number(nonce));
-
-    // Read Conract
-    const testAddress = "0x064bc29b6a58a30f119b4e0a8cd0a637f27207991e4d92433b2b23ae16e1002d";
     // Read ABI from contract address
     const { abi: testAbi } = await provider.getClassAt(testAddress);
     if (testAbi === undefined) { throw new Error("no abi.") };
@@ -31,6 +22,12 @@ const main = async () => {
     // you can also use call method
     const bal1 = await myTestContract.call("read_balance");
     console.log("Current Balance =", bal1.toString());
+
+    if (!write) return;
+
+    const account = new Account(provider, ADDRESS, PRIVATE_KEY, "1");
+    const nonce = await provider.getNonceForAddress(ADDRESS);
+    console.log("Nonce:", Number(nonce));
 
     // Write Contract
     // Connect account with the contract
@@ -70,6 +67,7 @@ const runMain = async () => {
         await main();
     } catch (e) {
         console.error(e);
+        process.exitCode = 1;
     }
 }
 
